@@ -3,7 +3,6 @@
 //  LearningMachineLearning
 //
 //  Created by Grace on 7/17/15.
-//  Copyright (c) 2015 Grace Avery. All rights reserved.
 //
 
 import Foundation

@@ -19,6 +19,7 @@
 		BBD299AB1B5C999000270644 /* iris.arff in Resources */ = {isa = PBXBuildFile; fileRef = BBD299AA1B5C999000270644 /* iris.arff */; };
 		BBD299AE1B5C9CEB00270644 /* GeneralizedSVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD299AD1B5C9CEB00270644 /* GeneralizedSVM.swift */; };
 		BBD299B01B5CB06300270644 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD299AF1B5CB06300270644 /* Data.swift */; };
+		BBD299B41B5CC28400270644 /* SupportVectorMachine2d.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD299B31B5CC28400270644 /* SupportVectorMachine2d.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		BBD299AA1B5C999000270644 /* iris.arff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iris.arff; sourceTree = "<group>"; };
 		BBD299AD1B5C9CEB00270644 /* GeneralizedSVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralizedSVM.swift; sourceTree = "<group>"; };
 		BBD299AF1B5CB06300270644 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		BBD299B31B5CC28400270644 /* SupportVectorMachine2d.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportVectorMachine2d.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				BBD299A81B5C458400270644 /* SupportVectorMachine.swift */,
 				BBD299AF1B5CB06300270644 /* Data.swift */,
 				BBD299AD1B5C9CEB00270644 /* GeneralizedSVM.swift */,
+				BBD299B31B5CC28400270644 /* SupportVectorMachine2d.swift */,
 				BBD299AC1B5C999500270644 /* Data */,
 				BB25D3EF1B596D2D0025E7B1 /* Unit.swift */,
 				BB1224C51B56F39900F05EFD /* Main.storyboard */,
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD299B41B5CC28400270644 /* SupportVectorMachine2d.swift in Sources */,
 				BBD299AE1B5C9CEB00270644 /* GeneralizedSVM.swift in Sources */,
 				BB1224C41B56F39900F05EFD /* ViewController.swift in Sources */,
 				BB2686DD1B59744F001F3CD4 /* ExampleMultipleGates.swift in Sources */,
