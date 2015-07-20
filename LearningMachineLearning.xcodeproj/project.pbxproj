@@ -12,6 +12,10 @@
 		BB1224C71B56F39900F05EFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1224C51B56F39900F05EFD /* Main.storyboard */; };
 		BB1224C91B56F39900F05EFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB1224C81B56F39900F05EFD /* Assets.xcassets */; };
 		BB1224CC1B56F39900F05EFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1224CA1B56F39900F05EFD /* LaunchScreen.storyboard */; };
+		BB25D3EE1B596C890025E7B1 /* Gates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB25D3ED1B596C890025E7B1 /* Gates.swift */; };
+		BB25D3F01B596D2D0025E7B1 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB25D3EF1B596D2D0025E7B1 /* Unit.swift */; };
+		BB2686DD1B59744F001F3CD4 /* ExampleMultipleGates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2686DC1B59744F001F3CD4 /* ExampleMultipleGates.swift */; };
+		BBD299A91B5C458400270644 /* SupportVectorMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD299A81B5C458400270644 /* SupportVectorMachine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		BB1224C81B56F39900F05EFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB1224CB1B56F39900F05EFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB1224CD1B56F39900F05EFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB25D3ED1B596C890025E7B1 /* Gates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gates.swift; sourceTree = "<group>"; };
+		BB25D3EF1B596D2D0025E7B1 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		BB2686DC1B59744F001F3CD4 /* ExampleMultipleGates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleMultipleGates.swift; sourceTree = "<group>"; };
+		BBD299A81B5C458400270644 /* SupportVectorMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportVectorMachine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,10 @@
 			children = (
 				BB1224C11B56F39900F05EFD /* AppDelegate.swift */,
 				BB1224C31B56F39900F05EFD /* ViewController.swift */,
+				BB25D3ED1B596C890025E7B1 /* Gates.swift */,
+				BB2686DC1B59744F001F3CD4 /* ExampleMultipleGates.swift */,
+				BBD299A81B5C458400270644 /* SupportVectorMachine.swift */,
+				BB25D3EF1B596D2D0025E7B1 /* Unit.swift */,
 				BB1224C51B56F39900F05EFD /* Main.storyboard */,
 				BB1224C81B56F39900F05EFD /* Assets.xcassets */,
 				BB1224CA1B56F39900F05EFD /* LaunchScreen.storyboard */,
@@ -135,7 +147,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB1224C41B56F39900F05EFD /* ViewController.swift in Sources */,
+				BB2686DD1B59744F001F3CD4 /* ExampleMultipleGates.swift in Sources */,
+				BBD299A91B5C458400270644 /* SupportVectorMachine.swift in Sources */,
+				BB25D3F01B596D2D0025E7B1 /* Unit.swift in Sources */,
 				BB1224C21B56F39900F05EFD /* AppDelegate.swift in Sources */,
+				BB25D3EE1B596C890025E7B1 /* Gates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +301,7 @@
 				BB1224D21B56F39900F05EFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
