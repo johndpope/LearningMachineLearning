@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         
         SupportVectorMachine.doTheThing()
         
+        //SupportVectorMachine.simplified()
     }
 
 

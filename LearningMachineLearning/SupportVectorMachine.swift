@@ -51,7 +51,7 @@ class Circuit {
 
 
 class SupportVectorMachine {
-    let unitA = Unit(value: 1.0, grad: 0.0)
+    let unitA = Unit(value: -1.0, grad: 0.0)
     let unitB = Unit(value: -2.0, grad: 0.0)
     let unitC = Unit(value: -1.0, grad: 0.0)
     let circuit = Circuit()
@@ -80,8 +80,8 @@ class SupportVectorMachine {
         circuit.backward(pull) // writes gradient into x,y,a,b,c
         
         // add regularization pull for parameters: towards zero and proportional to value
-        //unitA.grad += -unitA.value
-        //unitB.grad += -unitB.value
+        unitA.grad += -unitA.value
+        unitB.grad += -unitB.value
     }
     
     func parameterUpdate() {
@@ -102,57 +102,98 @@ class SupportVectorMachine {
 
 
 extension SupportVectorMachine {
-    private class func getDataAndLabels() -> [([Double], Int)] {
-        var dataAndLabels = [([Double], Int)]() // tuple of data, label
-        
-        dataAndLabels.append([1.2, 0.7], 1)
-        dataAndLabels.append([-0.3, -0.5], -1)
-        dataAndLabels.append([3.0, 0.1], 1)
-        dataAndLabels.append([-0.1, -1.0], -1)
-        dataAndLabels.append([-1.0, 1.1], -1)
-        dataAndLabels.append([2.1, -3.0], 1)
-        
-        return dataAndLabels
-    }
     
     class func doTheThing() {
-        var dataAndLabels = getDataAndLabels()
+        var dataAndLabels = Data.exampleData()
+        
         let svm = SupportVectorMachine()
         
-        // a function that computes the classification accuracy
-        func evalTrainingAccuracy() -> Double {
-            var numCorrect = 0
-            for (data, label) in dataAndLabels {
-                let x = Unit(value: data[0], grad: 0.0)
-                let y = Unit(value: data[1], grad: 0.0)
-                
-                // see if the prediction matches the provided label
-                let predictedLabel = svm.forward(x, y).value > 0 ? 1 : -1
-                if predictedLabel == label {
-                    numCorrect++
-                }
-            }
-            return Double(numCorrect) / Double(dataAndLabels.count)
-        }
-        
         // the learning loop
-        for iter in 0..<400 {
+        for iter in 0..<500 {
             // pick a random data point
             let i = Int(arc4random_uniform(UInt32(dataAndLabels.count)))
-            let (data, label) = dataAndLabels[i]
-            let x = Unit(value: data[0], grad: 0.0)
-            let y = Unit(value: data[1], grad: 0.0)
-            svm.learnFrom(x: x, y: y, label: label)
+            let data = dataAndLabels[i]
+            let x = Unit(value: data.data[0], grad: 0.0)
+            let y = Unit(value: data.data[1], grad: 0.0)
+            svm.learnFrom(x: x, y: y, label: data.label)
             
+            //print("a = \(svm.unitA.value), b = \(svm.unitB.value), c = \(svm.unitC.value)")
             if iter % 25 == 0 {
-                print("training accuracy at iteration \(iter): \(evalTrainingAccuracy())")
+                print("training accuracy at iteration \(iter): \(svm.evalTrainingAccuracy(dataAndLabels))")
             }
+        }
+    }
+    
+    // a function that computes the classification accuracy
+    func evalTrainingAccuracy(dataAndLabels: [Data]) -> Double {
+        var numCorrect = 0
+        for data in dataAndLabels {
+            let x = Unit(value: data.data[0], grad: 0.0)
+            let y = Unit(value: data.data[1], grad: 0.0)
+            
+            // see if the prediction matches the provided label
+            let predictedLabel = forward(x, y).value > 0 ? 1 : -1
+            if predictedLabel == data.label {
+                numCorrect++
+            }
+        }
+        return Double(numCorrect) / Double(dataAndLabels.count)
+    }
+}
+
+
+extension SupportVectorMachine {
+    class func simplified() {
+
+        var a = 1.0
+        var b = -2.0
+        var c = -1.0
+
+
+        let dataAndLabels = Data.exampleData()
+        
+        for _ in 0..<500 {
+            // pick a random data point
+            let i = Int(arc4random_uniform(UInt32(dataAndLabels.count)))
+            let data = dataAndLabels[i]
+            let x = data.data[0]
+            let y = data.data[1]
+            
+            // compute pull
+            let score = a*x + b*y + c
+            var pull = 0.0
+            if data.label == 1 && score < 1 {
+                pull = 1.0
+            }
+            else if data.label == -1 && score > -1 {
+                pull = -1
+            }
+            
+            // compute gradient and update parameters
+            let stepSize = 0.01
+            a += stepSize * (x * pull - a)
+            b += stepSize * (y * pull - b)
+            c += stepSize * (1 * pull)
+            
+            //print("a = \(a), b = \(b), c = \(c)")
             
         }
         
+        let svm = SupportVectorMachine()
+        svm.unitA.value = a
+        svm.unitB.value = b
+        svm.unitC.value = c
         
+        let accuracy = svm.evalTrainingAccuracy(dataAndLabels)
+        print("accuracy = \(accuracy)")
+
+
     }
 }
+
+
+
+
 
 
 
