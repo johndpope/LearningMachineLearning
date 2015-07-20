@@ -15,9 +15,11 @@ class ViewController: UIViewController {
 
         //ExampleMultipleGates.doTheThing()
         
-        SupportVectorMachine.doTheThing()
+        //SupportVectorMachine.doTheThing()
         
         //SupportVectorMachine.simplified()
+        
+        GeneralizedSVM.doTheThing()
     }
 
 
