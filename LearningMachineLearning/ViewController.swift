@@ -18,7 +18,9 @@ class ViewController: UIViewController {
         
         //SupportVectorMachine.simplified()
         
-        GeneralizedSVM.doTheThing()
+        //GeneralizedSVM.doTheThing()
+        
+        SupportVectorMachine2d.doTheThing()
     }
 
 
