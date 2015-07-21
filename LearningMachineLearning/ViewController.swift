@@ -20,7 +20,9 @@ class ViewController: UIViewController {
         
         //GeneralizedSVM.doTheThing()
         
-        SupportVectorMachine2d.doTheThing()
+        //SupportVectorMachine2d.doTheThing()
+        
+        IrisData()
     }
 
 
