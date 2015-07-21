@@ -191,7 +191,6 @@
 				<string>BB1224C31B56F39900F05EFD</string>
 				<string>BBC5B8391B5E943500128F3E</string>
 				<string>BBC5B83A1B5E944900128F3E</string>
-				<string>BBD299AC1B5C999500270644</string>
 				<string>BB25D3EF1B596D2D0025E7B1</string>
 				<string>BB1224C51B56F39900F05EFD</string>
 				<string>BB1224C81B56F39900F05EFD</string>
@@ -646,8 +645,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Karpathy Neural Nets Tut</string>
 			<key>path</key>
 			<string>Karpathy Neural Nets Tut</string>
 			<key>sourceTree</key>
@@ -656,11 +653,11 @@
 		<key>BBC5B83A1B5E944900128F3E</key>
 		<dict>
 			<key>children</key>
-			<array/>
+			<array>
+				<string>BBD299AC1B5C999500270644</string>
+			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Playing</string>
 			<key>path</key>
 			<string>Playing</string>
 			<key>sourceTree</key>
