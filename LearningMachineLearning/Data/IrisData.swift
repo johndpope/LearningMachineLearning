@@ -30,7 +30,6 @@ class IrisData {
         for string in text {
             if active {
                 let vals = string.componentsSeparatedByString(",")
-                print(vals.count)
                 if vals.count < 5 {
                     break
                 }
