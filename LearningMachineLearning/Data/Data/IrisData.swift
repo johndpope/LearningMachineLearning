@@ -22,6 +22,10 @@ class IrisData {
         if let text = textFromBundle()?.componentsSeparatedByString("\n") {
             parseIrisData(text)
             parseAttributes(text)
+            
+            println(data)
+            println(labels)
+            println(attributes)
         }
     }
     
@@ -33,7 +37,10 @@ class IrisData {
                 if vals.count < 5 {
                     break
                 }
-                let nums = Array(vals[0..<4]).map { Double($0)! }
+                let nums = Array(vals[0..<4]).map {
+                    //Double($0)
+                    ($0 as NSString).doubleValue
+                }
                 data.append(nums)
                 labels.append(IrisType(rawValue: vals[4])!)
             }
@@ -58,12 +65,17 @@ class IrisData {
     
     func textFromBundle() -> String? {
         let path = NSBundle.mainBundle().pathForResource("iris", ofType: "txt")
-        do {
-            let text = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-            return text
-        } catch {
-            print("error getting data from bundle")
-        }
-        return nil
+        
+        let text = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+        return text
+        
+        // keep this for next language change
+//        do {
+//            let text = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+//            return text
+//        } catch {
+//            print("error getting data from bundle")
+//        }
+//        return nil
     }
 }

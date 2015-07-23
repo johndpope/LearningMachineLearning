@@ -14,45 +14,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let chairsAndTables: [LabeledInput] =
-        [([1.0, 5.0], .Chair),
-            ([2.0, 6.0], .Chair),
-            ([1.5, 7.0], .Chair),
-            ([1.0, 1.0], .Table),
-            ([2.0, 2.5], .Table),
-            ([1.5, 2.0], .Table)]
+        //karpathyTutorial()
         
-        setUpChartWithData(chairsAndTables)
-        trainPerceptronWithData(chairsAndTables)
+        perceptron()
         
-
-        let delay = 1.2 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue()) {
-            self.startAnimating()
-        }
+        let data = IrisData()
     }
     
-    func setUpChartWithData(data: [LabeledInput]) {
-        chart = AnimatedChartView(frame: view.frame)
-        chart.setUpChartWithData(data, frame: view.frame, minX: 0, minY: 0, maxX: 5, maxY: 8, interval: 1)
-
-        view.addSubview(chart)
+    func perceptron() {
+        let perceptronVC = PerceptronViewController()
+        view.addSubview(perceptronVC.view)
     }
     
-    func startAnimating() {
-        chart.beginAnimatedDisplay(duration: 0.1)
+    func karpathyTutorial() {
+        KarpathyTutorial.doTheThing()
     }
-
-    func trainPerceptronWithData(data: [LabeledInput]) {
-        let p = Perceptron(displayUpdater: chart)
-        p.learn(data)
-
-    }
-
+   
 
 }
-
 
 
 

@@ -8,13 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		335CBF9265E7241E9068A9E8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10255E69C0235F4B81E3EB2 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		BBB299711B6167B60016985E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB299701B6167B60016985E /* Info.plist */; };
 		BBB299761B6167BF0016985E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB299721B6167BF0016985E /* LaunchScreen.xib */; };
-		BBB299771B6167BF0016985E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB299741B6167BF0016985E /* Main.storyboard */; };
 		BBB2997F1B6167CC0016985E /* AnimatedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299781B6167CC0016985E /* AnimatedChartView.swift */; };
 		BBB299801B6167CC0016985E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299791B6167CC0016985E /* AppDelegate.swift */; };
 		BBB299811B6167CC0016985E /* ChartDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2997A1B6167CC0016985E /* ChartDefaults.swift */; };
-		BBB299821B6167CC0016985E /* Double+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2997B1B6167CC0016985E /* Double+Format.swift */; };
+		BBB299821B6167CC0016985E /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2997B1B6167CC0016985E /* DoubleExtensions.swift */; };
 		BBB299831B6167CC0016985E /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2997C1B6167CC0016985E /* Models.swift */; };
 		BBB299841B6167CC0016985E /* Perceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2997D1B6167CC0016985E /* Perceptron.swift */; };
 		BBB299851B6167CC0016985E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2997E1B6167CC0016985E /* ViewController.swift */; };
@@ -26,8 +24,12 @@
 		BBB299941B6167D80016985E /* SupportVectorMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2998D1B6167D80016985E /* SupportVectorMachine.swift */; };
 		BBB299951B6167D80016985E /* SupportVectorMachine2d.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2998E1B6167D80016985E /* SupportVectorMachine2d.swift */; };
 		BBB299961B6167D80016985E /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2998F1B6167D80016985E /* Unit.swift */; };
-		BBB299981B6167F00016985E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBB299971B6167F00016985E /* Info.plist */; };
 		BBB2999A1B6167F50016985E /* LearningMachineLearningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299991B6167F50016985E /* LearningMachineLearningTests.swift */; };
+		BBB2999F1B616AF00016985E /* iris.txt in Resources */ = {isa = PBXBuildFile; fileRef = BBB2999D1B616AF00016985E /* iris.txt */; };
+		BBB299A01B616AF00016985E /* IrisData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2999E1B616AF00016985E /* IrisData.swift */; };
+		BBB299A31B616B140016985E /* PerceptronViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299A21B616B140016985E /* PerceptronViewController.swift */; };
+		BBB299A61B616B7B0016985E /* KarpathyTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299A51B616B7B0016985E /* KarpathyTutorial.swift */; };
+		BBB299A71B616C530016985E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB299741B6167BF0016985E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +53,7 @@
 		BBB299781B6167CC0016985E /* AnimatedChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedChartView.swift; path = LearningMachineLearning/AnimatedChartView.swift; sourceTree = SOURCE_ROOT; };
 		BBB299791B6167CC0016985E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = LearningMachineLearning/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		BBB2997A1B6167CC0016985E /* ChartDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartDefaults.swift; path = LearningMachineLearning/ChartDefaults.swift; sourceTree = SOURCE_ROOT; };
-		BBB2997B1B6167CC0016985E /* Double+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Double+Format.swift"; path = "LearningMachineLearning/Double+Format.swift"; sourceTree = SOURCE_ROOT; };
+		BBB2997B1B6167CC0016985E /* DoubleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleExtensions.swift; path = LearningMachineLearning/DoubleExtensions.swift; sourceTree = SOURCE_ROOT; };
 		BBB2997C1B6167CC0016985E /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Models.swift; path = LearningMachineLearning/Models.swift; sourceTree = SOURCE_ROOT; };
 		BBB2997D1B6167CC0016985E /* Perceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Perceptron.swift; path = LearningMachineLearning/Perceptron.swift; sourceTree = SOURCE_ROOT; };
 		BBB2997E1B6167CC0016985E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = LearningMachineLearning/ViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -65,6 +67,10 @@
 		BBB2998F1B6167D80016985E /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		BBB299971B6167F00016985E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LearningMachineLearningTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		BBB299991B6167F50016985E /* LearningMachineLearningTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LearningMachineLearningTests.swift; path = LearningMachineLearningTests/LearningMachineLearningTests.swift; sourceTree = SOURCE_ROOT; };
+		BBB2999D1B616AF00016985E /* iris.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = iris.txt; path = Data/iris.txt; sourceTree = "<group>"; };
+		BBB2999E1B616AF00016985E /* IrisData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IrisData.swift; path = Data/IrisData.swift; sourceTree = "<group>"; };
+		BBB299A21B616B140016985E /* PerceptronViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PerceptronViewController.swift; path = LearningMachineLearning/PerceptronViewController.swift; sourceTree = SOURCE_ROOT; };
+		BBB299A51B616B7B0016985E /* KarpathyTutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarpathyTutorial.swift; sourceTree = "<group>"; };
 		E10255E69C0235F4B81E3EB2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,12 +127,10 @@
 			children = (
 				BBB299791B6167CC0016985E /* AppDelegate.swift */,
 				BBB2997E1B6167CC0016985E /* ViewController.swift */,
-				BBB299781B6167CC0016985E /* AnimatedChartView.swift */,
-				BBB2997A1B6167CC0016985E /* ChartDefaults.swift */,
-				BBB2997B1B6167CC0016985E /* Double+Format.swift */,
-				BBB2997C1B6167CC0016985E /* Models.swift */,
-				BBB2997D1B6167CC0016985E /* Perceptron.swift */,
+				BBB299A11B616AF40016985E /* Perceptron */,
+				BBB299A41B616B4B0016985E /* Shared */,
 				BBB299881B6167D80016985E /* KarpathyTutorial */,
+				BBB2999B1B616AF00016985E /* Data */,
 				BBB299721B6167BF0016985E /* LaunchScreen.xib */,
 				BBB299741B6167BF0016985E /* Main.storyboard */,
 				BBB299861B6167D30016985E /* Images.xcassets */,
@@ -165,6 +169,7 @@
 		BBB299881B6167D80016985E /* KarpathyTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				BBB299A51B616B7B0016985E /* KarpathyTutorial.swift */,
 				BBB299891B6167D80016985E /* Data.swift */,
 				BBB2998A1B6167D80016985E /* ExampleMultipleGates.swift */,
 				BBB2998B1B6167D80016985E /* Gates.swift */,
@@ -176,6 +181,36 @@
 			name = KarpathyTutorial;
 			path = LearningMachineLearning/KarpathyTutorial;
 			sourceTree = SOURCE_ROOT;
+		};
+		BBB2999B1B616AF00016985E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BBB2999D1B616AF00016985E /* iris.txt */,
+				BBB2999E1B616AF00016985E /* IrisData.swift */,
+			);
+			name = Data;
+			path = LearningMachineLearning/Data;
+			sourceTree = SOURCE_ROOT;
+		};
+		BBB299A11B616AF40016985E /* Perceptron */ = {
+			isa = PBXGroup;
+			children = (
+				BBB299A21B616B140016985E /* PerceptronViewController.swift */,
+				BBB2997D1B6167CC0016985E /* Perceptron.swift */,
+				BBB299781B6167CC0016985E /* AnimatedChartView.swift */,
+				BBB2997A1B6167CC0016985E /* ChartDefaults.swift */,
+				BBB2997C1B6167CC0016985E /* Models.swift */,
+			);
+			name = Perceptron;
+			sourceTree = "<group>";
+		};
+		BBB299A41B616B4B0016985E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BBB2997B1B6167CC0016985E /* DoubleExtensions.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
 		};
 		CC86FB187F4C825D6659411D /* Frameworks */ = {
 			isa = PBXGroup;
@@ -265,11 +300,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBB299771B6167BF0016985E /* Main.storyboard in Resources */,
+				BBB299A71B616C530016985E /* Main.storyboard in Resources */,
+				BBB2999F1B616AF00016985E /* iris.txt in Resources */,
 				BBB299871B6167D30016985E /* Images.xcassets in Resources */,
 				BBB299761B6167BF0016985E /* LaunchScreen.xib in Resources */,
-				BBB299981B6167F00016985E /* Info.plist in Resources */,
-				BBB299711B6167B60016985E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,13 +324,16 @@
 				BBB299801B6167CC0016985E /* AppDelegate.swift in Sources */,
 				BBB2999A1B6167F50016985E /* LearningMachineLearningTests.swift in Sources */,
 				BBB299931B6167D80016985E /* GeneralizedSVM.swift in Sources */,
+				BBB299A31B616B140016985E /* PerceptronViewController.swift in Sources */,
 				BBB299941B6167D80016985E /* SupportVectorMachine.swift in Sources */,
 				BBB299961B6167D80016985E /* Unit.swift in Sources */,
 				BBB299841B6167CC0016985E /* Perceptron.swift in Sources */,
-				BBB299821B6167CC0016985E /* Double+Format.swift in Sources */,
+				BBB299A61B616B7B0016985E /* KarpathyTutorial.swift in Sources */,
+				BBB299821B6167CC0016985E /* DoubleExtensions.swift in Sources */,
 				BBB299951B6167D80016985E /* SupportVectorMachine2d.swift in Sources */,
 				BBB299811B6167CC0016985E /* ChartDefaults.swift in Sources */,
 				BBB299921B6167D80016985E /* Gates.swift in Sources */,
+				BBB299A01B616AF00016985E /* IrisData.swift in Sources */,
 				BBB299851B6167CC0016985E /* ViewController.swift in Sources */,
 				BBB2997F1B6167CC0016985E /* AnimatedChartView.swift in Sources */,
 				BBB299831B6167CC0016985E /* Models.swift in Sources */,
