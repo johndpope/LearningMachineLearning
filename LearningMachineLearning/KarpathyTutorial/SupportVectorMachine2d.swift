@@ -8,7 +8,7 @@
 import Foundation
 
 extension Double {
-    func format(f: String) -> String {
+    func formatD(f: String) -> String {
         return String(format: "%\(f)f", self)
     }
 }
@@ -17,7 +17,7 @@ class SupportVectorMachine2d {
 
     // looking at it in terms of loss functions (rather than force specifications)
     class func doTheThing() {
-        func cost(data: [Data], w: [Double], alpha: Double) -> Double {
+        func cost(data: [ExampleData], w: [Double], alpha: Double) -> Double {
             
             var totalCost = 0.0 // L, in SVM loss function above
             let n = data.count
@@ -32,8 +32,8 @@ class SupportVectorMachine2d {
                 // accumulate cost based on how compatible the score is with the label
                 let costi = max(0, Double(-label) * score + 1)
                 
-                let formattedScore = score.format(".3")
-                let formattedCosti = costi.format(".3")
+                let formattedScore = score.formatD(".3")
+                let formattedCosti = costi.formatD(".3")
                 
                 print("example \(i): xi = \(xi) and label = \(label)")
                 print("score computed to be \(formattedScore)")
@@ -55,11 +55,11 @@ class SupportVectorMachine2d {
             return totalCost
         }
         
-        let data = Data.exampleData2()
+        let data = ExampleData.exampleData2()
         let w = [0.1, 0.2, 0.3] // example: random numbers
         let alpha = 0.1 // regularization strength
         
-        cost(data, w: w, alpha: alpha)
+        cost(data, w, alpha)
     }
 }
 

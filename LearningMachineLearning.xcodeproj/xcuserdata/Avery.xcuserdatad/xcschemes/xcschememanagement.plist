@@ -7,12 +7,22 @@
 		<key>LearningMachineLearning.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>LearningMachineLearning2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>BB1224BD1B56F39900F05EFD</key>
+		<key>BB12D3621B606018003E56E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BB12D3771B606018003E56E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

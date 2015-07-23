@@ -103,7 +103,7 @@ class SupportVectorMachine {
 extension SupportVectorMachine {
     
     class func doTheThing() {
-        var dataAndLabels = Data.exampleData()
+        var dataAndLabels = ExampleData.exampleData()
         
         let svm = SupportVectorMachine()
         
@@ -124,7 +124,7 @@ extension SupportVectorMachine {
     }
     
     // a function that computes the classification accuracy
-    func evalTrainingAccuracy(dataAndLabels: [Data]) -> Double {
+    func evalTrainingAccuracy(dataAndLabels: [ExampleData]) -> Double {
         var numCorrect = 0
         for data in dataAndLabels {
             let x = Unit(value: data.data[0], grad: 0.0)
@@ -149,7 +149,7 @@ extension SupportVectorMachine {
         var c = -1.0
 
 
-        let dataAndLabels = Data.exampleData()
+        let dataAndLabels = ExampleData.exampleData()
         
         for _ in 0..<500 {
             // pick a random data point

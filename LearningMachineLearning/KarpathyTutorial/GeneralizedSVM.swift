@@ -22,7 +22,7 @@ class GeneralizedSVM {
     
     //"Obviously, you want to modularize your code nicely but I expended this example for you in the hope that it makes things much more concrete and simpler to understand."
     class func doTheThing() {
-        let dataAndLabels = Data.exampleData()
+        let dataAndLabels = ExampleData.exampleData()
         
         // random initial parameters between -0.5 and 0.5
         var a1=rand(), a2=rand(), a3=rand(), a4=rand()

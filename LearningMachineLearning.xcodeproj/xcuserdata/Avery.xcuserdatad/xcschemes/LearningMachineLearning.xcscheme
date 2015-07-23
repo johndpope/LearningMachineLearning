@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BB1224BD1B56F39900F05EFD"
+               BlueprintIdentifier = "BB12D3621B606018003E56E3"
                BuildableName = "LearningMachineLearning.app"
                BlueprintName = "LearningMachineLearning"
                ReferencedContainer = "container:LearningMachineLearning.xcodeproj">
@@ -32,14 +32,12 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BB1224BD1B56F39900F05EFD"
+            BlueprintIdentifier = "BB12D3621B606018003E56E3"
             BuildableName = "LearningMachineLearning.app"
             BlueprintName = "LearningMachineLearning"
             ReferencedContainer = "container:LearningMachineLearning.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -49,13 +47,12 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
-      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BB1224BD1B56F39900F05EFD"
+            BlueprintIdentifier = "BB12D3621B606018003E56E3"
             BuildableName = "LearningMachineLearning.app"
             BlueprintName = "LearningMachineLearning"
             ReferencedContainer = "container:LearningMachineLearning.xcodeproj">
@@ -74,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BB1224BD1B56F39900F05EFD"
+            BlueprintIdentifier = "BB12D3621B606018003E56E3"
             BuildableName = "LearningMachineLearning.app"
             BlueprintName = "LearningMachineLearning"
             ReferencedContainer = "container:LearningMachineLearning.xcodeproj">
