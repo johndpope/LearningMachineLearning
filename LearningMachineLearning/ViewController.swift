@@ -16,12 +16,12 @@ class ViewController: UIViewController {
         
         //karpathyTutorial()
         
-        perceptron()
+        showPerceptron()
         
         let data = IrisData()
     }
     
-    func perceptron() {
+    func showPerceptron() {
         let perceptronVC = PerceptronViewController()
         view.addSubview(perceptronVC.view)
     }

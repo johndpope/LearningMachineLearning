@@ -15,7 +15,7 @@ class PerceptronViewController: UIViewController {
         super.viewDidLoad()
         
         let chairsAndTables: [LabeledInput] =
-        [([1.0, 5.0], .Chair),
+            [([1.0, 5.0], .Chair),
             ([2.0, 6.0], .Chair),
             ([1.5, 7.0], .Chair),
             ([1.0, 1.0], .Table),
