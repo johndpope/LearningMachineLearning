@@ -11,6 +11,17 @@ enum IrisType: String {
     case Setosa = "Iris-setosa"
     case Versicolor = "Iris-versicolor"
     case Virginica = "Iris-virginica"
+    
+    func type() -> DataType {
+        switch self {
+        case .Setosa:
+            return .Type0
+        case .Versicolor:
+            return .Type1
+        case .Virginica:
+            return .Type2
+        }
+    }
 }
 
 class IrisData {

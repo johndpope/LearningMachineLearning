@@ -17,8 +17,6 @@ class ViewController: UIViewController {
         //karpathyTutorial()
         
         showPerceptron()
-        
-        let data = IrisData()
     }
     
     func showPerceptron() {

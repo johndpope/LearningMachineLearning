@@ -17,7 +17,7 @@ extension Double {
         return Double(arc4random()) / Double(UINT32_MAX) * shouldBeNegative()
     }
     
-    static func shouldBeNegative() -> Double{
+    private static func shouldBeNegative() -> Double{
         if Double(arc4random()) / Double(UINT32_MAX) > 0.5 {
             return -1
         }

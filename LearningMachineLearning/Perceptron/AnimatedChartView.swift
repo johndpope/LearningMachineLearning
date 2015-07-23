@@ -23,27 +23,55 @@ struct DisplayParam {
 class AnimatedChartView: UIView, ChartUpdate {
     private var lineChart: Chart?
     private var dataChart: Chart?
-    private var minX, minY, maxX, maxY, interval: Int!
+    private var minX, minY, maxX, maxY, xInterval, yInterval: Double!
     private var chartFrame: CGRect!
     
-    let xAxisLabel = "Furniture Width"
-    let yAxisLabel = "Furniture Height"
+    var xAxisLabel: String!
+    var yAxisLabel: String!
     
     var label: UILabel!
-    
-    func setUpChartWithData(data: [LabeledInput], frame: CGRect, minX: Int, minY: Int, maxX: Int, maxY: Int, interval: Int) {
-        self.minX = minX
-        self.minY = minY
-        self.maxX = maxX
-        self.maxY = maxY
-        self.interval = interval
+
+    func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
+        minX = Double(UINT32_MAX)
+        minY = Double(UINT32_MAX)
+        maxX = -Double(UINT32_MAX)
+        maxY = -Double(UINT32_MAX)
         self.chartFrame = frame
+        self.xAxisLabel = xAxisLabel
+        self.yAxisLabel = yAxisLabel
+        
+        for input in data {
+            let x = input.0[0]
+            let y = input.0[1]
+            
+            if x < minX {
+                minX = x
+            } else if x > maxX {
+                maxX = x
+            }
+            if y < minY {
+                minY = y
+            } else if y > maxY {
+                maxY = y
+            }
+        }
+        
+        let xDiff = abs(maxX - minX)
+        let yDiff = abs(maxY - minY)
+        
+        xInterval = xDiff/10
+        yInterval = yDiff/8
+        minX! -= xInterval!
+        maxX! += xInterval!
+        minY! -= yInterval!
+        maxY! += yInterval!
+        
         
         let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
         
-        let layerSpecifications: [Furniture : UIColor] = [
-            .Table : UIColor.redColor(),
-            .Chair : UIColor.blueColor()
+        let layerSpecifications: [DataType : UIColor] = [
+            .Type0 : UIColor.redColor(),
+            .Type1 : UIColor.blueColor()
         ]
         
         let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings)
@@ -101,8 +129,8 @@ class AnimatedChartView: UIView, ChartUpdate {
     }
     
     private func baseChartLayers(labelSettings: ChartLabelSettings) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
-        let xValues = Array(stride(from: minX, through: maxX, by: interval)).map {ChartAxisValueInt($0, labelSettings: labelSettings)}
-        let yValues = Array(stride(from: minY, through: maxY, by: interval)).map {ChartAxisValueInt($0, labelSettings: labelSettings)}
+        let xValues = Array(stride(from: minX, through: maxX, by: xInterval)).map {ChartAxisValueFloat(CGFloat($0), labelSettings: labelSettings)}
+        let yValues = Array(stride(from: minY, through: maxY, by: yInterval)).map {ChartAxisValueFloat(CGFloat($0), labelSettings: labelSettings)}
         
         let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: xAxisLabel, settings: labelSettings))
         let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: yAxisLabel, settings: labelSettings))
@@ -112,10 +140,10 @@ class AnimatedChartView: UIView, ChartUpdate {
         return (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
     }
     
-    private func toLayers(models: [LabeledInput], layerSpecifications: [Furniture : UIColor], xAxis: ChartAxisLayer, yAxis: ChartAxisLayer, chartInnerFrame: CGRect) -> [ChartLayer] {
+    private func toLayers(models: [LabeledInput], layerSpecifications: [DataType : UIColor], xAxis: ChartAxisLayer, yAxis: ChartAxisLayer, chartInnerFrame: CGRect) -> [ChartLayer] {
         
         // group chartpoints by type
-        let groupedChartPoints: Dictionary<Furniture, [ChartPoint]> = models.reduce(Dictionary<Furniture, [ChartPoint]>()) {(var dict, model) in
+        let groupedChartPoints: Dictionary<DataType, [ChartPoint]> = models.reduce(Dictionary<DataType, [ChartPoint]>()) {(var dict, model) in
             let points = model.0
             let type = model.1
             let x = CGFloat(points[0])
