@@ -112,19 +112,3 @@ func *<T: Multiplyable>(lhs: [T], rhs: T) -> [T] {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
