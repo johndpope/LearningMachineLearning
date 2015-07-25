@@ -11,6 +11,7 @@
 		BB0942661B63118B00CE3C16 /* VectorFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0942651B63118B00CE3C16 /* VectorFunctions.swift */; };
 		BB0942681B6330D300CE3C16 /* MatrixFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */; };
 		BBA31E7D1B633679001DAC2A /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA31E7C1B633679001DAC2A /* Statistics.swift */; };
+		BBA31E7F1B63498F001DAC2A /* CanUseOperatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */; };
 		BBB299761B6167BF0016985E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB299721B6167BF0016985E /* LaunchScreen.xib */; };
 		BBB2997F1B6167CC0016985E /* AnimatedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299781B6167CC0016985E /* AnimatedChartView.swift */; };
 		BBB299801B6167CC0016985E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299791B6167CC0016985E /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		BB12D3631B606018003E56E3 /* LearningMachineLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningMachineLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB12D3781B606018003E56E3 /* LearningMachineLearningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningMachineLearningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA31E7C1B633679001DAC2A /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanUseOperatorProtocol.swift; sourceTree = "<group>"; };
 		BBB299701B6167B60016985E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBB299731B6167BF0016985E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BBB299751B6167BF0016985E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			children = (
 				BBB299AA1B618A6E0016985E /* DataScienceFromScratch.swift */,
 				BB0942651B63118B00CE3C16 /* VectorFunctions.swift */,
+				BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */,
 				BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */,
 				BBA31E7C1B633679001DAC2A /* Statistics.swift */,
 			);
@@ -351,6 +354,7 @@
 				BBA31E7D1B633679001DAC2A /* Statistics.swift in Sources */,
 				BB0942681B6330D300CE3C16 /* MatrixFunctions.swift in Sources */,
 				BBB2999A1B6167F50016985E /* LearningMachineLearningTests.swift in Sources */,
+				BBA31E7F1B63498F001DAC2A /* CanUseOperatorProtocol.swift in Sources */,
 				BBB299931B6167D80016985E /* GeneralizedSVM.swift in Sources */,
 				BBB299A31B616B140016985E /* PerceptronViewController.swift in Sources */,
 				BBB299941B6167D80016985E /* SupportVectorMachine.swift in Sources */,

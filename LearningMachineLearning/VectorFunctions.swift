@@ -7,17 +7,6 @@
 
 import Foundation
 
-protocol CanUseOperators {
-    func + (lhs: Self, rhs: Self) -> Self
-    func - (lhs: Self, rhs: Self) -> Self
-    func * (lhs: Self, rhs: Self) -> Self
-}
-
-
-extension Int: CanUseOperators {}
-extension Double: CanUseOperators {}
-extension Float: CanUseOperators {}
-
 func zip<T, U>(arr1: [T], arr2: [U]) -> [(T, U)] {
     var zipped = [(T, U)]()
     for i in 0..<arr1.count {
