@@ -7,19 +7,16 @@
 
 import Foundation
 
-protocol Addable {
+protocol CanUseOperators {
     func + (lhs: Self, rhs: Self) -> Self
-}
-protocol Subtractable {
     func - (lhs: Self, rhs: Self) -> Self
-}
-protocol Multiplyable {
     func * (lhs: Self, rhs: Self) -> Self
 }
 
-extension Int: Addable, Subtractable, Multiplyable {}
-extension Double: Addable, Subtractable, Multiplyable {}
-extension Float: Addable, Subtractable, Multiplyable {}
+
+extension Int: CanUseOperators {}
+extension Double: CanUseOperators {}
+extension Float: CanUseOperators {}
 
 func zip<T, U>(arr1: [T], arr2: [U]) -> [(T, U)] {
     var zipped = [(T, U)]()
@@ -30,37 +27,37 @@ func zip<T, U>(arr1: [T], arr2: [U]) -> [(T, U)] {
     return zipped
 }
 
-func vectorAdd<T: Addable>(arr1: [T], arr2: [T]) -> [T] {
+func vectorAdd<T: CanUseOperators>(arr1: [T], arr2: [T]) -> [T] {
     return zip(arr1, arr2).map { (tuple: (T, T)) -> T in
         return tuple.0 + tuple.1
     }
 }
 
-func vectorSubtract<T: Subtractable>(arr1: [T], arr2: [T]) -> [T] {
+func vectorSubtract<T: CanUseOperators>(arr1: [T], arr2: [T]) -> [T] {
     return zip(arr1, arr2).map { (tuple: (T, T)) -> T in
         return tuple.0 - tuple.1
     }
 }
 
-func sum<T: Addable>(vector: [T]) -> T {
+func sum<T: CanUseOperators>(vector: [T]) -> T {
     return vector[1..<vector.count].reduce(vector[0]) {
         $0 + $1
     }
 }
 
-func vectorSum<T: Addable>(vectors: [[T]]) -> [T] {
+func vectorSum<T: CanUseOperators>(vectors: [[T]]) -> [T] {
     return vectors[1..<vectors.count].reduce(vectors[0]) {
         vectorAdd($0, $1)
     }
 }
 
-func vectorComponentwiseMultiply<T: Multiplyable>(arr1: [T], arr2: [T]) -> [T] {
+func vectorComponentwiseMultiply<T: CanUseOperators>(arr1: [T], arr2: [T]) -> [T] {
     return zip(arr1, arr2).map { (tuple: (T, T)) -> T in
         return tuple.0 * tuple.1
     }
 }
 
-func scalarMultiply<T: Multiplyable>(scalar: T, arr: [T]) -> [T] {
+func scalarMultiply<T: CanUseOperators>(scalar: T, arr: [T]) -> [T] {
     return arr.map {
         return $0 * scalar
     }
@@ -72,14 +69,14 @@ func vectorMean(vectors: [[Double]]) -> [Double] {
     return scalarMultiply(1.0/n, vectorSum(vectors))
 }
 
-func dot<T where T: Addable, T: Multiplyable>(arr1: [T], arr2: [T]) -> T {
+func dot<T: CanUseOperators>(arr1: [T], arr2: [T]) -> T {
     let multiplied = vectorComponentwiseMultiply(arr1, arr2)
     return multiplied[1..<multiplied.count].reduce(multiplied[0]) {
         return $0 + $1
     }
 }
 
-func sumOfSquares<T where T: Addable, T: Multiplyable>(vector: [T]) -> T {
+func sumOfSquares<T: CanUseOperators>(vector: [T]) -> T {
     return dot(vector, vector)
 }
 
@@ -87,7 +84,7 @@ func magnitude(vector: [Double]) -> Double {
     return sqrt(sumOfSquares(vector))
 }
 
-func squaredDistance<T where T: Addable, T: Multiplyable, T: Subtractable>(arr1: [T], arr2: [T]) -> T {
+func squaredDistance<T: CanUseOperators>(arr1: [T], arr2: [T]) -> T {
     return sumOfSquares(vectorSubtract(arr1, arr2))
 }
 
@@ -98,22 +95,22 @@ func distance(arr1: [Double], arr2: [Double]) -> Double {
 
 // MARK:- Convenience Infix Operators
 
-func +<T: Addable>(lhs: [T], rhs: [T]) -> [T] { // 2
+func +<T: CanUseOperators>(lhs: [T], rhs: [T]) -> [T] { // 2
     return vectorAdd(lhs, rhs)
 }
 
-func -<T: Subtractable>(lhs: [T], rhs: [T]) -> [T] { // 2
+func -<T: CanUseOperators>(lhs: [T], rhs: [T]) -> [T] { // 2
     return vectorSubtract(lhs, rhs)
 }
 
-func *<T: Multiplyable>(lhs: [T], rhs: [T]) -> [T] {
+func *<T: CanUseOperators>(lhs: [T], rhs: [T]) -> [T] {
     return vectorComponentwiseMultiply(lhs, rhs)
 }
 
-func *<T: Multiplyable>(lhs: T, rhs: [T]) -> [T] {
+func *<T: CanUseOperators>(lhs: T, rhs: [T]) -> [T] {
     return scalarMultiply(lhs, rhs)
 }
-func *<T: Multiplyable>(lhs: [T], rhs: T) -> [T] {
+func *<T: CanUseOperators>(lhs: [T], rhs: T) -> [T] {
     return scalarMultiply(rhs, lhs)
 }
 
