@@ -17,5 +17,13 @@ class DataScienceFromScratch {
         println(m)
         
         
+        let a = [1.0, 2.0]
+        let b = [1.0, 3.0]
+        
+        var z = dot(a, b)
+        println(z)
+        
+        z = magnitude(b)
+        println(z)
     }
 }

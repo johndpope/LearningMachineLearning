@@ -42,6 +42,12 @@ func vectorSubtract<T: Subtractable>(arr1: [T], arr2: [T]) -> [T] {
     }
 }
 
+func sum<T: Addable>(vector: [T]) -> T {
+    return vector[1..<vector.count].reduce(vector[0]) {
+        $0 + $1
+    }
+}
+
 func vectorSum<T: Addable>(vectors: [[T]]) -> [T] {
     return vectors[1..<vectors.count].reduce(vectors[0]) {
         vectorAdd($0, $1)
@@ -66,14 +72,14 @@ func vectorMean(vectors: [[Double]]) -> [Double] {
     return scalarMultiply(1.0/n, vectorSum(vectors))
 }
 
-func dot(arr1: [Double], arr2: [Double]) -> Double {
+func dot<T where T: Addable, T: Multiplyable>(arr1: [T], arr2: [T]) -> T {
     let multiplied = vectorComponentwiseMultiply(arr1, arr2)
-    return multiplied.reduce(0.0) {
+    return multiplied[1..<multiplied.count].reduce(multiplied[0]) {
         return $0 + $1
     }
 }
 
-func sumOfSquares(vector: [Double]) -> Double {
+func sumOfSquares<T where T: Addable, T: Multiplyable>(vector: [T]) -> T {
     return dot(vector, vector)
 }
 
@@ -81,7 +87,7 @@ func magnitude(vector: [Double]) -> Double {
     return sqrt(sumOfSquares(vector))
 }
 
-func squaredDistance(arr1: [Double], arr2: [Double]) -> Double {
+func squaredDistance<T where T: Addable, T: Multiplyable, T: Subtractable>(arr1: [T], arr2: [T]) -> T {
     return sumOfSquares(vectorSubtract(arr1, arr2))
 }
 
