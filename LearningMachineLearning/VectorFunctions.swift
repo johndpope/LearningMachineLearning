@@ -52,10 +52,13 @@ func scalarMultiply<T: CanUseOperators>(scalar: T, arr: [T]) -> [T] {
     }
 }
 
-//TODO: make the following functions generic
-func vectorMean(vectors: [[Double]]) -> [Double] {
+func vectorMean<T: CanUseOperators>(vectors: [[T]]) -> [Double] {
     let n = Double(vectors.count)
-    return scalarMultiply(1.0/n, vectorSum(vectors))
+    let sum = vectorSum(vectors)
+    let sumAsDoubles = sum.map {
+        $0.toDouble()
+    }
+    return scalarMultiply(1.0/n, sumAsDoubles)
 }
 
 func dot<T: CanUseOperators>(arr1: [T], arr2: [T]) -> T {
@@ -69,16 +72,20 @@ func sumOfSquares<T: CanUseOperators>(vector: [T]) -> T {
     return dot(vector, vector)
 }
 
-func magnitude(vector: [Double]) -> Double {
-    return sqrt(sumOfSquares(vector))
+func magnitude<T: CanUseOperators>(vector: [T]) -> Double {
+    let vectorAsDoubles = vector.map {
+        $0.toDouble()
+    }
+    return sqrt(sumOfSquares(vectorAsDoubles))
 }
 
 func squaredDistance<T: CanUseOperators>(arr1: [T], arr2: [T]) -> T {
     return sumOfSquares(vectorSubtract(arr1, arr2))
 }
 
-func distance(arr1: [Double], arr2: [Double]) -> Double {
-    return sqrt(squaredDistance(arr1, arr2))
+func distance<T: CanUseOperators>(arr1: [T], arr2: [T]) -> Double {
+    let squaredDist = squaredDistance(arr1, arr2)
+    return sqrt(squaredDist.toDouble())
 }
 
 

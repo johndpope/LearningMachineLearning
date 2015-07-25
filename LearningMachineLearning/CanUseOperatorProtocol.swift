@@ -24,7 +24,7 @@ extension Int: CanUseOperators {
 
 extension Double: CanUseOperators {
     func toDouble() -> Double {
-        return Double(self)
+        return self
     }
 }
 
