@@ -16,7 +16,9 @@ class ViewController: UIViewController {
         
         //karpathyTutorial()
         
-        showPerceptron()
+        //showPerceptron()
+        
+        dataScienceFromScratch()
     }
     
     func showPerceptron() {
@@ -26,6 +28,10 @@ class ViewController: UIViewController {
     
     func karpathyTutorial() {
         KarpathyTutorial.doTheThing()
+    }
+    
+    func dataScienceFromScratch() {
+        DataScienceFromScratch().doTheThing()
     }
    
 

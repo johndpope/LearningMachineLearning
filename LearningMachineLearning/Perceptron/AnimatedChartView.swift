@@ -71,7 +71,8 @@ class AnimatedChartView: UIView, ChartUpdate {
         
         let layerSpecifications: [DataType : UIColor] = [
             .Type0 : UIColor.redColor(),
-            .Type1 : UIColor.blueColor()
+            .Type1 : UIColor.blueColor(),
+            .Type2 : UIColor.greenColor()
         ]
         
         let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings)

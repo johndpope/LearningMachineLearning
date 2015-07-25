@@ -38,7 +38,7 @@ class PerceptronViewController: UIViewController {
     }
     
     func startAnimating() {
-        chart.beginAnimatedDisplay(duration: 0.05)
+        chart.beginAnimatedDisplay(duration: 0.1)
     }
     
     func trainPerceptronWithData(data: [LabeledInput]) {
