@@ -5,9 +5,24 @@
 //  Created by Grace on 7/23/15.
 //
 
-import Foundation
+import UIKit
 
-class DataScienceFromScratch {
+class DataScienceFromScratch: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let chart = HackChartView(frame: view.frame)
+        chart.setUpChartWithFunction(view.frame, xAxisLabel: "x", yAxisLabel: "y", minX: 0, maxX: 100) { (x: Double) -> Double in
+            
+            return normalPdf(x, mu: 50.0, sigma: 10.0)
+        }
+        view.addSubview(chart)
+    }
+    
+
+    
+    
     func doTheThing() {
 
         var a = [Double]()
@@ -18,7 +33,7 @@ class DataScienceFromScratch {
         
         let stdv = standardDeviation(a)
         println(stdv)
-        
+
         
     }
 }

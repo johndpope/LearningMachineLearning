@@ -31,7 +31,8 @@ class ViewController: UIViewController {
     }
     
     func dataScienceFromScratch() {
-        DataScienceFromScratch().doTheThing()
+        let dataScienceVC = DataScienceFromScratch()
+        view.addSubview(dataScienceVC.view)
     }
    
 
