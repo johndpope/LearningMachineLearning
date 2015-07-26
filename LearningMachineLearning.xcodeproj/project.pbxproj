@@ -35,6 +35,7 @@
 		BBB299A61B616B7B0016985E /* KarpathyTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299A51B616B7B0016985E /* KarpathyTutorial.swift */; };
 		BBB299A71B616C530016985E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB299741B6167BF0016985E /* Main.storyboard */; };
 		BBB299AB1B618A6E0016985E /* DataScienceFromScratch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299AA1B618A6E0016985E /* DataScienceFromScratch.swift */; };
+		BBBAFB721B63E7A60062B538 /* Pythony.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAFB711B63E7A60062B538 /* Pythony.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		BBB299A21B616B140016985E /* PerceptronViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerceptronViewController.swift; sourceTree = "<group>"; };
 		BBB299A51B616B7B0016985E /* KarpathyTutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarpathyTutorial.swift; sourceTree = "<group>"; };
 		BBB299AA1B618A6E0016985E /* DataScienceFromScratch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScienceFromScratch.swift; sourceTree = "<group>"; };
+		BBBAFB711B63E7A60062B538 /* Pythony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pythony.swift; sourceTree = "<group>"; };
 		E10255E69C0235F4B81E3EB2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -236,6 +238,7 @@
 				BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */,
 				BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */,
 				BBA31E7C1B633679001DAC2A /* Statistics.swift */,
+				BBBAFB711B63E7A60062B538 /* Pythony.swift */,
 			);
 			name = DataScienceFromScratch;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				BB0942661B63118B00CE3C16 /* VectorFunctions.swift in Sources */,
 				BBB299801B6167CC0016985E /* AppDelegate.swift in Sources */,
 				BBA31E7D1B633679001DAC2A /* Statistics.swift in Sources */,
+				BBBAFB721B63E7A60062B538 /* Pythony.swift in Sources */,
 				BB0942681B6330D300CE3C16 /* MatrixFunctions.swift in Sources */,
 				BBB2999A1B6167F50016985E /* LearningMachineLearningTests.swift in Sources */,
 				BBA31E7F1B63498F001DAC2A /* CanUseOperatorProtocol.swift in Sources */,

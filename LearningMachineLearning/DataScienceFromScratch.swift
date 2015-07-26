@@ -16,29 +16,33 @@ class DataScienceFromScratch {
         
         println(m)
         
+        var a = [1.0, 4.0, 6.9, 99.3, 54.0, 27.3, 2.0]
+        let r = dataRange(a)
+        println(r)
         
-        let a = [1.0, 2.0]
-        let b = [2.0, 3.0]
+        println(a)
+        let v = variance(a)
+        println(v)
         
-        var z = dot(a, b)
-        println(z)
+        var dev = standardDeviation(a)
+        println(dev)
         
-        z = magnitude(b)
-        println(z)
+        var b = [4.6, 9.6, 1.0, 14.5, -2.0, 4.5, 7.7]
+        dev = standardDeviation(b)
+        println(dev)
         
-        var y = vectorMean([a,b])
-        println(y)
+        var q = interquartileRange(a)
+        println(q)
         
-        let c = [1,2]
-        let d = [2,3]
-        var x = magnitude(c)
-        println(x)
+        q = interquartileRange(b)
+        println(q)
         
-        x = distance(c, d)
-        println(x)
+        println("------")
         
-        z = distance(a, b)
-        println(z)
+        var c = correlation(a, b)
+        println("correlation = \(c)")
+        
+        
         
     }
 }

@@ -7,15 +7,6 @@
 
 import Foundation
 
-func zip<T, U>(arr1: [T], arr2: [U]) -> [(T, U)] {
-    var zipped = [(T, U)]()
-    for i in 0..<arr1.count {
-        let tuple = (arr1[i], arr2[i])
-        zipped.append(tuple)
-    }
-    return zipped
-}
-
 func vectorAdd<T: CanUseOperators>(arr1: [T], arr2: [T]) -> [T] {
     return zip(arr1, arr2).map { (tuple: (T, T)) -> T in
         return tuple.0 + tuple.1
