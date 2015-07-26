@@ -82,17 +82,7 @@ func covariance(arr1: [Double], arr2: [Double]) -> Double {
     let n = arr1.count
     let deviationsFromMean1 = deMean(arr1)
     let deviationsFromMean2 = deMean(arr2)
-    
-    println(deviationsFromMean1)
-    println(deviationsFromMean2)
-    
-    let d = dot(deviationsFromMean1, deviationsFromMean2)
-    println(d)
-    
-    let covar = d / Double(n - 1)
-    println(covar)
-    
-    return covar
+    return dot(deviationsFromMean1, deviationsFromMean2) / Double(n - 1)
 }
 
 func correlation(arr1: [Double], arr2: [Double]) -> Double {
@@ -101,14 +91,7 @@ func correlation(arr1: [Double], arr2: [Double]) -> Double {
 
     if standardDeviation1 > 0 && standardDeviation2 > 0 {
         let covar = covariance(arr1, arr2)
-        println("covariance = \(covar)")
-        println(standardDeviation1)
-        println(standardDeviation2)
-        
-        let covarDivided = covar / standardDeviation1 / standardDeviation2
-        println("covar divided = \(covarDivided)")
-        
-        return covarDivided
+        return covar / standardDeviation1 / standardDeviation2
     }
     else {
         return 0.0
