@@ -11,7 +11,7 @@
 		BB0942661B63118B00CE3C16 /* VectorFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0942651B63118B00CE3C16 /* VectorFunctions.swift */; };
 		BB0942681B6330D300CE3C16 /* MatrixFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */; };
 		BB0974341B658FF1005B70F8 /* Probability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0974331B658FF1005B70F8 /* Probability.swift */; };
-		BB0974371B65981F005B70F8 /* HackChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0974361B65981F005B70F8 /* HackChartView.swift */; };
+		BB0974371B65981F005B70F8 /* FunctionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0974361B65981F005B70F8 /* FunctionChartView.swift */; };
 		BB0974391B659975005B70F8 /* BaseChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0974381B659975005B70F8 /* BaseChartView.swift */; };
 		BBA31E7D1B633679001DAC2A /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA31E7C1B633679001DAC2A /* Statistics.swift */; };
 		BBA31E7F1B63498F001DAC2A /* CanUseOperatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */; };
@@ -57,7 +57,7 @@
 		BB0942651B63118B00CE3C16 /* VectorFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorFunctions.swift; sourceTree = "<group>"; };
 		BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixFunctions.swift; sourceTree = "<group>"; };
 		BB0974331B658FF1005B70F8 /* Probability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Probability.swift; sourceTree = "<group>"; };
-		BB0974361B65981F005B70F8 /* HackChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HackChartView.swift; path = ../StaticCharts/HackChartView.swift; sourceTree = "<group>"; };
+		BB0974361B65981F005B70F8 /* FunctionChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FunctionChartView.swift; path = ../StaticCharts/FunctionChartView.swift; sourceTree = "<group>"; };
 		BB0974381B659975005B70F8 /* BaseChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseChartView.swift; sourceTree = "<group>"; };
 		BB12D3631B606018003E56E3 /* LearningMachineLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningMachineLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB12D3781B606018003E56E3 /* LearningMachineLearningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningMachineLearningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,7 +231,7 @@
 			children = (
 				BBB299781B6167CC0016985E /* AnimatedChartView.swift */,
 				BB0974381B659975005B70F8 /* BaseChartView.swift */,
-				BB0974361B65981F005B70F8 /* HackChartView.swift */,
+				BB0974361B65981F005B70F8 /* FunctionChartView.swift */,
 				BBB2997A1B6167CC0016985E /* ChartDefaults.swift */,
 			);
 			name = Charts;
@@ -372,7 +372,7 @@
 				BBB299A31B616B140016985E /* PerceptronViewController.swift in Sources */,
 				BBB299941B6167D80016985E /* SupportVectorMachine.swift in Sources */,
 				BBB299961B6167D80016985E /* Unit.swift in Sources */,
-				BB0974371B65981F005B70F8 /* HackChartView.swift in Sources */,
+				BB0974371B65981F005B70F8 /* FunctionChartView.swift in Sources */,
 				BBB299841B6167CC0016985E /* Perceptron.swift in Sources */,
 				BB0974341B658FF1005B70F8 /* Probability.swift in Sources */,
 				BBB299A61B616B7B0016985E /* KarpathyTutorial.swift in Sources */,
