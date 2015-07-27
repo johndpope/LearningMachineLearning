@@ -12,11 +12,12 @@ import SwiftCharts
 class FunctionChartView: BaseChartView {
     var dataXMin, dataXMax: Double!
     var extraLayers = [Chart]()
+    var pointInterval = 0.2
     
     func setUpChartWithFunction(frame: CGRect, xAxisLabel: String, yAxisLabel: String, minX: Double, maxX: Double, f: (Double) -> Double) {
         dataXMin = minX
         dataXMax = maxX
-        let xPoints = Array(stride(from: minX, through: maxX, by: 0.2))
+        let xPoints = Array(stride(from: minX, through: maxX, by: pointInterval))
         let data = xPoints.map { (x: Double) -> LabeledInput in
             let y = f(x)
             let input: LabeledInput = ([x, y], .Type0)
@@ -49,7 +50,7 @@ class FunctionChartView: BaseChartView {
     }
     
     func addNewLayerWithFunction(color: UIColor, f: (Double) -> Double) {
-        let xPoints = Array(stride(from: dataXMin, through: dataXMax, by: 0.2))
+        let xPoints = Array(stride(from: dataXMin, through: dataXMax, by: pointInterval))
         let data = xPoints.map { (x: Double) -> ChartPoint in
             let y = f(x)
             return ChartPoint(x: ChartAxisValueFloat(CGFloat(x)), y: ChartAxisValueFloat(CGFloat(y)))

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Accelerate
 
 class DataScienceFromScratch: UIViewController {
     
@@ -42,7 +43,58 @@ class DataScienceFromScratch: UIViewController {
         
         //pHacking()
         
-        abTesting()
+        //abTesting()
+        
+        bayesianInference()
+    }
+    
+    func bayesianInference() {
+        // Does ios have a built-in gamma method?
+        // This can't handle very big numbers
+        func gamma(x: Int) -> Int {
+            return factorial(x - 1)
+        }
+        
+        func factorial(x: Int) -> Int {
+            return x == 0 ? 1 : x * factorial(x - 1)
+        }
+        
+        func B(alpha: Int, _ beta: Int) -> Double {
+            // a normalizing constant so that the total probability is 1
+            return Double(gamma(alpha) * gamma(beta)) /  Double(gamma(alpha + beta))
+        }
+
+        func betaPdf(x: Double, alpha: Int, beta: Int) -> Double {
+            if x < 0.0 || x > 1.0 {
+                return 0.0
+            }
+            let a = x ** Double(alpha - 1)
+            let b = (1 - x) ** Double(beta - 1)
+            
+            let num = a * b / B(alpha, beta)
+            return num
+        }
+        
+        let x: vU1024 = vU1024()
+        print(x)
+        
+        
+        let a = factorial(10)
+        let b = factorial(20)
+        let c = factorial(30)
+        
+    
+        
+        let chart = FunctionChartView(frame: view.frame)
+        chart.pointInterval = 0.005
+        chart.setUpChartWithFunction(view.frame, xAxisLabel: "", yAxisLabel: "", minX: 0, maxX: 1) { (x: Double) -> Double in
+            betaPdf(x, alpha: 55, beta: 45)
+        }
+        view.addSubview(chart)
+        
+        chart.addNewLayerWithFunction(UIColor.grayColor()) { betaPdf($0, alpha: 1, beta: 1) }
+        chart.addNewLayerWithFunction(UIColor.greenColor()) { betaPdf($0, alpha: 4, beta: 16) }
+        chart.addNewLayerWithFunction(UIColor.blueColor()) { betaPdf($0, alpha: 10, beta: 10) }
     }
     
     func abTesting() {

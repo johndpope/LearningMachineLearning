@@ -13,6 +13,7 @@
 		BB0974341B658FF1005B70F8 /* Probability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0974331B658FF1005B70F8 /* Probability.swift */; };
 		BB0974371B65981F005B70F8 /* FunctionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0974361B65981F005B70F8 /* FunctionChartView.swift */; };
 		BB0974391B659975005B70F8 /* BaseChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0974381B659975005B70F8 /* BaseChartView.swift */; };
+		BB4980701B66E8B4005D261C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB49806F1B66E8B4005D261C /* Accelerate.framework */; };
 		BBA31E7D1B633679001DAC2A /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA31E7C1B633679001DAC2A /* Statistics.swift */; };
 		BBA31E7F1B63498F001DAC2A /* CanUseOperatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */; };
 		BBA78C5D1B65BCEF00573FAD /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA78C5C1B65BCEF00573FAD /* BarChartView.swift */; };
@@ -63,6 +64,7 @@
 		BB0974381B659975005B70F8 /* BaseChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseChartView.swift; sourceTree = "<group>"; };
 		BB12D3631B606018003E56E3 /* LearningMachineLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningMachineLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB12D3781B606018003E56E3 /* LearningMachineLearningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningMachineLearningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB49806F1B66E8B4005D261C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BBA31E7C1B633679001DAC2A /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanUseOperatorProtocol.swift; sourceTree = "<group>"; };
 		BBA78C5C1B65BCEF00573FAD /* BarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB4980701B66E8B4005D261C /* Accelerate.framework in Frameworks */,
 				335CBF9265E7241E9068A9E8 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +190,13 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BB5606511B66EAA7007A9E25 /* UInt256 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UInt256;
+			sourceTree = "<group>";
+		};
 		BBB299881B6167D80016985E /* KarpathyTutorial */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +234,7 @@
 		BBB299A41B616B4B0016985E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BB5606511B66EAA7007A9E25 /* UInt256 */,
 				BBB2997B1B6167CC0016985E /* DoubleExtensions.swift */,
 				BBB299A81B6171160016985E /* Charts */,
 			);
@@ -261,6 +272,7 @@
 		CC86FB187F4C825D6659411D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB49806F1B66E8B4005D261C /* Accelerate.framework */,
 				E10255E69C0235F4B81E3EB2 /* Pods.framework */,
 			);
 			name = Frameworks;
