@@ -40,14 +40,43 @@ class DataScienceFromScratch: UIViewController {
     }
     
     func hypothesisTesting() {
-        let approx = normalApproximationToBinomial(100, p: 0.75)
+        // we flip a coin 1000 times.
+        // if it is a fair coin, x should be distributed approximately normally
+        // with mean 500 and standard deviation 15.8
+        let approx = normalApproximationToBinomial(1000, p: 0.5)
 
+        print(approx.mu)
+        print(approx.sigma)
+        
         let chart = FunctionChartView(frame: view.frame)
-        chart.setUpChartWithFunction(view.frame, xAxisLabel: "x", yAxisLabel: "y", minX: 0, maxX: 100) { (x: Double) -> Double in
+        chart.setUpChartWithFunction(view.frame, xAxisLabel: "x", yAxisLabel: "y", minX: 400, maxX: 600) { (x: Double) -> Double in
             return normalCdf(x, mu: approx.mu, sigma: approx.sigma)
         }
         view.addSubview(chart)
+        
+        print("------")
+        let (lo, hi) = normalTwoSidedBounds(0.95, mu: approx.mu, sigma: approx.sigma)
+        print(lo)
+        print(hi)
+        
+        
+        print("------")
+        
+        let a = normalProbabilityBelow(469, mu: approx.mu, sigma: approx.sigma)
+        print(a)
+        let b = normalProbabilityAbove(531, mu: approx.mu, sigma: approx.sigma)
+        print(b)
+        let c = normalProbabilityBetween(lo: 469, hi: 531, mu: approx.mu, sigma: approx.sigma)
+        print(c)
+        let d = normalProbabilityOutside(lo: 469, hi: 531, mu: approx.mu, sigma: approx.sigma)
+        print(d)
+        
+        print("------")
+        
+        let e = normalUpperBound(0.975, mu: approx.mu, sigma: approx.sigma)
+        print(e)
     }
+    
     
     
     func makeHist(p: Double, n: Int, numPoints: Int) {
