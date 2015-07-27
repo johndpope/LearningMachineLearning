@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Accelerate
 
 class DataScienceFromScratch: UIViewController {
     
@@ -45,56 +44,125 @@ class DataScienceFromScratch: UIViewController {
         
         //abTesting()
         
-        bayesianInference()
+        bayesianInference2()
+    }
+    
+    
+    // This can't handle big numbers
+    // try Accelerate framework if you need big numbers
+    // http://cocoaconf.com/slides/chicago-2012/Accelerate.pdf
+    func gamma(x: Int) -> Int {
+        return factorial(x - 1)
+    }
+    
+    func factorial(x: Int) -> Int {
+        return x == 0 ? 1 : x * factorial(x - 1)
+    }
+    
+    func B(alpha: Int, _ beta: Int) -> Double {
+        // a normalizing constant so that the total probability is 1
+        return Double(gamma(alpha) * gamma(beta)) /  Double(gamma(alpha + beta))
+    }
+    
+    func betaPdf(x: Double, alpha: Int, beta: Int) -> Double {
+        if x < 0.0 || x > 1.0 {
+            return 0.0
+        }
+        let a = x ** Double(alpha - 1)
+        let b = (1 - x) ** Double(beta - 1)
+        
+        let num = a * b / B(alpha, beta)
+        return num
+    }
+    
+    func bayesianInference2() {
+        var alpha = 3
+        var beta = 4
+        
+        let chart = AnimatedFunctionChartView(frame: view.frame)
+        chart.pointInterval = 0.005
+        chart.paddingOptions = .PadTop
+        chart.setUpChartWithFunction(view.frame, xAxisLabel: "", yAxisLabel: "", minX: 0, maxX: 1) { (x: Double) -> Double in
+            self.betaPdf(x, alpha: alpha, beta: beta)
+        }
+        view.addSubview(chart)
+        
+        
+        for _ in 0..<10 {
+            
+            // flip a  coin biased towards heads
+            let rand = Double.randomZeroToOne()
+            let heads = rand >= 0.1
+            
+            if heads {
+                alpha += 1
+            }
+            else {
+                beta += 1
+            }
+            
+            print("alpha = \(alpha), beta = \(beta)")
+            
+            let a = alpha
+            let b = beta
+            
+            let f: XToYFunc = { (x: Double) -> Double in
+                return self.betaPdf(x, alpha: a, beta: b)
+            }
+            
+            
+            chart.functions.append(f)
+        }
+        
+        chart.beginAnimatedDisplay(duration: 1.0)
+        
     }
     
     func bayesianInference() {
-        // Does ios have a built-in gamma method?
-        // This can't handle very big numbers
-        func gamma(x: Int) -> Int {
-            return factorial(x - 1)
-        }
         
-        func factorial(x: Int) -> Int {
-            return x == 0 ? 1 : x * factorial(x - 1)
-        }
+        // chart the prior probabilities
+        var alpha1 = 12
+        var beta1 = 3
         
-        func B(alpha: Int, _ beta: Int) -> Double {
-            // a normalizing constant so that the total probability is 1
-            return Double(gamma(alpha) * gamma(beta)) /  Double(gamma(alpha + beta))
-        }
-
-        func betaPdf(x: Double, alpha: Int, beta: Int) -> Double {
-            if x < 0.0 || x > 1.0 {
-                return 0.0
-            }
-            let a = x ** Double(alpha - 1)
-            let b = (1 - x) ** Double(beta - 1)
-            
-            let num = a * b / B(alpha, beta)
-            return num
-        }
+        var alpha2 = 8
+        var beta2 = 2
         
-        let x: vU1024 = vU1024()
-        print(x)
-        
-        
-        let a = factorial(10)
-        let b = factorial(20)
-        let c = factorial(30)
-        
-    
+        var alpha3 = 2
+        var beta3 = 4
         
         let chart = FunctionChartView(frame: view.frame)
         chart.pointInterval = 0.005
         chart.setUpChartWithFunction(view.frame, xAxisLabel: "", yAxisLabel: "", minX: 0, maxX: 1) { (x: Double) -> Double in
-            betaPdf(x, alpha: 55, beta: 45)
+            self.betaPdf(x, alpha: alpha1, beta: beta1)
         }
         view.addSubview(chart)
         
-        chart.addNewLayerWithFunction(UIColor.grayColor()) { betaPdf($0, alpha: 1, beta: 1) }
-        chart.addNewLayerWithFunction(UIColor.greenColor()) { betaPdf($0, alpha: 4, beta: 16) }
-        chart.addNewLayerWithFunction(UIColor.blueColor()) { betaPdf($0, alpha: 10, beta: 10) }
+        chart.addNewLayerWithFunction(UIColor.blueColor()) { self.betaPdf($0, alpha: alpha2, beta: beta2) }
+        
+        chart.addNewLayerWithFunction(UIColor.blueColor()) { self.betaPdf($0, alpha: alpha2, beta: beta2) }
+        
+        chart.addNewLayerWithFunction(UIColor.orangeColor()) { self.betaPdf($0, alpha: alpha3, beta: beta3) }
+        
+        
+        // now we flip a coin 5 times and only see 1 heads
+        alpha1 += 1
+        beta1 += 4
+        
+        alpha2 += 1
+        beta2 += 4
+        
+        alpha3 += 1
+        beta3 += 4
+        
+        chart.addNewLayerWithFunction(UIColor.grayColor()) { self.betaPdf($0, alpha: alpha1, beta: beta1) }
+        
+        chart.addNewLayerWithFunction(UIColor.greenColor()) { self.betaPdf($0, alpha: alpha2, beta: beta2) }
+        
+        chart.addNewLayerWithFunction(UIColor.redColor()) { self.betaPdf($0, alpha: alpha3, beta: beta3) }
+        
+        
+        
+        
     }
     
     func abTesting() {
