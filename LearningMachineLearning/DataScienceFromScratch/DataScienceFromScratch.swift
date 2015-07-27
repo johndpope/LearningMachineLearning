@@ -15,16 +15,24 @@ class DataScienceFromScratch: UIViewController {
         let chart = FunctionChartView(frame: view.frame)
         chart.pointSize = 3
         chart.setUpChartWithFunction(view.frame, xAxisLabel: "x", yAxisLabel: "y", minX: 0, maxX: 100) { (x: Double) -> Double in
-            return normalPdf(x, mu: 50.0, sigma: 7.0)
+            return normalCdf(x, mu: 50.0, sigma: 10.0)
         }
         
-        chart.addNewLayerWithFunction(UIColor.grayColor()) {  normalPdf($0, mu: 50.0, sigma: 15.0) }
+        //chart.addNewLayerWithFunction(UIColor.grayColor()) {  normalCdf($0, mu: 50.0, sigma: 15.0) }
         
-        chart.addNewLayerWithFunction(UIColor.greenColor()) { normalPdf($0, mu: 50.0, sigma: 20.0) }
+        //chart.addNewLayerWithFunction(UIColor.greenColor()) { normalCdf($0, mu: 50.0, sigma: 20.0) }
         
-        chart.addNewLayerWithFunction(UIColor.blueColor()) { normalPdf($0, mu: 50.0, sigma: 10.0) }
+        //chart.addNewLayerWithFunction(UIColor.blueColor()) { normalCdf($0, mu: 50.0, sigma: 10.0) }
         
         view.addSubview(chart)
+        
+        let a = inverseNormalCdf(0.5, mu: 50.0, sigma: 10.0)
+        println(a)
+        let b = inverseNormalCdf(0.1, mu: 50.0, sigma: 10.0)
+        println(b)
+        let c = inverseNormalCdf(0.9, mu: 50.0, sigma: 10.0)
+        println(c)
+
     }
     
 
