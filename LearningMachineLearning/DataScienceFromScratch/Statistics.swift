@@ -26,7 +26,7 @@ func mean(arr: [Double]) -> Double {
 
 func median(arr:[Double]) -> Double {
     let n = arr.count
-    let arrSorted = sorted(arr)
+    let arrSorted = arr.sort()
     let midpoint = n/2
     
     if n % 2 == 1 {
@@ -41,7 +41,7 @@ func median(arr:[Double]) -> Double {
 
 func quantile(arr: [Double], p: Double) -> Double {
     let pIndex = Int(p * Double(arr.count))
-    return sorted(arr)[pIndex]
+    return arr.sort()[pIndex]
 }
 
 func mode<T: Hashable>(arr: [T]) -> T {
@@ -73,19 +73,19 @@ func standardDeviation(arr: [Double]) -> Double {
 }
 
 func interquartileRange(arr: [Double]) -> Double {
-    let q75 = quantile(arr, 0.75)
-    let q25 = quantile(arr, 0.25)
+    let q75 = quantile(arr, p: 0.75)
+    let q25 = quantile(arr, p: 0.25)
     return q75 - q25
 }
 
-func covariance(arr1: [Double], arr2: [Double]) -> Double {
+func covariance(arr1: [Double], _ arr2: [Double]) -> Double {
     let n = arr1.count
     let deviationsFromMean1 = deMean(arr1)
     let deviationsFromMean2 = deMean(arr2)
     return dot(deviationsFromMean1, deviationsFromMean2) / Double(n - 1)
 }
 
-func correlation(arr1: [Double], arr2: [Double]) -> Double {
+func correlation(arr1: [Double], _ arr2: [Double]) -> Double {
     let standardDeviation1 = standardDeviation(arr1)
     let standardDeviation2 = standardDeviation(arr2)
 

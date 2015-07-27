@@ -86,18 +86,18 @@ class Perceptron {
             let newWeight = weight + c * direction * input
             
             weights[i] = newWeight
-            println("\t\(i): oldW = \(weight), newW = \(newWeight)")
+            print("\t\(i): oldW = \(weight), newW = \(newWeight)")
         }
         let oldThreshold = threshold
         threshold = threshold - c * direction
         
-        println("\toldT = \(oldThreshold), newT = \(threshold)")
+        print("\toldT = \(oldThreshold), newT = \(threshold)")
     }
     
     
     
     func learn(inputs: [LabeledInput]) {
-        println("Learning!")
+        print("Learning!")
         
         var iter = 0
         var converged = false
@@ -109,7 +109,7 @@ class Perceptron {
             converged = true
             
             let accur = accuracy(inputs)
-            println("Accuracy at iteration \(iter): \(accur)")
+            print("Accuracy at iteration \(iter): \(accur)")
             display.updateDisplay(threshold: nil, xWeight: nil, yWeight: nil, accuracy: accur, iteration: iter)
             
             iter++
@@ -118,7 +118,7 @@ class Perceptron {
                     updateWeightsAndThreshold(input)
                     let accur2 = accuracy(inputs)
                     if accur2 == 1.0 {
-                        println("SHOULD STOP HERE")
+                        print("SHOULD STOP HERE")
                     }
                     display.updateDisplay(threshold: threshold, xWeight: weights[0], yWeight: weights[1], accuracy: accur2, iteration: nil)
                     converged = false
@@ -126,7 +126,7 @@ class Perceptron {
             }
         }
         
-        println("Converged! Congratulations!")
+        print("Converged! Congratulations!")
     }
 }
 

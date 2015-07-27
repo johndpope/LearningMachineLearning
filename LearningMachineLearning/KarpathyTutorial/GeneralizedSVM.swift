@@ -65,7 +65,7 @@ class GeneralizedSVM {
                     }
                 }
                 let accuracy = Double(numCorrect) / Double(dataAndLabels.count)
-                println("training accuracy at iteration \(iter): \(accuracy)")
+                print("training accuracy at iteration \(iter): \(accuracy)")
             }
             
             

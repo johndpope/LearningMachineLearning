@@ -27,20 +27,20 @@ class DataScienceFromScratch: UIViewController {
 //        view.addSubview(chart)
 //        
 //        let a = inverseNormalCdf(0.5, mu: 50.0, sigma: 10.0)
-//        println(a)
+//        print(a)
 //        let b = inverseNormalCdf(0.1, mu: 50.0, sigma: 10.0)
-//        println(b)
+//        print(b)
 //        let c = inverseNormalCdf(0.9, mu: 50.0, sigma: 10.0)
-//        println(c)
+//        print(c)
 
         
-        makeHist(0.75, n: 100, numPoints: 10000)
+        //makeHist(0.75, n: 100, numPoints: 10000)
         
-        //hypothesisTesting()
+        hypothesisTesting()
     }
     
     func hypothesisTesting() {
-        let approx = normalApproximationToBinomial(100, 0.75)
+        let approx = normalApproximationToBinomial(100, p: 0.75)
 
         let chart = FunctionChartView(frame: view.frame)
 //        chart.pointSize = 3
@@ -55,13 +55,13 @@ class DataScienceFromScratch: UIViewController {
     func makeHist(p: Double, n: Int, numPoints: Int) {
         var data = [Int]()
         for _ in 0..<numPoints {
-            let binom = binomial(n, p)
-            println(binom)
+            let binom = binomial(n: n, p: p)
+            print(binom)
             data.append(binom)
         }
         
         let counter = Counter(data)
-        println(counter)
+        print(counter)
         
         var dataAsTuples = [(Double, Double)]()
         for (key, value) in counter.counts {

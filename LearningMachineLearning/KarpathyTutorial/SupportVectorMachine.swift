@@ -90,7 +90,7 @@ class SupportVectorMachine {
         unitC.value += stepSize * unitC.grad
     }
     
-    func learnFrom(#x: Unit, y: Unit, label: Int) {
+    func learnFrom(x x: Unit, y: Unit, label: Int) {
         forward(x, y) // forward pass (set .value in all Units)
         backward(label) // backward pass (set .grad in all Units)
         parameterUpdate() // parameters respond to tug
@@ -118,7 +118,7 @@ extension SupportVectorMachine {
             
             //print("a = \(svm.unitA.value), b = \(svm.unitB.value), c = \(svm.unitC.value)")
             if iter % 25 == 0 {
-                println("training accuracy at iteration \(iter): \(svm.evalTrainingAccuracy(dataAndLabels))")
+                print("training accuracy at iteration \(iter): \(svm.evalTrainingAccuracy(dataAndLabels))")
             }
         }
     }
@@ -184,7 +184,7 @@ extension SupportVectorMachine {
         svm.unitC.value = c
         
         let accuracy = svm.evalTrainingAccuracy(dataAndLabels)
-        println("accuracy = \(accuracy)")
+        print("accuracy = \(accuracy)")
 
 
     }

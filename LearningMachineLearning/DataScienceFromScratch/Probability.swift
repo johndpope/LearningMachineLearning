@@ -35,20 +35,18 @@ func normalCdf(x: Double, mu: Double = 0.0, sigma: Double = 1.0) -> Double {
     return (1 + Darwin.erf((x - mu) / sqrt(2.0) / sigma)) / 2
 }
 
-func inverseNormalCdf(p: Double, mu: Double = 0.0, sigma: Double = 1.0, tolerance: Double = 0.00001) -> Double {
+func inverseNormalCdf(p p: Double, mu: Double = 0.0, sigma: Double = 1.0, tolerance: Double = 0.00001) -> Double {
     // find approximate inverse using binary search
     
     // if not standard, compute standard and rescale
     if mu != 0.0 || sigma != 1.0 {
-        return mu + sigma * inverseNormalCdf(p)
+        return mu + sigma * inverseNormalCdf(p: p)
     }
     
     var lowZ = -10.0
-    var lowP = 0.0
     var midZ = 0.0
     var midP = 0.0
     var hiZ = 10.0
-    var hiP = 1.0
     
     while hiZ - lowZ > tolerance {
         midZ = (lowZ + hiZ) / 2
@@ -56,11 +54,9 @@ func inverseNormalCdf(p: Double, mu: Double = 0.0, sigma: Double = 1.0, toleranc
         
         if midP < p {
             lowZ = midZ
-            lowP = midP
         }
         else if midP > p {
             hiZ = midZ
-            hiP = midP
         }
         else {
             break
@@ -77,7 +73,7 @@ func bernoulliTrial(p: Double) -> Int {
     return 0
 }
 
-func binomial(n: Int, p: Double) -> Int {
+func binomial(n n: Int, p: Double) -> Int {
     var sum = 0
     for _ in 0..<n {
         sum += bernoulliTrial(p)

@@ -7,13 +7,13 @@
 
 import Foundation
 
-func vectorAdd<T: CanUseOperators>(arr1: [T], arr2: [T]) -> [T] {
+func vectorAdd<T: CanUseOperators>(arr1: [T], _ arr2: [T]) -> [T] {
     return zip(arr1, arr2).map { (tuple: (T, T)) -> T in
         return tuple.0 + tuple.1
     }
 }
 
-func vectorSubtract<T: CanUseOperators>(arr1: [T], arr2: [T]) -> [T] {
+func vectorSubtract<T: CanUseOperators>(arr1: [T], _ arr2: [T]) -> [T] {
     return zip(arr1, arr2).map { (tuple: (T, T)) -> T in
         return tuple.0 - tuple.1
     }
@@ -31,13 +31,13 @@ func vectorSum<T: CanUseOperators>(vectors: [[T]]) -> [T] {
     }
 }
 
-func vectorComponentwiseMultiply<T: CanUseOperators>(arr1: [T], arr2: [T]) -> [T] {
+func vectorComponentwiseMultiply<T: CanUseOperators>(arr1: [T], _ arr2: [T]) -> [T] {
     return zip(arr1, arr2).map { (tuple: (T, T)) -> T in
         return tuple.0 * tuple.1
     }
 }
 
-func scalarMultiply<T: CanUseOperators>(scalar: T, arr: [T]) -> [T] {
+func scalarMultiply<T: CanUseOperators>(scalar: T, _ arr: [T]) -> [T] {
     return arr.map {
         return $0 * scalar
     }
@@ -52,7 +52,7 @@ func vectorMean<T: CanUseOperators>(vectors: [[T]]) -> [Double] {
     return scalarMultiply(1.0/n, sumAsDoubles)
 }
 
-func dot<T: CanUseOperators>(arr1: [T], arr2: [T]) -> T {
+func dot<T: CanUseOperators>(arr1: [T], _ arr2: [T]) -> T {
     let multiplied = vectorComponentwiseMultiply(arr1, arr2)
     return multiplied[1..<multiplied.count].reduce(multiplied[0]) {
         return $0 + $1
@@ -70,11 +70,11 @@ func magnitude<T: CanUseOperators>(vector: [T]) -> Double {
     return sqrt(sumOfSquares(vectorAsDoubles))
 }
 
-func squaredDistance<T: CanUseOperators>(arr1: [T], arr2: [T]) -> T {
+func squaredDistance<T: CanUseOperators>(arr1: [T], _ arr2: [T]) -> T {
     return sumOfSquares(vectorSubtract(arr1, arr2))
 }
 
-func distance<T: CanUseOperators>(arr1: [T], arr2: [T]) -> Double {
+func distance<T: CanUseOperators>(arr1: [T], _ arr2: [T]) -> Double {
     let squaredDist = squaredDistance(arr1, arr2)
     return sqrt(squaredDist.toDouble())
 }

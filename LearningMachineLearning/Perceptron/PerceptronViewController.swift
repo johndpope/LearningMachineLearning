@@ -58,7 +58,7 @@ class PerceptronViewController: UIViewController {
             ([1.5, 2.0], table)]
     }
     
-    func irisData(#feature0: Int, feature1: Int) -> ([LabeledInput], String, String) {
+    func irisData(feature0 feature0: Int, feature1: Int) -> ([LabeledInput], String, String) {
         let iris = IrisData()
         var labeledInput = [LabeledInput]()
         

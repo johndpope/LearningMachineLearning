@@ -17,7 +17,7 @@ func zip<T, U>(arr1: [T], arr2: [U]) -> [(T, U)] {
     return zipped
 }
 
-class Counter<T: Hashable>: Printable {
+class Counter<T: Hashable>: CustomStringConvertible {
     var counts = [T: Int]()
     
     init(_ array: [T]) {

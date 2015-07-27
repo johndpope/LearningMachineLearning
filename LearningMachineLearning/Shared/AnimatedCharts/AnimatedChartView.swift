@@ -9,7 +9,7 @@ import UIKit
 import SwiftCharts
 
 protocol ChartUpdate {
-    func updateDisplay(#threshold: Double?, xWeight: Double?, yWeight: Double?, accuracy: Double?, iteration: Int?)
+    func updateDisplay(threshold threshold: Double?, xWeight: Double?, yWeight: Double?, accuracy: Double?, iteration: Int?)
 }
 
 struct DisplayParam {
@@ -63,7 +63,7 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
     }
 
     
-    func updateLine(#x1: Double, y1: Double, x2: Double, y2: Double) {
+    func updateLine(x1 x1: Double, y1: Double, x2: Double, y2: Double) {
         lineChart?.view.removeFromSuperview()
         let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings)
 
@@ -93,7 +93,7 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
         return baseChartLayers(labelSettings, minX: minX!, maxX: maxX!, minY: minY!, maxY: maxY!, xInterval: xInterval!, yInterval: yInterval!, xAxisLabel: xAxisLabel!, yAxisLabel: yAxisLabel!)
     }
     
-    func updateLine(#xWeight: Double, yWeight: Double, threshold: Double) {
+    func updateLine(xWeight xWeight: Double, yWeight: Double, threshold: Double) {
         let x1 = 0.0
         let y1 = threshold / yWeight
         
@@ -105,7 +105,7 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
     
     // MARK:- Chart Update Methods
     
-    func updateDisplay(#threshold: Double?, xWeight: Double?, yWeight: Double?, accuracy: Double?, iteration: Int?) {
+    func updateDisplay(threshold threshold: Double?, xWeight: Double?, yWeight: Double?, accuracy: Double?, iteration: Int?) {
         let param = DisplayParam(threshold: threshold, xWeight: xWeight, yWeight: yWeight, accuracy: accuracy, iteration: iteration)
         displayParams.append(param)
     }
@@ -120,13 +120,13 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
     var currentAccuracy = 0.0
     var currentIteration = 0
     
-    func beginAnimatedDisplay(#duration: Double) {
+    func beginAnimatedDisplay(duration duration: Double) {
         timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("animateFrame"), userInfo: nil, repeats: true)
     }
     
     func animateFrame() {
         if animationIndex >= displayParams.count {
-            println("animation done")
+            print("animation done")
             timer?.invalidate()
         }
         else {
@@ -143,7 +143,6 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
                 animateFrame()
             }
             else {
-                let formattedAccuracy = (currentAccuracy * 100).format("2.1")
                 updateLine(xWeight: currentXWeight, yWeight: currentYWeight, threshold: currentThreshold)
             }
             updateLabel()

@@ -63,7 +63,7 @@ class BarChartView: BaseChartView {
             return ChartAxisValueFloat(CGFloat(num))
         }
         
-        let (xValues: [ChartAxisValue], yValues: [ChartAxisValue]) = (labelAxisValues, valAxisValues)
+        let (xValues, yValues) = (labelAxisValues, valAxisValues)
         
         let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: xAxisLabel, settings: labelSettings))
         let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: yAxisLabel, settings: labelSettings))

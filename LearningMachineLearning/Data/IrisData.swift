@@ -23,9 +23,9 @@ class IrisData {
             parseIrisData(text)
             parseAttributes(text)
             
-            println(data)
-            println(labels)
-            println(attributes)
+            print(data)
+            print(labels)
+            print(attributes)
         }
     }
     
@@ -66,16 +66,12 @@ class IrisData {
     func textFromBundle() -> String? {
         let path = NSBundle.mainBundle().pathForResource("iris", ofType: "txt")
         
-        let text = String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-        return text
-        
-        // keep this for next language change
-//        do {
-//            let text = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-//            return text
-//        } catch {
-//            print("error getting data from bundle")
-//        }
-//        return nil
+        do {
+            let text = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+            return text
+        } catch {
+            print("error getting data from bundle")
+        }
+        return nil
     }
 }

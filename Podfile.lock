@@ -2,7 +2,17 @@ PODS:
   - SwiftCharts (0.2.2)
 
 DEPENDENCIES:
-  - SwiftCharts
+  - SwiftCharts (from `https://github.com/i-schuetz/SwiftCharts`, branch `swift2.0`)
+
+EXTERNAL SOURCES:
+  SwiftCharts:
+    :branch: swift2.0
+    :git: https://github.com/i-schuetz/SwiftCharts
+
+CHECKOUT OPTIONS:
+  SwiftCharts:
+    :commit: 00bc8be17ec676b1aff8ced688267bfd898ab097
+    :git: https://github.com/i-schuetz/SwiftCharts
 
 SPEC CHECKSUMS:
   SwiftCharts: c6bf629c6aa26bc4b87a27fdac68b11537b7e3c1

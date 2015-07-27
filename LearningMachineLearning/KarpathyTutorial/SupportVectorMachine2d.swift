@@ -35,10 +35,10 @@ class SupportVectorMachine2d {
                 let formattedScore = score.formatD(".3")
                 let formattedCosti = costi.formatD(".3")
                 
-                println("example \(i): xi = \(xi) and label = \(label)")
-                println("score computed to be \(formattedScore)")
-                println("cost computed to be \(formattedCosti)")
-                println("-----")
+                print("example \(i): xi = \(xi) and label = \(label)")
+                print("score computed to be \(formattedScore)")
+                print("cost computed to be \(formattedCosti)")
+                print("-----")
                 
                 totalCost += costi
             }
@@ -46,12 +46,12 @@ class SupportVectorMachine2d {
             // regularization cost: we want small weights
             let regCost = alpha * (w[0] * w[0] + w[1] * w[1])
             let formattedRegCost = regCost.format(".3")
-            println("regularization cost for current model is \(formattedRegCost)")
+            print("regularization cost for current model is \(formattedRegCost)")
             
             totalCost += regCost
             
             let formattedTotalCost = totalCost.format(".3")
-            println("total cost is \(formattedTotalCost)")
+            print("total cost is \(formattedTotalCost)")
             return totalCost
         }
         
@@ -59,7 +59,7 @@ class SupportVectorMachine2d {
         let w = [0.1, 0.2, 0.3] // example: random numbers
         let alpha = 0.1 // regularization strength
         
-        cost(data, w, alpha)
+        cost(data, w: w, alpha: alpha)
     }
 }
 

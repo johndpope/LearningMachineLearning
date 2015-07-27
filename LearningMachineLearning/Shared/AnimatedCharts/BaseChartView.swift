@@ -65,7 +65,7 @@ class BaseChartView: UIView {
             dim = CGFloat(d)
         }
         let size = CGSizeMake(dim, dim)
-        let layers: [ChartLayer] = map(groupedChartPoints) {(type, chartPoints) in
+        let layers: [ChartLayer] = groupedChartPoints.map {(type, chartPoints) in
             let color = layerSpecifications[type]!
             return ChartPointsScatterCirclesLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: chartInnerFrame, chartPoints: chartPoints, itemSize: size, itemFillColor: color)
         }

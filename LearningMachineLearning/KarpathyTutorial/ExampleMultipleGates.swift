@@ -35,7 +35,7 @@ class ExampleMultipleGates {
         }
         
         let result = forwardNeuron()
-        println("circuit output: \(result.value)")
+        print("circuit output: \(result.value)")
         
         
         // backpropagation
@@ -55,13 +55,13 @@ class ExampleMultipleGates {
         y.value += stepSize * y.grad // y.grad is 0.210
         
         let result2 = forwardNeuron()
-        println("circuit output after one backprop: \(result2.value)") // printlns 0.8825
+        print("circuit output after one backprop: \(result2.value)") // prints 0.8825
         
         
         
         
         // check with numerical gradient
-        func forwardCircuitFast(a: Double, b: Double, c: Double, x: Double, y: Double) -> Double {
+        func forwardCircuitFast(a: Double, _ b: Double, _ c: Double, _ x: Double, _ y: Double) -> Double {
             return 1 / (1 + exp(-(a*x + b*y + c)))
         }
         
@@ -79,7 +79,7 @@ class ExampleMultipleGates {
             let xGrad = (forwardCircuitFast(a, b, c, x + h, y) - forwardCircuitFast(a, b, c, x, y)) / h
             let yGrad = (forwardCircuitFast(a, b, c, x, y + h) - forwardCircuitFast(a, b, c, x, y)) / h
         
-            println("aGrad = \(aGrad), bGrad = \(bGrad), cGrad = \(cGrad), xGrad = \(xGrad), yGrad = \(yGrad)")
+            print("aGrad = \(aGrad), bGrad = \(bGrad), cGrad = \(cGrad), xGrad = \(xGrad), yGrad = \(yGrad)")
         }
         check()
         
