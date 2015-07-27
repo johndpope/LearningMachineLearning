@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Darwin
 
 func uniformCdf(x: Double) -> Double {
     // Cumulative Distribution Function
@@ -21,10 +22,15 @@ func uniformCdf(x: Double) -> Double {
 }
 
 func normalPdf(x: Double, mu: Double = 0.0, sigma: Double = 0.0) -> Double {
+    // Probability Density Function
     // mu is the mean, sigma is the standard deviation
     let sqrtTwoPi = sqrt(2 * M_PI)
     let xMinusMuSquared = (x - mu) ** 2
     let sigmaSquaredTimesTwo = 2 * (sigma ** 2)
     let numerator = exp(-xMinusMuSquared / sigmaSquaredTimesTwo)
     return numerator / (sqrtTwoPi * sigma)
+}
+
+func normalCdf(x: Double, mu: Double = 0.0, sigma: Double = 1.0) -> Double {
+    return (1 + Darwin.erf((x - mu) / sqrt(2.0) / sigma)) / 2
 }
