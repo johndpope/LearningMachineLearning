@@ -49,34 +49,23 @@ class DataScienceFromScratch: UIViewController {
         let counter = Counter(data)
         println(counter)
         
-        var dataAsTuples = [(Int, Int)]()
+        var dataAsTuples = [(Double, Double)]()
         for (key, value) in counter.counts {
-            dataAsTuples.append((key, value))
+            dataAsTuples.append((Double(key), Double(Double(value)/Double(numPoints))))
         }
-        println("----")
-        
-        println(dataAsTuples)
-        
-        
-        
+
         let chart = BarChartView()
         chart.setUpChartWithData(dataAsTuples, frame: view.frame, xAxisLabel: "x", yAxisLabel: "y", color: UIColor.blueColor())
         view.addSubview(chart)
-    }
+        
+        
+        let mu = p * Double(n)
+        let sigma = sqrt(Double(n) * p * (1.0 - p))
 
-    
-    
-    func doTheThing() {
-
-        var a = [Double]()
-        for i in 0..<100 {
-            a.append(Double(i))
+        chart.addLineLayerWithFunction(UIColor.redColor()) { (x: Double) -> Double in
+            normalCdf(x + 0.5, mu: mu, sigma: sigma) - normalCdf(x - 0.5, mu: mu, sigma: sigma)
         }
-        println(a)
-        
-        let stdv = standardDeviation(a)
-        println(stdv)
-
-        
     }
+
+
 }
