@@ -27,7 +27,7 @@ class BarChartView: BaseChartView {
         
         chartFrame = frame
 
-        let (xAxis, yAxis, innerFrame) = barChartLayers(xAxisLabel, yAxisLabel: yAxisLabel)
+        let (xAxis, yAxis, innerFrame) = baseChartLayers(xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         
         let n = data.count
         let width = (innerFrame.width * 3/4) / CGFloat(n)
@@ -36,8 +36,6 @@ class BarChartView: BaseChartView {
         
         let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ExamplesDefaults.guidelinesWidth)
         let guidelinesLayer = ChartGuideLinesDottedLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: settings)
-        
-        let view = ChartBaseView(frame: frame)
         
         let chart = Chart(
             frame: frame,
@@ -53,24 +51,6 @@ class BarChartView: BaseChartView {
         self.chart = chart
     }
     
-    func barChartLayers(xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
-        let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
-        
-        let valAxisValues = Array(stride(from: 0, through: maxY, by: yInterval)).map{ (num: Double) -> ChartAxisValueFloat in
-            return ChartAxisValueFloat(CGFloat(num))
-        }
-        let labelAxisValues = Array(stride(from: minX, through: maxX, by: xInterval)).map{ (num: Double) -> ChartAxisValueFloat in
-            return ChartAxisValueFloat(CGFloat(num))
-        }
-        
-        let (xValues, yValues) = (labelAxisValues, valAxisValues)
-        
-        let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: xAxisLabel, settings: labelSettings))
-        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: yAxisLabel, settings: labelSettings))
-        let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: ExamplesDefaults.chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
-        return (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
-    }
-    
     func addLineLayerWithFunction(color: UIColor, f: (Double) -> Double) {
         let xPoints = Array(stride(from: minX, through: maxX, by: 0.2))
         let data = xPoints.map { (x: Double) -> ChartPoint in
@@ -78,7 +58,7 @@ class BarChartView: BaseChartView {
             return ChartPoint(x: ChartAxisValueFloat(CGFloat(x)), y: ChartAxisValueFloat(CGFloat(y)))
         }
         
-        let (xAxis, yAxis, innerFrame) = barChartLayers("", yAxisLabel: "")
+        let (xAxis, yAxis, innerFrame) = baseChartLayers(xAxisLabel: "", yAxisLabel: "")
         
         let lineModel = ChartLineModel(chartPoints: data, lineColor: color, lineWidth: 2.0, animDuration: 1.0, animDelay: 0.5)
         let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, lineModels: [lineModel])

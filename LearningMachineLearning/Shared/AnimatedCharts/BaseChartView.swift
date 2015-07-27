@@ -9,16 +9,17 @@
 import UIKit
 import SwiftCharts
 
-//struct ChartPadding : OptionSetType {
-//    let rawValue: Int
-//    init(rawValue: Int) { self.rawValue = rawValue }
-//    
-//    static var None: ChartPadding { return ChartPadding(rawValue: 0) }
-//    static var PadBottom: ChartPadding { return ChartPadding(rawValue: 1 << 0) }
-//    static var PadTop: ChartPadding { return ChartPadding(rawValue: 1 << 1) }
-//    static var PadLeft: ChartPadding { return ChartPadding(rawValue: 1 << 2) }
-//    static var PadRight: ChartPadding { return ChartPadding(rawValue: 1 << 3) }
-//}
+struct ChartPadding : OptionSetType {
+    let rawValue: Int
+    init(rawValue: Int) { self.rawValue = rawValue }
+    
+    static var PadNone: ChartPadding { return ChartPadding(rawValue: 0) }
+    static var PadBottom: ChartPadding { return ChartPadding(rawValue: 1 << 0) }
+    static var PadTop: ChartPadding { return ChartPadding(rawValue: 1 << 1) }
+    static var PadLeft: ChartPadding { return ChartPadding(rawValue: 1 << 2) }
+    static var PadRight: ChartPadding { return ChartPadding(rawValue: 1 << 3) }
+    static var PadAll: ChartPadding { return ChartPadding(rawValue: 15) }
+}
 
 class BaseChartView: UIView {
     var chartFrame: CGRect!
@@ -28,7 +29,7 @@ class BaseChartView: UIView {
     var xAxisLabel: String!
     var yAxisLabel: String!
     var labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
-    var padEdges = false
+    var paddingOptions = ChartPadding.PadNone
 
     func baseChartLayers(labelSettings: ChartLabelSettings, minX: Double, maxX: Double, minY: Double, maxY: Double, xInterval: Double, yInterval: Double, xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
         let xValues = Array(stride(from: minX, through: maxX, by: xInterval)).map { ChartAxisValueFloat(CGFloat($0), labelSettings: labelSettings)}
@@ -40,6 +41,10 @@ class BaseChartView: UIView {
         let chartFrame = ExamplesDefaults.chartFrame(self.chartFrame)
         let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: ExamplesDefaults.chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
         return (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
+    }
+    
+    func baseChartLayers(xAxisLabel xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
+        return baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
     }
     
     func toLayers(models: [LabeledInput], layerSpecifications: [DataType : UIColor], xAxis: ChartAxisLayer, yAxis: ChartAxisLayer, chartInnerFrame: CGRect) -> [ChartLayer] {
@@ -101,17 +106,25 @@ class BaseChartView: UIView {
         
         xInterval = xDiff/10
         yInterval = yDiff/8
+
         
-        if padEdges {
-            minX -= xInterval
-            maxX += xInterval
+        if paddingOptions.contains(.PadBottom) {
             minY -= yInterval
+        }
+        if paddingOptions.contains(.PadTop) {
             maxY += yInterval
         }
-        else {
-            maxX += (xInterval / 5)
-            maxY += (yInterval / 5)
+        
+        if paddingOptions.contains(.PadLeft) {
+            minX -= xInterval
         }
+        if paddingOptions.contains(.PadRight) {
+            maxX += xInterval
+        }
+        // the stride sometimes misses the top value if this is not included
+        maxY += (yInterval / 5)
+        maxX += (xInterval / 5)
+
      
         self.minX = minX
         self.minY = minY

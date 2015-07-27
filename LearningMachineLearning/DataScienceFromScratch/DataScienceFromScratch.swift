@@ -43,12 +43,10 @@ class DataScienceFromScratch: UIViewController {
         let approx = normalApproximationToBinomial(100, p: 0.75)
 
         let chart = FunctionChartView(frame: view.frame)
-//        chart.pointSize = 3
         chart.setUpChartWithFunction(view.frame, xAxisLabel: "x", yAxisLabel: "y", minX: 0, maxX: 100) { (x: Double) -> Double in
             return normalCdf(x, mu: approx.mu, sigma: approx.sigma)
         }
         view.addSubview(chart)
-        
     }
     
     
@@ -69,6 +67,7 @@ class DataScienceFromScratch: UIViewController {
         }
 
         let chart = BarChartView()
+        chart.paddingOptions = .PadTop
         chart.setUpChartWithData(dataAsTuples, frame: view.frame, xAxisLabel: "x", yAxisLabel: "y", color: UIColor.blueColor())
         view.addSubview(chart)
         

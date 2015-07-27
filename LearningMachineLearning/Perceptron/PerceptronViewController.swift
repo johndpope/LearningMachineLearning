@@ -32,6 +32,7 @@ class PerceptronViewController: UIViewController {
     
     func setUpChartWithData(data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
         chart = AnimatedChartView(frame: view.frame)
+        chart.paddingOptions = .PadAll
         chart.setUpChartWithData(data, frame: view.frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         
         view.addSubview(chart)
