@@ -35,6 +35,20 @@ class DataScienceFromScratch: UIViewController {
 
         
         makeHist(0.75, n: 100, numPoints: 10000)
+        
+        //hypothesisTesting()
+    }
+    
+    func hypothesisTesting() {
+        let approx = normalApproximationToBinomial(100, 0.75)
+
+        let chart = FunctionChartView(frame: view.frame)
+//        chart.pointSize = 3
+        chart.setUpChartWithFunction(view.frame, xAxisLabel: "x", yAxisLabel: "y", minX: 0, maxX: 100) { (x: Double) -> Double in
+            return normalCdf(x, mu: approx.mu, sigma: approx.sigma)
+        }
+        view.addSubview(chart)
+        
     }
     
     

@@ -40,6 +40,7 @@
 		BBB299A71B616C530016985E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB299741B6167BF0016985E /* Main.storyboard */; };
 		BBB299AB1B618A6E0016985E /* DataScienceFromScratch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299AA1B618A6E0016985E /* DataScienceFromScratch.swift */; };
 		BBBAFB721B63E7A60062B538 /* Pythony.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAFB711B63E7A60062B538 /* Pythony.swift */; };
+		BBEF5FF51B66A5E200515DA2 /* HypothesisAndInference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		BBB299A51B616B7B0016985E /* KarpathyTutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarpathyTutorial.swift; sourceTree = "<group>"; };
 		BBB299AA1B618A6E0016985E /* DataScienceFromScratch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScienceFromScratch.swift; sourceTree = "<group>"; };
 		BBBAFB711B63E7A60062B538 /* Pythony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pythony.swift; sourceTree = "<group>"; };
+		BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypothesisAndInference.swift; sourceTree = "<group>"; };
 		E10255E69C0235F4B81E3EB2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -250,6 +252,7 @@
 				BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */,
 				BBA31E7C1B633679001DAC2A /* Statistics.swift */,
 				BB0974331B658FF1005B70F8 /* Probability.swift */,
+				BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */,
 				BBBAFB711B63E7A60062B538 /* Pythony.swift */,
 			);
 			path = DataScienceFromScratch;
@@ -385,6 +388,7 @@
 				BBB299951B6167D80016985E /* SupportVectorMachine2d.swift in Sources */,
 				BBB299811B6167CC0016985E /* ChartDefaults.swift in Sources */,
 				BBB299921B6167D80016985E /* Gates.swift in Sources */,
+				BBEF5FF51B66A5E200515DA2 /* HypothesisAndInference.swift in Sources */,
 				BBB299A01B616AF00016985E /* IrisData.swift in Sources */,
 				BBB299851B6167CC0016985E /* ViewController.swift in Sources */,
 				BBB2997F1B6167CC0016985E /* AnimatedChartView.swift in Sources */,

@@ -9,6 +9,17 @@
 import UIKit
 import SwiftCharts
 
+//struct ChartPadding : OptionSetType {
+//    let rawValue: Int
+//    init(rawValue: Int) { self.rawValue = rawValue }
+//    
+//    static var None: ChartPadding { return ChartPadding(rawValue: 0) }
+//    static var PadBottom: ChartPadding { return ChartPadding(rawValue: 1 << 0) }
+//    static var PadTop: ChartPadding { return ChartPadding(rawValue: 1 << 1) }
+//    static var PadLeft: ChartPadding { return ChartPadding(rawValue: 1 << 2) }
+//    static var PadRight: ChartPadding { return ChartPadding(rawValue: 1 << 3) }
+//}
+
 class BaseChartView: UIView {
     var chartFrame: CGRect!
     var chart: Chart?
@@ -17,6 +28,7 @@ class BaseChartView: UIView {
     var xAxisLabel: String!
     var yAxisLabel: String!
     var labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
+    var padEdges = false
 
     func baseChartLayers(labelSettings: ChartLabelSettings, minX: Double, maxX: Double, minY: Double, maxY: Double, xInterval: Double, yInterval: Double, xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
         let xValues = Array(stride(from: minX, through: maxX, by: xInterval)).map { ChartAxisValueFloat(CGFloat($0), labelSettings: labelSettings)}
@@ -89,11 +101,18 @@ class BaseChartView: UIView {
         
         xInterval = xDiff/10
         yInterval = yDiff/8
-        minX -= xInterval
-        maxX += xInterval
-        minY -= yInterval
-        maxY += yInterval
         
+        if padEdges {
+            minX -= xInterval
+            maxX += xInterval
+            minY -= yInterval
+            maxY += yInterval
+        }
+        else {
+            maxX += (xInterval / 5)
+            maxY += (yInterval / 5)
+        }
+     
         self.minX = minX
         self.minY = minY
         self.maxX = maxX

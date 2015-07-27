@@ -25,17 +25,12 @@ class BarChartView: BaseChartView {
             return ChartBarModel(constant: ChartAxisValueFloat(CGFloat(index)), axisValue1: zero, axisValue2: ChartAxisValueFloat(CGFloat(barModel)), bgColor: color)
         }
         
-        
         chartFrame = frame
-        
-        
-      
-        
+
         let (xAxis, yAxis, innerFrame) = barChartLayers(xAxisLabel, yAxisLabel: yAxisLabel)
         
-        
         let n = data.count
-        let width = (innerFrame.width * 4/5) / CGFloat(n)
+        let width = (innerFrame.width * 3/4) / CGFloat(n)
         
         let barsLayer = ChartBarsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, bars: bars, horizontal: false, barWidth: width, animDuration: 0.0)
         
