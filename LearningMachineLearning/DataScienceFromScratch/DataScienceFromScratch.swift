@@ -38,8 +38,90 @@ class DataScienceFromScratch: UIViewController {
         
         //hypothesisTesting()
         
-        confidenceIntervals()
+        //confidenceIntervals()
+        
+        //pHacking()
+        
+        abTesting()
     }
+    
+    func abTesting() {
+        
+        func estimatedParameters(N: Int, n: Int) -> (p: Double, sigma: Double) {
+            let p = Double(n) / Double(N)
+            let sigma = sqrt(p * (1.0 - p) / Double(N))
+            return (p, sigma)
+        }
+        
+        func abTestStatistic(N_A: Int, n_A: Int, N_B: Int, n_B: Int) -> Double {
+            let (p_A, sigma_A) = estimatedParameters(N_A, n: n_A)
+            let (p_B, sigma_B) = estimatedParameters(N_B, n: n_B)
+            return (p_B - p_A) / sqrt(sigma_A ** 2 + sigma_B ** 2)
+        }
+        
+        let z = abTestStatistic(1000, n_A: 200, N_B: 1000, n_B: 150)
+        print(z)
+        
+        let twoSidedpValue = twoSidedPValue(z)
+        print(twoSidedpValue)
+        
+    }
+    
+    func pHacking() {
+        // flip a coin 1000 times, true = heads, false = tails
+        func runExperiment() -> [Bool] {
+            let arr = Array(count: 1000, repeatedValue: false)
+            return arr.map { _ in
+                Double.randomZeroToOne() < 0.5
+            }
+        }
+        
+        func rejectFairness(experiment: [Bool]) -> Bool {
+            let numHeads = experiment.reduce(0) { (var count, flipIsHeads) in
+                if flipIsHeads {
+                    count++
+                }
+                return count
+            }
+            print("num heads = \(numHeads)")
+            // using 5% confidence intervals
+            if numHeads < 469 || numHeads > 531 {
+                print("---------------------")
+            }
+            return numHeads < 469 || numHeads > 531
+        }
+        
+        
+        // do a 1000 experiments (which each have 1000 trials)
+        var experiments = [[Bool]]()
+        for _ in 0..<1000 {
+            experiments.append(runExperiment())
+        }
+        
+        var rejectedExperiments = [[Bool]]()
+        for experiment in experiments {
+            if rejectFairness(experiment) {
+                rejectedExperiments.append(experiment)
+            }
+        }
+        
+        let numRejections = rejectedExperiments.count
+        print("number of rejected experiments = \(numRejections)")
+        
+        // these represent 'significant' results, even though they were from a fair coin
+        // beware of dark arts statistics
+        // 
+        // http://www.nature.com/news/scientific-method-statistical-errors-1.14700
+        // http://ist-socrates.berkeley.edu/~maccoun/PP279_Cohen1.pdf
+        // http://slatestarcodex.com/2014/01/02/two-dark-side-statistics-papers/
+        
+        // Determine your hypotheses BEFORE looking at the data
+        // Clean your data WITHOUT the hypotheses in mind
+        // p-values are not substitutes for common sense
+    }
+    
+
+    
     
     func confidenceIntervals() {
         
