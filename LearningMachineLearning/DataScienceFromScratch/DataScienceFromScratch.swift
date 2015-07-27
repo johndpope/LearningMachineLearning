@@ -36,7 +36,38 @@ class DataScienceFromScratch: UIViewController {
         
         //makeHist(0.75, n: 100, numPoints: 10000)
         
-        hypothesisTesting()
+        //hypothesisTesting()
+        
+        confidenceIntervals()
+    }
+    
+    func confidenceIntervals() {
+        
+        // if we flipped a coin 1000 times, and saw 525 heads
+        var pHat = 525.0 / 1000.0
+        var mu = pHat
+        var sigma = sqrt(pHat * (1 - pHat) / 1000.0)
+        print(sigma)
+        
+        let a = normalTwoSidedBounds(0.95, mu: mu, sigma: sigma)
+        // we are 95% confident the true p is between
+        // (book says "This is not entirely justified, but people seem to do it anyway."
+        print(a.lowerBound)
+        print(a.upperBound)
+        // 0.5 falls within the confidence interval, so we assume the coin is fair
+        
+        print("-----")
+        
+        // if instead we saw 540 heads
+        pHat = 540.0 / 1000.0
+        mu = pHat
+        sigma = sqrt(pHat * (1 - pHat) / 1000.0)
+        print(sigma)
+        let b = normalTwoSidedBounds(0.95, mu: mu, sigma: sigma)
+        print(b.lowerBound)
+        print(b.upperBound)
+        // the fair coin doesn't lie within the confidence interval
+        
     }
     
     func hypothesisTesting() {
@@ -98,10 +129,7 @@ class DataScienceFromScratch: UIViewController {
         // for one-sided test, if we saw 527 heads
         print(normalProbabilityAbove(526.5, mu: approx.mu, sigma: approx.sigma))
         // p is less than 0.05, so we'd reject the null hypothesis (ie we assume we have a biased coin)
-        
-        
-        
-        
+
     }
     
     
