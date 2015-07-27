@@ -48,6 +48,12 @@ func normalTwoSidedBounds(p: Double, mu: Double = 0.0, sigma: Double = 1.0) -> (
     return (lowerBound, upperBound)
 }
 
+func twoSidedPValue(x: Double, mu: Double = 0.0, sigma: Double = 1.0) -> Double {
+    if x >= mu {
+        return 2 * normalProbabilityAbove(x, mu: mu, sigma: sigma)
+    }
+    return 2 * normalProbabilityBelow(x, mu: mu, sigma: sigma)
+}
 
 
 
