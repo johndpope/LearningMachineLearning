@@ -70,5 +70,23 @@ func inverseNormalCdf(p: Double, mu: Double = 0.0, sigma: Double = 1.0, toleranc
     return midZ
 }
 
+func bernoulliTrial(p: Double) -> Int {
+    if Double.randomZeroToOne() < p {
+        return 1
+    }
+    return 0
+}
+
+func binomial(n: Int, p: Double) -> Int {
+    var sum = 0
+    for _ in 0..<n {
+        sum += bernoulliTrial(p)
+    }
+    return sum
+}
+
+
+
+
 
 

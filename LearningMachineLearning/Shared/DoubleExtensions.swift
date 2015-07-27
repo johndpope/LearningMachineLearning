@@ -13,8 +13,12 @@ extension Double {
         return String(format: "%\(f)f", self)
     }
     
+    static func randomZeroToOne() -> Double {
+        return Double(arc4random()) / Double(UINT32_MAX)
+    }
+    
     static func randNeg1To1() -> Double {
-        return Double(arc4random()) / Double(UINT32_MAX) * shouldBeNegative()
+        return Double.randomZeroToOne() * shouldBeNegative()
     }
     
     private static func shouldBeNegative() -> Double{
@@ -24,3 +28,4 @@ extension Double {
         return 1
     }
 }
+

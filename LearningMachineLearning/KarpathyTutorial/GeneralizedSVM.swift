@@ -7,12 +7,6 @@
 
 import UIKit
 
-extension Double {
-    static func randomZeroToOne() -> Double {
-        return Double(arc4random()) / Double(UINT32_MAX)
-    }
-}
-
 class GeneralizedSVM {
 
     private class func rand() -> Double {
