@@ -12,6 +12,11 @@ import SwiftCharts
 class BaseChartView: UIView {
     var chartFrame: CGRect!
     var chart: Chart?
+    var pointSize: Int?
+    var minX, minY, maxX, maxY, xInterval, yInterval: Double!
+    var xAxisLabel: String!
+    var yAxisLabel: String!
+    var labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
 
     func baseChartLayers(labelSettings: ChartLabelSettings, minX: Double, maxX: Double, minY: Double, maxY: Double, xInterval: Double, yInterval: Double, xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
         let xValues = Array(stride(from: minX, through: maxX, by: xInterval)).map { ChartAxisValueFloat(CGFloat($0), labelSettings: labelSettings)}
@@ -43,7 +48,10 @@ class BaseChartView: UIView {
         }
         
         // create layer for each group
-        let dim: CGFloat = Env.iPad ? 14 : 7
+        var dim: CGFloat = Env.iPad ? 14 : 7
+        if let d = pointSize {
+            dim = CGFloat(d)
+        }
         let size = CGSizeMake(dim, dim)
         let layers: [ChartLayer] = map(groupedChartPoints) {(type, chartPoints) in
             let color = layerSpecifications[type]!
@@ -53,12 +61,12 @@ class BaseChartView: UIView {
         return layers
     }
     
-    func getDataMinMaxInterval(data: [LabeledInput]) -> (minX: Double, maxX: Double, minY: Double, maxY: Double, xInterval: Double, yInterval: Double) {
+    func setDataMinMaxInterval(data: [LabeledInput]) {
+        chartFrame = frame
         var minX = Double(UINT32_MAX)
         var minY = Double(UINT32_MAX)
         var maxX = -Double(UINT32_MAX)
         var maxY = -Double(UINT32_MAX)
-        chartFrame = frame
         
         for input in data {
             let x = input.0[0]
@@ -79,14 +87,17 @@ class BaseChartView: UIView {
         let xDiff = abs(maxX - minX)
         let yDiff = abs(maxY - minY)
         
-        var xInterval = xDiff/10
-        var yInterval = yDiff/8
+        xInterval = xDiff/10
+        yInterval = yDiff/8
         minX -= xInterval
         maxX += xInterval
         minY -= yInterval
         maxY += yInterval
         
-        return (minX, maxX, minY, maxY, xInterval, yInterval)
+        self.minX = minX
+        self.minY = minY
+        self.maxX = maxX
+        self.maxY = maxY
     }
     
 

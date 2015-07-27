@@ -23,25 +23,13 @@ struct DisplayParam {
 class AnimatedChartView: BaseChartView, ChartUpdate {
     private var lineChart: Chart?
     private var dataChart: Chart?
-    private var minX, minY, maxX, maxY, xInterval, yInterval: Double!
-    var xAxisLabel: String!
-    var yAxisLabel: String!
     
     var label: UILabel!
 
     func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
-        let info = getDataMinMaxInterval(data)
-        self.minX = info.minX
-        self.maxX = info.maxX
-        self.minY = info.minY
-        self.maxY = info.maxY
-        self.xInterval = info.xInterval
-        self.yInterval = info.yInterval
+        setDataMinMaxInterval(data)
         self.xAxisLabel = xAxisLabel
         self.yAxisLabel = yAxisLabel
-        
-        
-        let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
         
         let layerSpecifications: [DataType : UIColor] = [
             .Type0 : UIColor.redColor(),
@@ -77,8 +65,6 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
     
     func updateLine(#x1: Double, y1: Double, x2: Double, y2: Double) {
         lineChart?.view.removeFromSuperview()
-        let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
-
         let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings)
 
         // line layer
@@ -88,7 +74,7 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
         ]
         
         let chartPoints1 = lineChartPoints.map{ (tup: (Double, Double)) -> ChartPoint in
-            return ChartPoint(x: ChartAxisValueFloat(CGFloat(tup.0), labelSettings: labelSettings), y: ChartAxisValueFloat(CGFloat(tup.1)))
+            return ChartPoint(x: ChartAxisValueFloat(CGFloat(tup.0), labelSettings: self.labelSettings), y: ChartAxisValueFloat(CGFloat(tup.1)))
         }
         let lineModel = ChartLineModel(chartPoints: chartPoints1, lineColor: UIColor.blackColor(), lineWidth: 2, animDuration: 0, animDelay: 0)
         let lineLayer = ChartPointsLineLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, lineModels: [lineModel])

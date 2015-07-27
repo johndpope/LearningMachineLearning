@@ -10,10 +10,14 @@ import UIKit
 import SwiftCharts
 
 class HackChartView: BaseChartView {
-
+    var dataXMin, dataXMax: Double!
+    var extraLayers = [Chart]()
+    
     // this is a hacky way to make chart show a function
     // if you can find some library like matplotlib for swift, that would be much better
     func setUpChartWithFunction(frame: CGRect, xAxisLabel: String, yAxisLabel: String, minX: Double, maxX: Double, f: (Double) -> Double) {
+        dataXMin = minX
+        dataXMax = maxX
         let xPoints = Array(stride(from: minX, through: maxX, by: 0.2))
         let data = xPoints.map { (x: Double) -> LabeledInput in
             let y = f(x)
@@ -25,15 +29,13 @@ class HackChartView: BaseChartView {
     }
     
     func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
-        let info = getDataMinMaxInterval(data)
-        
-        let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
+        setDataMinMaxInterval(data)
         
         let layerSpecifications: [DataType : UIColor] = [
             .Type0 : UIColor.blackColor()
         ]
         
-        let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings, minX: info.minX, maxX: info.maxX, minY: info.minY, maxY: info.maxY, xInterval: info.xInterval, yInterval: info.yInterval, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
+        let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         
         let scatterLayers = self.toLayers(data, layerSpecifications: layerSpecifications, xAxis: xAxis, yAxis: yAxis, chartInnerFrame: innerFrame)
         
@@ -54,4 +56,35 @@ class HackChartView: BaseChartView {
         self.chart = chart
     }
     
+    func addNewLayerWithFunction(color: UIColor, f: (Double) -> Double) {
+        let xPoints = Array(stride(from: dataXMin, through: dataXMax, by: 0.2))
+        let data = xPoints.map { (x: Double) -> LabeledInput in
+            let y = f(x)
+            return ([x, y], .Type0)
+        }
+        
+        let layerSpecifications: [DataType : UIColor] = [
+            .Type0 : color
+        ]
+        
+        let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: "", yAxisLabel: "")
+        
+        let scatterLayers = self.toLayers(data, layerSpecifications: layerSpecifications, xAxis: xAxis, yAxis: yAxis, chartInnerFrame: innerFrame)
+        
+        
+        let chart = Chart(
+            frame: chartFrame,
+            layers: scatterLayers
+        )
+        
+        addSubview(chart.view)
+        self.extraLayers.append(chart)
+    }
+    
 }
+
+
+
+
+
+
