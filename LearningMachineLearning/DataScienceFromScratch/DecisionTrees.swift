@@ -15,7 +15,7 @@ class DecisionTrees {
         
         print("total entropy = \(dataEntropy(data))")
         
-        for key in ["lotsOfLight", "bigKitchen", "expensive", "bigRooms"] {
+        for key in Apartment.keys {
             let entropyOfPartition = partitionEntropyBy(data, attribute: key)
             print("\(key) = \(entropyOfPartition)")
         }
@@ -50,8 +50,37 @@ class DecisionTrees {
     // finds the entropy from this partition of data into subsets
     func partitionEntropy(subsets: [[(Apartment, Bool)]]) -> Double {
         let totalCount = subsets.map { $0.count }.reduce(0) { $0 + $1 }
-        let subsetEntropies = subsets.map { dataEntropy($0) * Double($0.count) / Double(totalCount) }
-        return subsetEntropies.reduce(0.0) { $0 + $1 }
+        //let subsetEntropies = subsets.map { dataEntropy($0) * Double($0.count) / Double(totalCount) }
+        //return subsetEntropies.reduce(0.0) { $0 + $1 }
+        
+        let a = subsets[0].map { $0.1 }
+        let b = subsets[1].map { $0.1 }
+        print("section 1 = \(a)")
+        
+        
+        var totalEntropy = 0.0
+
+            var subset = subsets[0]
+            var h = dataEntropy(subset)
+            var percentOfTotal = Double(subset.count) / Double(totalCount)
+            print("entropy is \(h)")
+            print("percentOfTotal is \(percentOfTotal)")
+            var adjusted = h * percentOfTotal
+            print("adjusted = \(adjusted)\n")
+            totalEntropy += adjusted
+        
+        print("section 2 = \(b)")
+ 
+            subset = subsets[1]
+            h = dataEntropy(subset)
+            percentOfTotal = Double(subset.count) / Double(totalCount)
+            print("entropy is \(h)")
+            print("percentOfTotal is \(percentOfTotal)")
+            adjusted = h * percentOfTotal
+            print("adjusted = \(adjusted)\n")
+            totalEntropy += adjusted
+
+        return totalEntropy
     }
     
     func partitionBy(inputs: [(Apartment, Bool)], attribute: String) -> [Bool: [(Apartment, Bool)]]{
@@ -59,8 +88,7 @@ class DecisionTrees {
         groups[true] = [(Apartment, Bool)]()
         groups[false] = [(Apartment, Bool)]()
         for input in inputs {
-            let dict = input.0.asDict()
-            let key = dict[attribute]!
+            let key = input.0[attribute]!
             groups[key]!.append(input)
         }
         return groups
@@ -68,6 +96,7 @@ class DecisionTrees {
     
     // computes the entropy corresponding to a given partition
     func partitionEntropyBy(inputs: [(Apartment, Bool)], attribute: String) -> Double {
+        print("\npartitioning by \(attribute)")
         let partitions = partitionBy(inputs, attribute: attribute)
         return partitionEntropy(Array(partitions.values))
     }
