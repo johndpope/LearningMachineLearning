@@ -8,14 +8,15 @@
 
 import Foundation
 
-func zip<T, U>(arr1: [T], arr2: [U]) -> [(T, U)] {
-    var zipped = [(T, U)]()
-    for i in 0..<arr1.count {
-        let tuple = (arr1[i], arr2[i])
-        zipped.append(tuple)
-    }
-    return zipped
-}
+// swift2.0 added zip!  
+//func zip<T, U>(arr1: [T], arr2: [U]) -> [(T, U)] {
+//    var zipped = [(T, U)]()
+//    for i in 0..<arr1.count {
+//        let tuple = (arr1[i], arr2[i])
+//        zipped.append(tuple)
+//    }
+//    return zipped
+//}
 
 class Counter<T: Hashable>: CustomStringConvertible {
     var counts = [T: Int]()

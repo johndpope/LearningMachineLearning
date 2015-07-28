@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DataScienceFromScratch: UIViewController {
+class DataScienceFromScratch1_7: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
