@@ -68,6 +68,17 @@ func ** (left: Double, right: Double) -> Double {
     return pow(left, right)
 }
 
-
+func min(v: [[Double]], key: ([Double]) -> Double) -> [Double] {
+    var min = v[0]
+    var minValue = Double(UINT32_MAX)
+    for num in v {
+        let newNum = key(num)
+        if newNum < minValue {
+            min = num
+            minValue = newNum
+        }
+    }
+    return min
+}
 
 

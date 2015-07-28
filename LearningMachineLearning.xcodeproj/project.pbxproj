@@ -15,6 +15,9 @@
 		BB0974391B659975005B70F8 /* BaseChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0974381B659975005B70F8 /* BaseChartView.swift */; };
 		BB28AC5C1B66F9FB0014B6FC /* DataScienceFromScratch8.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28AC5B1B66F9FB0014B6FC /* DataScienceFromScratch8.swift */; };
 		BB28AC5E1B6700A30014B6FC /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28AC5D1B6700A30014B6FC /* IntExtensions.swift */; };
+		BB28AC601B673B380014B6FC /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28AC5F1B673B380014B6FC /* ArrayExtensions.swift */; };
+		BB28AC621B67C9840014B6FC /* ApartmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28AC611B67C9840014B6FC /* ApartmentData.swift */; };
+		BB28AC641B67CF3D0014B6FC /* DecisionTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28AC631B67CF3D0014B6FC /* DecisionTrees.swift */; };
 		BB4980701B66E8B4005D261C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB49806F1B66E8B4005D261C /* Accelerate.framework */; };
 		BB5606711B66F223007A9E25 /* AnimatedFunctionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5606701B66F223007A9E25 /* AnimatedFunctionChartView.swift */; };
 		BB74BD2F1B66F763009021CB /* GradientDescent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BD2E1B66F763009021CB /* GradientDescent.swift */; };
@@ -70,6 +73,9 @@
 		BB12D3781B606018003E56E3 /* LearningMachineLearningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningMachineLearningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB28AC5B1B66F9FB0014B6FC /* DataScienceFromScratch8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScienceFromScratch8.swift; sourceTree = "<group>"; };
 		BB28AC5D1B6700A30014B6FC /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
+		BB28AC5F1B673B380014B6FC /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		BB28AC611B67C9840014B6FC /* ApartmentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApartmentData.swift; sourceTree = "<group>"; };
+		BB28AC631B67CF3D0014B6FC /* DecisionTrees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecisionTrees.swift; sourceTree = "<group>"; };
 		BB49806F1B66E8B4005D261C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BB5606701B66F223007A9E25 /* AnimatedFunctionChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedFunctionChartView.swift; sourceTree = "<group>"; };
 		BB74BD2E1B66F763009021CB /* GradientDescent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientDescent.swift; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 			children = (
 				BBB2999D1B616AF00016985E /* iris.txt */,
 				BBB2999E1B616AF00016985E /* IrisData.swift */,
+				BB28AC611B67C9840014B6FC /* ApartmentData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -237,6 +244,7 @@
 			children = (
 				BBB2997B1B6167CC0016985E /* DoubleExtensions.swift */,
 				BB28AC5D1B6700A30014B6FC /* IntExtensions.swift */,
+				BB28AC5F1B673B380014B6FC /* ArrayExtensions.swift */,
 				BBB299A81B6171160016985E /* Charts */,
 			);
 			path = Shared;
@@ -268,6 +276,7 @@
 				BB0974331B658FF1005B70F8 /* Probability.swift */,
 				BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */,
 				BB74BD2E1B66F763009021CB /* GradientDescent.swift */,
+				BB28AC631B67CF3D0014B6FC /* DecisionTrees.swift */,
 				BBBAFB711B63E7A60062B538 /* Pythony.swift */,
 			);
 			path = DataScienceFromScratch;
@@ -396,6 +405,8 @@
 				BBB299A31B616B140016985E /* PerceptronViewController.swift in Sources */,
 				BBB299941B6167D80016985E /* SupportVectorMachine.swift in Sources */,
 				BBB299961B6167D80016985E /* Unit.swift in Sources */,
+				BB28AC621B67C9840014B6FC /* ApartmentData.swift in Sources */,
+				BB28AC601B673B380014B6FC /* ArrayExtensions.swift in Sources */,
 				BBA78C5D1B65BCEF00573FAD /* BarChartView.swift in Sources */,
 				BB0974371B65981F005B70F8 /* FunctionChartView.swift in Sources */,
 				BB28AC5C1B66F9FB0014B6FC /* DataScienceFromScratch8.swift in Sources */,
@@ -410,6 +421,7 @@
 				BBB299951B6167D80016985E /* SupportVectorMachine2d.swift in Sources */,
 				BBB299811B6167CC0016985E /* ChartDefaults.swift in Sources */,
 				BBB299921B6167D80016985E /* Gates.swift in Sources */,
+				BB28AC641B67CF3D0014B6FC /* DecisionTrees.swift in Sources */,
 				BBEF5FF51B66A5E200515DA2 /* HypothesisAndInference.swift in Sources */,
 				BBB299A01B616AF00016985E /* IrisData.swift in Sources */,
 				BBB299851B6167CC0016985E /* ViewController.swift in Sources */,
