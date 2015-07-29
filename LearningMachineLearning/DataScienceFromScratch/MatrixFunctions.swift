@@ -3,15 +3,18 @@
 //  LearningMachineLearning
 //
 //  Created by Grace on 7/24/15.
-//  Copyright (c) 2015 Grace Avery. All rights reserved.
 //
 
 import Foundation
 
-func shape<T>(matrix: [[T]]) -> (Int, Int) {
+func shape<T>(matrix: [[T]]) -> (rows: Int, cols: Int) {
     let numRows = matrix.count
     let numCols = numRows > 0 ? matrix[0].count : 0
     return (numRows, numCols)
+}
+
+func getColumn<T>(matrix: [[T]], j: Int) -> [T] {
+    return matrix.map { $0[j] }
 }
 
 func makeMatrix<T>(numRows: Int, numCols: Int, entryFunction: (i: Int, j: Int) -> T) -> [[T]] {
@@ -27,7 +30,13 @@ func makeMatrix<T>(numRows: Int, numCols: Int, entryFunction: (i: Int, j: Int) -
     return matrix
 }
 
-
+func transpose<T>(matrix: [[T]]) -> [[T]] {
+    let oldShape = shape(matrix)
+    let newMatrix = makeMatrix(oldShape.cols, numCols: oldShape.rows) { (i, j) -> T in
+        return matrix[j][i]
+    }
+    return newMatrix
+}
 
 
 

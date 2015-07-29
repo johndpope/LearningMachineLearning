@@ -13,6 +13,19 @@ enum IrisType: String {
     case Virginica = "Iris-virginica"
 }
 
+extension IrisType {
+    func type() -> DataType {
+        switch self {
+        case .Setosa:
+            return .Type0
+        case .Versicolor:
+            return .Type1
+        case .Virginica:
+            return .Type2
+        }
+    }
+}
+
 class IrisData {
     var data = [[Double]]()
     var labels = [IrisType]()
@@ -22,10 +35,6 @@ class IrisData {
         if let text = textFromBundle()?.componentsSeparatedByString("\n") {
             parseIrisData(text)
             parseAttributes(text)
-            
-            print(data)
-            print(labels)
-            print(attributes)
         }
     }
     

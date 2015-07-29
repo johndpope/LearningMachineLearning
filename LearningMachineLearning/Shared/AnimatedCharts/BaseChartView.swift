@@ -30,13 +30,46 @@ class BaseChartView: UIView {
     var yAxisLabel: String!
     var labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
     var paddingOptions = ChartPadding.PadNone
+    
+    func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String, xStart: Double? = nil, xEnd: Double? = nil, yStart: Double? = nil, yEnd: Double? = nil) {
+        setDataMinMaxInterval(data, xStart: xStart, xEnd: xEnd, yStart: yStart, yEnd: yEnd)
+        
+        self.xAxisLabel = xAxisLabel
+        self.yAxisLabel = yAxisLabel
+        
+        let layerSpecifications: [DataType : UIColor] = [
+            .Type0 : UIColor.redColor(),
+            .Type1 : UIColor.blueColor(),
+            .Type2 : UIColor.greenColor()
+        ]
+        
+        let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
+        
+        let scatterLayers = self.toLayers(data, layerSpecifications: layerSpecifications, xAxis: xAxis, yAxis: yAxis, chartInnerFrame: innerFrame)
+        
+        let guidelinesLayerSettings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ExamplesDefaults.guidelinesWidth)
+        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: guidelinesLayerSettings)
+        
+        
+        let chart = Chart(
+            frame: chartFrame,
+            layers: [
+                xAxis,
+                yAxis,
+                guidelinesLayer,
+                ] + scatterLayers
+        )
+        
+        addSubview(chart.view)
+        self.chart = chart
+    }
 
     func baseChartLayers(labelSettings: ChartLabelSettings, minX: Double, maxX: Double, minY: Double, maxY: Double, xInterval: Double, yInterval: Double, xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
         let xValues = Array(stride(from: minX, through: maxX, by: xInterval)).map { ChartAxisValueFloat(CGFloat($0), labelSettings: labelSettings)}
         let yValues = Array(stride(from: minY, through: maxY, by: yInterval)).map {ChartAxisValueFloat(CGFloat($0), labelSettings: labelSettings)}
         
         let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: xAxisLabel, settings: labelSettings))
-        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: yAxisLabel, settings: labelSettings))
+        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: yAxisLabel, settings: labelSettings.defaultVertical()))
         
         let chartFrame = ExamplesDefaults.chartFrame(self.chartFrame)
         let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: ExamplesDefaults.chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
@@ -78,7 +111,7 @@ class BaseChartView: UIView {
         return layers
     }
     
-    func setDataMinMaxInterval(data: [LabeledInput]) {
+    func setDataMinMaxInterval(data: [LabeledInput], xStart: Double? = nil, xEnd: Double? = nil, yStart: Double? = nil, yEnd: Double? = nil) {
         chartFrame = frame
         var minX = Double(UINT32_MAX)
         var minY = Double(UINT32_MAX)
@@ -99,6 +132,19 @@ class BaseChartView: UIView {
             } else if y > maxY {
                 maxY = y
             }
+        }
+        
+        if let overrideMinX = xStart {
+            minX = overrideMinX
+        }
+        if let overrideMaxX = xEnd {
+            maxX = overrideMaxX
+        }
+        if let overrideMinY = yStart {
+            minY = overrideMinY
+        }
+        if let overrideMaxY = yEnd {
+            maxY = overrideMaxY
         }
         
         let xDiff = abs(maxX - minX)

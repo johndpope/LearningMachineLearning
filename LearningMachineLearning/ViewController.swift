@@ -18,9 +18,12 @@ class ViewController: UIViewController {
         
         //showPerceptron()
         
-        //dataScienceFromScratch1()
+
+        //let dataScienceVC = DataScienceFromScratch1_7()
+        //let dataScienceVC = DataScienceFromScratch8()
+        let dataScienceVC = DataScienceFromScratch14()
         
-        dataScienceFromScratch2()
+        view.addSubview(dataScienceVC.view)
     }
     
     func showPerceptron() {
@@ -31,17 +34,6 @@ class ViewController: UIViewController {
     func karpathyTutorial() {
         KarpathyTutorial.doTheThing()
     }
-    
-    func dataScienceFromScratch1() {
-        let dataScienceVC = DataScienceFromScratch1_7()
-        view.addSubview(dataScienceVC.view)
-    }
-    
-    func dataScienceFromScratch2() {
-        let dataScienceVC = DataScienceFromScratch8()
-        view.addSubview(dataScienceVC.view)
-    }
-   
 
 }
 

@@ -94,3 +94,9 @@ func min<T, U: Comparable>(v: [T], key: (T) -> U) -> T {
     return minEntry
 }
 
+func sum(v: [Double]) -> Double {
+    return v.reduce(0.0) { $0 + $1 }
+}
+
+
+

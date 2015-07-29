@@ -22,40 +22,11 @@ struct DisplayParam {
 
 class AnimatedChartView: BaseChartView, ChartUpdate {
     private var lineChart: Chart?
-    private var dataChart: Chart?
     
     var label: UILabel!
 
-    func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
-        setDataMinMaxInterval(data)
-        self.xAxisLabel = xAxisLabel
-        self.yAxisLabel = yAxisLabel
-        
-        let layerSpecifications: [DataType : UIColor] = [
-            .Type0 : UIColor.redColor(),
-            .Type1 : UIColor.blueColor(),
-            .Type2 : UIColor.greenColor()
-        ]
-        
-        let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings)
-        
-        let scatterLayers = self.toLayers(data, layerSpecifications: layerSpecifications, xAxis: xAxis, yAxis: yAxis, chartInnerFrame: innerFrame)
-        
-        let guidelinesLayerSettings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ExamplesDefaults.guidelinesWidth)
-        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: guidelinesLayerSettings)
-        
-
-        let chart = Chart(
-            frame: chartFrame,
-            layers: [
-                xAxis,
-                yAxis,
-                guidelinesLayer,
-                ] + scatterLayers
-        )
-        
-        addSubview(chart.view)
-        self.dataChart = chart
+    override func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String, xStart: Double? = nil, xEnd: Double? = nil, yStart: Double? = nil, yEnd: Double? = nil) {
+        super.setUpChartWithData(data, frame: frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         
         self.label = UILabel(frame: CGRectMake(frame.width * 5/6, frame.height * 1/6, 180, 100))
         self.label.numberOfLines = 0

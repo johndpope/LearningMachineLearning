@@ -12,7 +12,7 @@ class Perceptron {
     
     var weights = [Double]()
     var threshold: Double
-    let c = 0.001
+    let c = 0.005
     
     init(displayUpdater: ChartUpdate) {
         for _ in 0..<2 {

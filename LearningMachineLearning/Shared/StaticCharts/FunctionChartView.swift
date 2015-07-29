@@ -14,6 +14,12 @@ class FunctionChartView: BaseChartView {
     var extraLayers = [Chart]()
     var pointInterval = 0.2
     
+    override func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String, xStart: Double? = nil, xEnd: Double? = nil, yStart: Double? = nil, yEnd: Double? = nil) {
+        super.setUpChartWithData(data, frame: frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel, xStart: xStart, xEnd: xEnd, yStart: yStart, yEnd: yEnd)
+        dataXMin = minX
+        dataXMax = maxX
+    }
+    
     func setUpChartWithFunction(frame: CGRect, xAxisLabel: String, yAxisLabel: String, minX: Double, maxX: Double, f: (Double) -> Double) {
         dataXMin = minX
         dataXMax = maxX
@@ -24,11 +30,11 @@ class FunctionChartView: BaseChartView {
             return input
         }
         
-        setUpChartWithData(data, frame: frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
+        setUpChartWithLineData(data, frame: frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         addNewLayerWithFunction(UIColor.blackColor(), f: f)
     }
     
-    func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
+    func setUpChartWithLineData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
         setDataMinMaxInterval(data)
         
         let (xAxis, yAxis, innerFrame) = baseChartLayers(xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
@@ -56,7 +62,7 @@ class FunctionChartView: BaseChartView {
             return ChartPoint(x: ChartAxisValueFloat(CGFloat(x)), y: ChartAxisValueFloat(CGFloat(y)))
         }
 
-        let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: "", yAxisLabel: "")
+        let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         
         let lineModel = ChartLineModel(chartPoints: data, lineColor: color, lineWidth: 2.0, animDuration: 0.0, animDelay: 0)
         let chartPointsLineLayer = ChartPointsLineLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, lineModels: [lineModel])

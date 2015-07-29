@@ -31,15 +31,3 @@ enum Furniture {
 typealias LabeledInput = ([Double], DataType)
 
 
-extension IrisType {
-    func type() -> DataType {
-        switch self {
-        case .Setosa:
-            return .Type0
-        case .Versicolor:
-            return .Type1
-        case .Virginica:
-            return .Type2
-        }
-    }
-}
