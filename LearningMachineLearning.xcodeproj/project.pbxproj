@@ -20,6 +20,8 @@
 		BB28AC641B67CF3D0014B6FC /* DecisionTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28AC631B67CF3D0014B6FC /* DecisionTrees.swift */; };
 		BB4980701B66E8B4005D261C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB49806F1B66E8B4005D261C /* Accelerate.framework */; };
 		BB5606711B66F223007A9E25 /* AnimatedFunctionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5606701B66F223007A9E25 /* AnimatedFunctionChartView.swift */; };
+		BB6069A71B6985D900F40793 /* MachineLearningDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6069A61B6985D900F40793 /* MachineLearningDataFunctions.swift */; };
+		BB6069A91B69993000F40793 /* KNearestNeighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6069A81B69993000F40793 /* KNearestNeighbors.swift */; };
 		BB74BD2F1B66F763009021CB /* GradientDescent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BD2E1B66F763009021CB /* GradientDescent.swift */; };
 		BB9E8BE51B68530500E363FC /* TurtleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E8BE41B68530500E363FC /* TurtleData.swift */; };
 		BB9E8BE71B687C4D00E363FC /* DataScaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E8BE61B687C4D00E363FC /* DataScaping.swift */; };
@@ -82,6 +84,8 @@
 		BB28AC631B67CF3D0014B6FC /* DecisionTrees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecisionTrees.swift; sourceTree = "<group>"; };
 		BB49806F1B66E8B4005D261C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BB5606701B66F223007A9E25 /* AnimatedFunctionChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedFunctionChartView.swift; sourceTree = "<group>"; };
+		BB6069A61B6985D900F40793 /* MachineLearningDataFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachineLearningDataFunctions.swift; sourceTree = "<group>"; };
+		BB6069A81B69993000F40793 /* KNearestNeighbors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNearestNeighbors.swift; sourceTree = "<group>"; };
 		BB74BD2E1B66F763009021CB /* GradientDescent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientDescent.swift; sourceTree = "<group>"; };
 		BB9E8BE41B68530500E363FC /* TurtleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurtleData.swift; sourceTree = "<group>"; };
 		BB9E8BE61B687C4D00E363FC /* DataScaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScaping.swift; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */,
 				BB74BD2E1B66F763009021CB /* GradientDescent.swift */,
 				BB9E8BE61B687C4D00E363FC /* DataScaping.swift */,
+				BB6069A61B6985D900F40793 /* MachineLearningDataFunctions.swift */,
+				BB6069A81B69993000F40793 /* KNearestNeighbors.swift */,
 				BB9E8BE81B68841900E363FC /* SimpleLinearRegression.swift */,
 				BB28AC631B67CF3D0014B6FC /* DecisionTrees.swift */,
 				BBBAFB711B63E7A60062B538 /* Pythony.swift */,
@@ -416,9 +422,11 @@
 				BBB2999A1B6167F50016985E /* LearningMachineLearningTests.swift in Sources */,
 				BBA31E7F1B63498F001DAC2A /* CanUseOperatorProtocol.swift in Sources */,
 				BBB299931B6167D80016985E /* GeneralizedSVM.swift in Sources */,
+				BB6069A71B6985D900F40793 /* MachineLearningDataFunctions.swift in Sources */,
 				BBB299A31B616B140016985E /* PerceptronViewController.swift in Sources */,
 				BB9E8BE91B68841900E363FC /* SimpleLinearRegression.swift in Sources */,
 				BBB299941B6167D80016985E /* SupportVectorMachine.swift in Sources */,
+				BB6069A91B69993000F40793 /* KNearestNeighbors.swift in Sources */,
 				BBB299961B6167D80016985E /* Unit.swift in Sources */,
 				BB28AC621B67C9840014B6FC /* ApartmentData.swift in Sources */,
 				BB9E8BE71B687C4D00E363FC /* DataScaping.swift in Sources */,

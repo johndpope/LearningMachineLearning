@@ -54,4 +54,3 @@ func rescale(dataMatrix: [[Double]]) -> [[Double]] {
 
 
 
-

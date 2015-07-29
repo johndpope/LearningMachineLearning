@@ -18,6 +18,16 @@ import Foundation
 //    return zipped
 //}
 
+func unzip<T, U>(zipped: [(T, U)]) -> ([T], [U]) {
+    var xs = [T]()
+    var ys = [U]()
+    for (x, y) in zipped {
+        xs.append(x)
+        ys.append(y)
+    }
+    return (xs, ys)
+}
+
 class Counter<T: Hashable>: CustomStringConvertible {
     var counts = [T: Int]()
     

@@ -99,7 +99,7 @@ func gradientDescent2(alpha: Double, x: [Double], y: [Double], ep: Double = 0.00
     }
     
     while !converged {
-        // for each training sample, compute the gradient
+        // for each training sample, compute the gradient. add it all up
         var grad0 = 0.0
         var grad1 = 0.0
         for i in 0..<m {
