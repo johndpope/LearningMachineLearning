@@ -3,12 +3,15 @@
 //  LearningMachineLearning
 //
 //  Created by Grace on 7/28/15.
-//  Copyright © 2015 Grace Avery. All rights reserved.
 //
 
 import Foundation
 
-struct Apartment {
+protocol Subscriptable {
+    subscript(key: String) -> String { get }
+}
+
+struct Apartment: Subscriptable {
     static let keys = ["lotsOfLight", "bigKitchen", "expensive", "bigRooms", "roofDeck"]
     
     let lotsOfLight: Bool
@@ -35,9 +38,9 @@ struct Apartment {
     }
 }
 
-func getApartmentData() -> [(Apartment, Bool)] {
+func getApartmentData() -> [(Subscriptable, Bool)] {
     // (Apartment, Bool = would i wanna live there)
-    var arr = [(Apartment, Bool)]()
+    var arr = [(Subscriptable, Bool)]()
     arr.append((Apartment(lotsOfLight: true, bigKitchen: true, expensive: true, bigRooms: true, roofDeck: true), true))
     arr.append((Apartment(lotsOfLight: true, bigKitchen: false, expensive: true, bigRooms: true, roofDeck: true), true))
     arr.append((Apartment(lotsOfLight: true, bigKitchen: false, expensive: false, bigRooms: true, roofDeck: true), true))

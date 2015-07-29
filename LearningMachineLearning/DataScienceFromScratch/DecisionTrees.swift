@@ -38,6 +38,12 @@ class DecisionTrees {
     }
 
     func doTheThing() {
+        //decisionTreesWithApartmentData()
+        
+        decisionTreesWithTurtleData()
+    }
+    
+    func decisionTreesWithApartmentData() {
         let data = getApartmentData()
         
         print("total entropy = \(dataEntropy(data))")
@@ -49,8 +55,8 @@ class DecisionTrees {
         }
         print("----")
         
-
-        let tree = buildTreeID3(data, splitCandidates: nil)
+        
+        let tree = buildTreeID3(data, splitCandidates: Apartment.keys)
         print(tree)
         
         
@@ -72,6 +78,31 @@ class DecisionTrees {
         print("Would i want this apartment4?  \(result4)")
     }
     
+    func decisionTreesWithTurtleData() {
+        let data = getTurtleData()
+        
+        print("total entropy = \(dataEntropy(data))\n")
+        for key in Turtle.knownKeys {
+            let entropyOfPartition = partitionEntropyBy(data, attribute: key)
+            print("\(key) = \(entropyOfPartition)")
+        }
+        print("----")
+        
+        let tree = buildTreeID3(data, splitCandidates: Turtle.knownKeys)
+        print(tree)
+        
+        let turtle1 = makeTurtle(.Cm10, yellowStripesOnSkin: true, redSpotOnSidesOfHead: false, darkShell: true)
+        let turtle2 = makeTurtle(.Cm5, yellowStripesOnSkin: true, redSpotOnSidesOfHead: false, darkShell: false)
+        let turtle3 = makeTurtle(.Cm15, yellowStripesOnSkin: false, redSpotOnSidesOfHead: true, darkShell: true)
+        let turtle4 = makeTurtle(.Cm10, yellowStripesOnSkin: true, redSpotOnSidesOfHead: true, darkShell: false)
+        
+        print("are these turtles red eared sliders?")
+        print("turtle1: \(classify(tree, input: turtle1))")
+        print("turtle2: \(classify(tree, input: turtle2))")
+        print("turtle3: \(classify(tree, input: turtle3))")
+        print("turtle4: \(classify(tree, input: turtle4))")
+    }
+    
     func entropy(classProbabilities: [Double]) -> Double {
         return classProbabilities.map { p in
             if p == 0 {
@@ -83,7 +114,7 @@ class DecisionTrees {
         }
     }
     
-    func dataEntropy(labeledData: [(Apartment, Bool)]) -> Double {
+    func dataEntropy(labeledData: [(Subscriptable, Bool)]) -> Double {
         let labels = labeledData.map { $0.1 }
         let probabilities = classProbabilities(labels)
         return entropy(probabilities)
@@ -97,34 +128,35 @@ class DecisionTrees {
     }
     
     // finds the entropy from this partition of data into subsets
-    func partitionEntropy(subsets: [[(Apartment, Bool)]]) -> Double {
+    func partitionEntropy(subsets: [[(Subscriptable, Bool)]]) -> Double {
         let totalCount = subsets.map { $0.count }.reduce(0) { $0 + $1 }
         let subsetEntropies = subsets.map { dataEntropy($0) * Double($0.count) / Double(totalCount) }
         return subsetEntropies.reduce(0.0) { $0 + $1 }
     }
     
-    func partitionBy(inputs: [(Apartment, Bool)], attribute: String) -> [String: [(Apartment, Bool)]]{
-        var groups = [String: [(Apartment, Bool)]]()
-        groups[String(true)] = [(Apartment, Bool)]()
-        groups[String(false)] = [(Apartment, Bool)]()
+    func partitionBy(inputs: [(Subscriptable, Bool)], attribute: String) -> [String: [(Subscriptable, Bool)]]{
+        var groups = [String: [(Subscriptable, Bool)]]()
         for input in inputs {
             let key = input.0[attribute]
+            if groups[key] == nil {
+                groups[key] = [(Subscriptable, Bool)]()
+            }
             groups[key]!.append(input)
         }
         return groups
     }
     
     // computes the entropy corresponding to a given partition
-    func partitionEntropyBy(inputs: [(Apartment, Bool)], attribute: String) -> Double {
+    func partitionEntropyBy(inputs: [(Subscriptable, Bool)], attribute: String) -> Double {
         let partitions = partitionBy(inputs, attribute: attribute)
         return partitionEntropy(Array(partitions.values))
     }
     
-    func partitionEntropyBy(inputs: [(Apartment, Bool)])(attribute: String) -> Double {
+    func partitionEntropyBy(inputs: [(Subscriptable, Bool)])(attribute: String) -> Double {
         return partitionEntropyBy(inputs, attribute: attribute)
     }
     
-    func classify(tree: Tree, input: Apartment) -> Bool {
+    func classify(tree: Tree, input: Subscriptable) -> Bool {
         switch tree {
         // if this is a leaf node, return its value
         case .Leaf(let value):
@@ -145,13 +177,9 @@ class DecisionTrees {
     }
 
     
-    func buildTreeID3(inputs: [(Apartment, Bool)], var splitCandidates: [String]?) -> Tree {
+    func buildTreeID3(inputs: [(Subscriptable, Bool)], var splitCandidates: [String]) -> Tree {
         // if this is our first pass,
         // all the keys of the first input are split candidates
-        
-        if splitCandidates == nil {
-            splitCandidates = Apartment.keys
-        }
         
         // count trues and falses in the inputs
         let numInputs = inputs.count
@@ -166,16 +194,16 @@ class DecisionTrees {
         }
         
         // if no split candidates left, return the majority leaf
-        if splitCandidates!.isEmpty {
+        if splitCandidates.isEmpty {
             return Tree.Leaf(numTrues >= numFalses)
         }
         
         // otherwise, split on the best attribute
         let partitionFunc = partitionEntropyBy(inputs)
-        let bestAttribute = min(splitCandidates!, key: partitionFunc)
+        let bestAttribute = min(splitCandidates, key: partitionFunc)
         
         let partitions = partitionBy(inputs, attribute: bestAttribute)
-        let newCandidates = splitCandidates!.filter { $0 != bestAttribute }
+        let newCandidates = splitCandidates.filter { $0 != bestAttribute }
         
         // recursively build the subtrees
         var subtreeDict = [String: Tree]()
