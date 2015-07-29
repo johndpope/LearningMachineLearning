@@ -77,10 +77,24 @@ func negate(f: ArrayToScalarFunction) -> ArrayToScalarFunction {
     return newF
 }
 
+func negate(f: (Double, Double, [Double]) -> Double) -> (Double, Double, [Double]) -> Double {
+    func newF(a: Double, b: Double, c: [Double]) -> Double {
+        return -f(a, b, c)
+    }
+    return newF
+}
+
 func negateAll(f: ArrayToArrayFunction) -> ArrayToArrayFunction {
     // the same when f returns a list of numbers
     func newF(v: [Double]) -> [Double] {
         return f(v).map { -$0 }
+    }
+    return newF
+}
+
+func negateAll(f: (Double, Double, [Double]) -> [Double]) -> (Double, Double, [Double]) -> [Double] {
+    func newF(a: Double, b: Double, c: [Double]) -> [Double] {
+        return f(a, b, c).map { -$0 }
     }
     return newF
 }
@@ -104,16 +118,58 @@ func safe(f: ([Double]) -> Double) -> ([Double]) -> Double {
 
 // MARK:- Stochastic Gradient Descent
 
-//func minimizeStochastic(targetFn: ([Double]) -> Double, gradientFn: ([Double]) -> [Double], x: [Double], y: [Double], theta_0: [Double], alpha: Double = 0.01) -> [Double] {
-//
-//    let data = zip(x, y)
-//    
-//    
-//    
-//    
-//}
+func minimizeStochastic(targetFn: (Double, Double, [Double]) -> Double, gradientFn: (Double, Double, [Double]) -> [Double], x: [Double], y: [Double], theta0: [Double], alpha0: Double = 0.01) -> [Double] {
 
+    let data = zip(x, y)
+    var theta = theta0
+    var alpha = alpha0
+    var minTheta:[Double]? = nil
+    var minValue = Double(UINT32_MAX)
+    var iterationsWithNoImprovement = 0
+    
+    // if we ever go 100 iterations with no improvement, stop
+    while iterationsWithNoImprovement < 100 {
+        
+        var value = 0.0
+        for (xi, yi) in data {
+            value += targetFn(xi, yi, theta)
+        }
+        
+        if value < minValue {
+            // if we've found a new minimum remember it
+            // and go back to the original step size
+            minTheta = theta
+            minValue = value
+            iterationsWithNoImprovement = 0
+            alpha = alpha0
+        }
+        else {
+            // otherwise we're not improving, so try shrinking the step size
+            iterationsWithNoImprovement++
+            alpha *= 0.9
+        }
+        
+        // and take a gradient step for each of the data points
+        var shuffled = Array(data)
+        shuffled.shuffle()
+        for (xi, yi) in shuffled {
+            let gradientI = gradientFn(xi, yi, theta)
+            theta = vectorSubtract(theta, scalarMultiply(alpha, gradientI))
+        }
+    }
+    
+    return minTheta!
+}
 
+func maximizeStochastic(targetFn: (Double, Double, [Double]) -> Double, gradientFn: (Double, Double, [Double]) -> [Double], x: [Double], y: [Double], theta0: [Double], alpha0: Double = 0.01) -> [Double] {
+
+    return minimizeStochastic(negate(targetFn),
+        gradientFn: negateAll(gradientFn),
+        x: x,
+        y: y,
+        theta0: theta0,
+        alpha0: alpha0)
+}
 
 
 
