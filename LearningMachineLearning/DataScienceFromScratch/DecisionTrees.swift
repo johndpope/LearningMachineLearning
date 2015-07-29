@@ -12,7 +12,7 @@ class DecisionTrees {
     
     indirect enum Tree: CustomStringConvertible {
         case Leaf(Bool)
-        case Node(String, [Bool: Tree])
+        case Node(String, [String: Tree])
         
         var description: String {
             return recursiveDescription("")
@@ -103,12 +103,12 @@ class DecisionTrees {
         return subsetEntropies.reduce(0.0) { $0 + $1 }
     }
     
-    func partitionBy(inputs: [(Apartment, Bool)], attribute: String) -> [Bool: [(Apartment, Bool)]]{
-        var groups = [Bool: [(Apartment, Bool)]]()
-        groups[true] = [(Apartment, Bool)]()
-        groups[false] = [(Apartment, Bool)]()
+    func partitionBy(inputs: [(Apartment, Bool)], attribute: String) -> [String: [(Apartment, Bool)]]{
+        var groups = [String: [(Apartment, Bool)]]()
+        groups[String(true)] = [(Apartment, Bool)]()
+        groups[String(false)] = [(Apartment, Bool)]()
         for input in inputs {
-            let key = input.0[attribute]!
+            let key = input.0[attribute]
             groups[key]!.append(input)
         }
         return groups
@@ -125,7 +125,6 @@ class DecisionTrees {
     }
     
     func classify(tree: Tree, input: Apartment) -> Bool {
-        
         switch tree {
         // if this is a leaf node, return its value
         case .Leaf(let value):
@@ -135,19 +134,14 @@ class DecisionTrees {
         // and a dictionary whose keys are values of that attribute
         // and whose values are subtrees to consider next
         case .Node(let attribute, let subtreeDict):
-            let subtreeKey = input[attribute]
+            var subtreeKey = input[attribute]
             
-            // TODO:
-            // if no subtree for key
-            // we'll use the None subtree
-
-            
-            let subtree = subtreeDict[subtreeKey!]
-            
+            if subtreeDict[subtreeKey] == nil {
+                subtreeKey = "None"
+            }
+            let subtree = subtreeDict[String(subtreeKey)]
             return classify(subtree!, input: input)
         }
-        
-        
     }
 
     
@@ -184,14 +178,15 @@ class DecisionTrees {
         let newCandidates = splitCandidates!.filter { $0 != bestAttribute }
         
         // recursively build the subtrees
-        var subtreeDict = [Bool: Tree]()
+        var subtreeDict = [String: Tree]()
         
         for (attributeValue, subset) in partitions {
             let subsetTree = buildTreeID3(subset, splitCandidates: newCandidates)
             subtreeDict[attributeValue] = subsetTree
         }
         
-        
+        // default case
+        subtreeDict["None"] = Tree.Leaf(numTrues > numFalses)
         
         return Tree.Node(bestAttribute, subtreeDict)
     }

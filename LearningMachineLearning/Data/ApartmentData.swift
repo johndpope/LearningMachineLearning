@@ -17,20 +17,20 @@ struct Apartment {
     let bigRooms: Bool
     let roofDeck: Bool
     
-    subscript(key: String) -> Bool? {
+    subscript(key: String) -> String {
         get {
             if key == "lotsOfLight" {
-                return lotsOfLight
+                return String(lotsOfLight)
             } else if key == "bigKitchen" {
-                return bigKitchen
+                return String(bigKitchen)
             } else if key == "expensive" {
-                return expensive
+                return String(expensive)
             } else if key == "bigRooms" {
-                return bigRooms
+                return String(bigRooms)
             } else if key == "roofDeck" {
-                return roofDeck
+                return String(roofDeck)
             }
-            return nil
+            return "None"
         }
     }
 }
