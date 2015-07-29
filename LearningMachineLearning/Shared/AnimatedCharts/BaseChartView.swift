@@ -192,7 +192,6 @@ class BaseChartView: UIView {
         // the stride sometimes misses the top value if this is not included
         maxY += (yInterval / 5)
         maxX += (xInterval / 5)
-
      
         self.minX = minX
         self.minY = minY

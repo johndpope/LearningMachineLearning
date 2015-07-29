@@ -11,9 +11,11 @@ import SwiftCharts
 
 class DataScienceFromScratch14: UIViewController {
     var chart: FunctionChartView!
+    // for example with low correlation, put in 0, 3, 0
+    // for example with higher correlation, put in 0, 2, 2  (or 0, 2, 1)
     let feature1Index = 0
     let feature2Index = 2
-    let speciesIndex = 1
+    let speciesIndex = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +28,10 @@ class DataScienceFromScratch14: UIViewController {
     }
 
     func chartIrisData(data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
-        chart.paddingOptions = (ChartPadding.PadTop).union(ChartPadding.PadRight)
-        chart.overrides.minX = 0.0
-        chart.overrides.minY = 0.0
+        //chart.paddingOptions = (ChartPadding.PadTop).union(ChartPadding.PadRight)
+        chart.paddingOptions = ChartPadding.PadAll
+        //chart.overrides.minX = 0.0
+        //chart.overrides.minY = 0.0
         chart.setUpChartWithData(data, frame: view.frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         view.addSubview(chart)
     }
@@ -38,9 +41,9 @@ class DataScienceFromScratch14: UIViewController {
         let dataAndLabels = zip(iris.data, iris.labels)
         let filtered = dataAndLabels.filter { return $1.type().rawValue == speciesIndex }
         let twoFeatures = filtered.map { (data: [Double], label: IrisType) -> LabeledInput in
-            // i'm messing with the data here to better understand the math
-            // remember to change this back
-            ([data[feature1Index], data[feature2Index] * 4], label.type())
+            // i'm messing with the data here (x * 2)
+            // actual data doesn't matter right now, this is just for learning
+            ([data[feature1Index] * 2, data[feature2Index]], label.type())
         }
         return twoFeatures
     }
@@ -53,29 +56,71 @@ class DataScienceFromScratch14: UIViewController {
         let y = featureVectors[1]
         
         let (alpha, beta) = LinearRegression.leastSquaresFit(x, y)
-        print(alpha)
-        print(beta)
+        
         
         let stdvX = standardDeviation(x)
-        let stdvY = standardDeviation(y)
-        
+        //let stdvY = standardDeviation(y)
         chart.overrides.xInterval = stdvX
-        chart.overrides.yInterval = stdvY
-        
-        
-        chart.overrides.xInterval = stdvY
-        print("stdv x = \(stdvX)")
-        print("stdv y = \(stdvY)")
-        
-        let proportion = stdvY / stdvX
-        print("stdvx / stdvy = \(proportion)")
-        chart.overrides.xMaxMultiplier = proportion
+        chart.overrides.yInterval = stdvX
+        //let proportion = stdvX / stdvY
+        //chart.overrides.yMaxMultiplier = proportion
         
         chartIrisData(data, xAxisLabel: "x", yAxisLabel: "y")
 
         chart.addNewLayerWithFunction(UIColor.blackColor()) { (x: Double) -> Double in
             x * beta + alpha 
         }
+        
+        
+        print("Linear regression with gradient descent")
+        
+        let (alpha2, beta2) = LinearRegression.linearRegressionMinimizeStochastic(x, y: y)
+        
+        
+        chart.addNewLayerWithFunction(UIColor.redColor()) { (x: Double) -> Double in
+            x * beta2 + alpha2
+        }
+        
+        
+        let (alpha3, beta3) = gradientDescent2(0.01, x: x, y: y)
+        
+        
+        chart.addNewLayerWithFunction(UIColor.greenColor()) { (x: Double) -> Double in
+            x * beta3 + alpha3
+        }
+        
+        
+        let theta = minimizeBatchSumOfSquaredErrors(x, y: y, theta_0: [4.0, 4.0])
+        let alpha4 = theta[0]
+        let beta4 = theta[1]
+        
+        
+        chart.addNewLayerWithFunction(UIColor.blueColor()) { (x: Double) -> Double in
+            x * beta4 + alpha4
+        }
+        
+        
+        print("alpha1 = \(alpha)")
+        print("beta1 = \(beta)\n")
+        print("alpha2 = \(alpha2)")
+        print("beta2 = \(beta2)\n")
+        print("alpha3 = \(alpha3)")
+        print("beta3 = \(beta3)\n")
+        print("alpha4 = \(alpha4)")
+        print("beta4 = \(beta4)\n")
+        
+        print("r squared for algebra model (black) = \(LinearRegression.rSquared(alpha, beta: beta, x: x, y: y))\n")
+        
+        print("r squared for stochastic model (red) = \(LinearRegression.rSquared(alpha2, beta: beta2, x: x, y: y))\n")
+        
+        print("r squared for batch model 1 (doesn't adjust h) (green) = \(LinearRegression.rSquared(alpha3, beta: beta3, x: x, y: y))\n")
+        
+        print("r squared for batch model 2 (adjusts h) (blue) = \(LinearRegression.rSquared(alpha4, beta: beta4, x: x, y: y))\n")
+        
+        // r squared with straight line at mean of y
+        //LinearRegression.rSquared(mean(y), beta: 0.0, x: x, y: y)
+        
+        
     }
     
    
