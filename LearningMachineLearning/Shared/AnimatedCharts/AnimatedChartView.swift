@@ -25,7 +25,7 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
     
     var label: UILabel!
 
-    override func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String, xStart: Double? = nil, xEnd: Double? = nil, yStart: Double? = nil, yEnd: Double? = nil) {
+    override func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
         super.setUpChartWithData(data, frame: frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         
         self.label = UILabel(frame: CGRectMake(frame.width * 5/6, frame.height * 1/6, 180, 100))

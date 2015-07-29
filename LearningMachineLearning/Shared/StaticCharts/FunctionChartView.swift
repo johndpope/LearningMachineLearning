@@ -14,8 +14,8 @@ class FunctionChartView: BaseChartView {
     var extraLayers = [Chart]()
     var pointInterval = 0.2
     
-    override func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String, xStart: Double? = nil, xEnd: Double? = nil, yStart: Double? = nil, yEnd: Double? = nil) {
-        super.setUpChartWithData(data, frame: frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel, xStart: xStart, xEnd: xEnd, yStart: yStart, yEnd: yEnd)
+    override func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
+        super.setUpChartWithData(data, frame: frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         dataXMin = minX
         dataXMax = maxX
     }

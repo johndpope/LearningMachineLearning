@@ -21,18 +21,23 @@ struct ChartPadding : OptionSetType {
     static var PadAll: ChartPadding { return ChartPadding(rawValue: 15) }
 }
 
+struct ChartOverrides {
+    var minX, minY, maxX, maxY, xInterval, yInterval, xMaxMultiplier, yMaxMultiplier: Double?
+}
+
 class BaseChartView: UIView {
     var chartFrame: CGRect!
     var chart: Chart?
     var pointSize: Int?
     var minX, minY, maxX, maxY, xInterval, yInterval: Double!
+    var overrides: ChartOverrides = ChartOverrides()
     var xAxisLabel: String!
     var yAxisLabel: String!
     var labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
     var paddingOptions = ChartPadding.PadNone
     
-    func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String, xStart: Double? = nil, xEnd: Double? = nil, yStart: Double? = nil, yEnd: Double? = nil) {
-        setDataMinMaxInterval(data, xStart: xStart, xEnd: xEnd, yStart: yStart, yEnd: yEnd)
+    func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
+        setDataMinMaxInterval(data)
         
         self.xAxisLabel = xAxisLabel
         self.yAxisLabel = yAxisLabel
@@ -111,7 +116,7 @@ class BaseChartView: UIView {
         return layers
     }
     
-    func setDataMinMaxInterval(data: [LabeledInput], xStart: Double? = nil, xEnd: Double? = nil, yStart: Double? = nil, yEnd: Double? = nil) {
+    func setDataMinMaxInterval(data: [LabeledInput]) {
         chartFrame = frame
         var minX = Double(UINT32_MAX)
         var minY = Double(UINT32_MAX)
@@ -134,25 +139,41 @@ class BaseChartView: UIView {
             }
         }
         
-        if let overrideMinX = xStart {
+        if let overrideMinX = overrides.minX  {
             minX = overrideMinX
         }
-        if let overrideMaxX = xEnd {
+        if let overrideMaxX = overrides.maxX {
             maxX = overrideMaxX
         }
-        if let overrideMinY = yStart {
+        if let overrideMinY = overrides.minY {
             minY = overrideMinY
         }
-        if let overrideMaxY = yEnd {
+        if let overrideMaxY = overrides.maxY {
             maxY = overrideMaxY
         }
         
-        let xDiff = abs(maxX - minX)
-        let yDiff = abs(maxY - minY)
+        if let overrideXInterval = overrides.xInterval {
+            xInterval = overrideXInterval
+        }
+        else {
+            let xDiff = abs(maxX - minX)
+            xInterval = xDiff/10
+        }
         
-        xInterval = xDiff/10
-        yInterval = yDiff/8
-
+        if let overrideYInterval = overrides.yInterval {
+            yInterval = overrideYInterval
+        }
+        else {
+            let yDiff = abs(maxY - minY)
+            yInterval = yDiff/8
+        }
+        
+        if let xMultiplier = overrides.xMaxMultiplier {
+            maxX *= xMultiplier
+        }
+        if let yMultiplier = overrides.yMaxMultiplier {
+            maxY *= yMultiplier
+        }
         
         if paddingOptions.contains(.PadBottom) {
             minY -= yInterval
@@ -167,6 +188,7 @@ class BaseChartView: UIView {
         if paddingOptions.contains(.PadRight) {
             maxX += xInterval
         }
+        
         // the stride sometimes misses the top value if this is not included
         maxY += (yInterval / 5)
         maxX += (xInterval / 5)

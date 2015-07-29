@@ -18,7 +18,7 @@ class LinearRegression {
         return yi - predict(alpha, beta: beta, xi: xi)
     }
     
-    class func sumOfSquaredErros(alpha: Double, beta: Double, x: [Double], y: [Double]) -> Double {
+    class func sumOfSquaredErrors(alpha: Double, beta: Double, x: [Double], y: [Double]) -> Double {
         let squaredErrors = zip(x, y).map { (xi, yi) -> Double in
             let error = self.error(alpha, beta: beta, xi: xi, yi: yi)
             return error ** 2
