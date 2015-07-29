@@ -36,6 +36,7 @@ struct Apartment {
 }
 
 func getApartmentData() -> [(Apartment, Bool)] {
+    // (Apartment, Bool = would i wanna live there)
     var arr = [(Apartment, Bool)]()
     arr.append((Apartment(lotsOfLight: true, bigKitchen: true, expensive: true, bigRooms: true, roofDeck: true), true))
     arr.append((Apartment(lotsOfLight: true, bigKitchen: false, expensive: true, bigRooms: true, roofDeck: true), true))
@@ -54,10 +55,12 @@ func getApartmentData() -> [(Apartment, Bool)] {
     arr.append((Apartment(lotsOfLight: true, bigKitchen: false, expensive: true, bigRooms: false, roofDeck: false), false))
     arr.append((Apartment(lotsOfLight: true, bigKitchen: false, expensive: false, bigRooms: false, roofDeck: false), false))
     arr.append((Apartment(lotsOfLight: true, bigKitchen: true, expensive: true, bigRooms: false, roofDeck: false), false))
-    arr.append((Apartment(lotsOfLight: true, bigKitchen: false, expensive: false, bigRooms: false, roofDeck: false), true))
+    arr.append((Apartment(lotsOfLight: true, bigKitchen: false, expensive: false, bigRooms: false, roofDeck: false), false))
     arr.append((Apartment(lotsOfLight: false, bigKitchen: true, expensive: true, bigRooms: true, roofDeck: false), false))
     arr.append((Apartment(lotsOfLight: false, bigKitchen: true, expensive: false, bigRooms: false, roofDeck: false), false))
     arr.append((Apartment(lotsOfLight: false, bigKitchen: false, expensive: false, bigRooms: true, roofDeck: false), false))
     arr.append((Apartment(lotsOfLight: false, bigKitchen: false, expensive: true, bigRooms: false, roofDeck: false), false))
     return arr
 }
+
+

@@ -81,4 +81,16 @@ func min(v: [[Double]], key: ([Double]) -> Double) -> [Double] {
     return min
 }
 
+func min<T, U: Comparable>(v: [T], key: (T) -> U) -> T {
+    var minEntry = v[0]
+    var minValue = key(minEntry)
+    for entry in v {
+        let newValue = key(entry)
+        if newValue < minValue {
+            minEntry = entry
+            minValue = newValue
+        }
+    }
+    return minEntry
+}
 
