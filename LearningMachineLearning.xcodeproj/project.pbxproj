@@ -22,6 +22,8 @@
 		BB5606711B66F223007A9E25 /* AnimatedFunctionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5606701B66F223007A9E25 /* AnimatedFunctionChartView.swift */; };
 		BB6069A71B6985D900F40793 /* MachineLearningDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6069A61B6985D900F40793 /* MachineLearningDataFunctions.swift */; };
 		BB6069A91B69993000F40793 /* KNearestNeighbors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6069A81B69993000F40793 /* KNearestNeighbors.swift */; };
+		BB6069AB1B69AA6B00F40793 /* MultipleRegression.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6069AA1B69AA6B00F40793 /* MultipleRegression.swift */; };
+		BB6069AD1B69AAAB00F40793 /* DataScienceFromScratch15.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6069AC1B69AAAB00F40793 /* DataScienceFromScratch15.swift */; };
 		BB74BD2F1B66F763009021CB /* GradientDescent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BD2E1B66F763009021CB /* GradientDescent.swift */; };
 		BB9E8BE51B68530500E363FC /* TurtleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E8BE41B68530500E363FC /* TurtleData.swift */; };
 		BB9E8BE71B687C4D00E363FC /* DataScaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E8BE61B687C4D00E363FC /* DataScaping.swift */; };
@@ -86,6 +88,8 @@
 		BB5606701B66F223007A9E25 /* AnimatedFunctionChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedFunctionChartView.swift; sourceTree = "<group>"; };
 		BB6069A61B6985D900F40793 /* MachineLearningDataFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachineLearningDataFunctions.swift; sourceTree = "<group>"; };
 		BB6069A81B69993000F40793 /* KNearestNeighbors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KNearestNeighbors.swift; sourceTree = "<group>"; };
+		BB6069AA1B69AA6B00F40793 /* MultipleRegression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleRegression.swift; sourceTree = "<group>"; };
+		BB6069AC1B69AAAB00F40793 /* DataScienceFromScratch15.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScienceFromScratch15.swift; sourceTree = "<group>"; };
 		BB74BD2E1B66F763009021CB /* GradientDescent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientDescent.swift; sourceTree = "<group>"; };
 		BB9E8BE41B68530500E363FC /* TurtleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurtleData.swift; sourceTree = "<group>"; };
 		BB9E8BE61B687C4D00E363FC /* DataScaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScaping.swift; sourceTree = "<group>"; };
@@ -283,6 +287,7 @@
 				BBB299AA1B618A6E0016985E /* DataScienceFromScratch1-7.swift */,
 				BB28AC5B1B66F9FB0014B6FC /* DataScienceFromScratch8.swift */,
 				BB9E8BEA1B68859B00E363FC /* DataScienceFromScratch14.swift */,
+				BB6069AC1B69AAAB00F40793 /* DataScienceFromScratch15.swift */,
 				BB0942651B63118B00CE3C16 /* VectorFunctions.swift */,
 				BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */,
 				BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */,
@@ -294,6 +299,7 @@
 				BB6069A61B6985D900F40793 /* MachineLearningDataFunctions.swift */,
 				BB6069A81B69993000F40793 /* KNearestNeighbors.swift */,
 				BB9E8BE81B68841900E363FC /* SimpleLinearRegression.swift */,
+				BB6069AA1B69AA6B00F40793 /* MultipleRegression.swift */,
 				BB28AC631B67CF3D0014B6FC /* DecisionTrees.swift */,
 				BBBAFB711B63E7A60062B538 /* Pythony.swift */,
 			);
@@ -423,6 +429,7 @@
 				BBA31E7F1B63498F001DAC2A /* CanUseOperatorProtocol.swift in Sources */,
 				BBB299931B6167D80016985E /* GeneralizedSVM.swift in Sources */,
 				BB6069A71B6985D900F40793 /* MachineLearningDataFunctions.swift in Sources */,
+				BB6069AD1B69AAAB00F40793 /* DataScienceFromScratch15.swift in Sources */,
 				BBB299A31B616B140016985E /* PerceptronViewController.swift in Sources */,
 				BB9E8BE91B68841900E363FC /* SimpleLinearRegression.swift in Sources */,
 				BBB299941B6167D80016985E /* SupportVectorMachine.swift in Sources */,
@@ -430,6 +437,7 @@
 				BBB299961B6167D80016985E /* Unit.swift in Sources */,
 				BB28AC621B67C9840014B6FC /* ApartmentData.swift in Sources */,
 				BB9E8BE71B687C4D00E363FC /* DataScaping.swift in Sources */,
+				BB6069AB1B69AA6B00F40793 /* MultipleRegression.swift in Sources */,
 				BB28AC601B673B380014B6FC /* ArrayExtensions.swift in Sources */,
 				BBA78C5D1B65BCEF00573FAD /* BarChartView.swift in Sources */,
 				BB0974371B65981F005B70F8 /* FunctionChartView.swift in Sources */,
