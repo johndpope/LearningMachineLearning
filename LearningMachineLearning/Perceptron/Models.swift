@@ -9,8 +9,12 @@ import Foundation
 
 enum DataType: Int {
     case Type0 = 0
-    case Type1 = 1
-    case Type2 = 2
+    case Type1
+    case Type2
+    case Type3
+    case Type4
+    case Type5
+    case Type6
 }
 
 enum Furniture {

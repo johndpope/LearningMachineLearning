@@ -104,6 +104,19 @@ func min<T, U: Comparable>(v: [T], key: (T) -> U) -> T {
     return minEntry
 }
 
+func minIndex<T, U: Comparable>(v: [T], key: (T) -> U) -> Int {
+    var minIndex = 0
+    var minValue = key(v[0])
+    for i in 1..<v.count {
+        let newValue = key(v[i])
+        if newValue < minValue {
+            minIndex = i
+            minValue = newValue
+        }
+    }
+    return minIndex
+}
+
 func sum(v: [Double]) -> Double {
     return v.reduce(0.0) { $0 + $1 }
 }

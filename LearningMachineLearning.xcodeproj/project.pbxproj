@@ -55,6 +55,8 @@
 		BBB299A61B616B7B0016985E /* KarpathyTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299A51B616B7B0016985E /* KarpathyTutorial.swift */; };
 		BBB299A71B616C530016985E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB299741B6167BF0016985E /* Main.storyboard */; };
 		BBB299AB1B618A6E0016985E /* DataScienceFromScratch1-7.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299AA1B618A6E0016985E /* DataScienceFromScratch1-7.swift */; };
+		BBBA72121B6FF39500750276 /* Clustering.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA72111B6FF39500750276 /* Clustering.swift */; };
+		BBBA72141B6FF3BA00750276 /* DataScienceFromScratch19.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA72131B6FF3BA00750276 /* DataScienceFromScratch19.swift */; };
 		BBBAFB721B63E7A60062B538 /* Pythony.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAFB711B63E7A60062B538 /* Pythony.swift */; };
 		BBEF5FF51B66A5E200515DA2 /* HypothesisAndInference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */; };
 /* End PBXBuildFile section */
@@ -123,6 +125,8 @@
 		BBB299A21B616B140016985E /* PerceptronViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerceptronViewController.swift; sourceTree = "<group>"; };
 		BBB299A51B616B7B0016985E /* KarpathyTutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarpathyTutorial.swift; sourceTree = "<group>"; };
 		BBB299AA1B618A6E0016985E /* DataScienceFromScratch1-7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataScienceFromScratch1-7.swift"; sourceTree = "<group>"; };
+		BBBA72111B6FF39500750276 /* Clustering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clustering.swift; sourceTree = "<group>"; };
+		BBBA72131B6FF3BA00750276 /* DataScienceFromScratch19.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScienceFromScratch19.swift; sourceTree = "<group>"; };
 		BBBAFB711B63E7A60062B538 /* Pythony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pythony.swift; sourceTree = "<group>"; };
 		BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypothesisAndInference.swift; sourceTree = "<group>"; };
 		E10255E69C0235F4B81E3EB2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +292,7 @@
 				BB28AC5B1B66F9FB0014B6FC /* DataScienceFromScratch8.swift */,
 				BB9E8BEA1B68859B00E363FC /* DataScienceFromScratch14.swift */,
 				BB6069AC1B69AAAB00F40793 /* DataScienceFromScratch15.swift */,
+				BBBA72131B6FF3BA00750276 /* DataScienceFromScratch19.swift */,
 				BB0942651B63118B00CE3C16 /* VectorFunctions.swift */,
 				BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */,
 				BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */,
@@ -301,6 +306,7 @@
 				BB9E8BE81B68841900E363FC /* SimpleLinearRegression.swift */,
 				BB6069AA1B69AA6B00F40793 /* MultipleRegression.swift */,
 				BB28AC631B67CF3D0014B6FC /* DecisionTrees.swift */,
+				BBBA72111B6FF39500750276 /* Clustering.swift */,
 				BBBAFB711B63E7A60062B538 /* Pythony.swift */,
 			);
 			path = DataScienceFromScratch;
@@ -433,6 +439,7 @@
 				BBB299A31B616B140016985E /* PerceptronViewController.swift in Sources */,
 				BB9E8BE91B68841900E363FC /* SimpleLinearRegression.swift in Sources */,
 				BBB299941B6167D80016985E /* SupportVectorMachine.swift in Sources */,
+				BBBA72121B6FF39500750276 /* Clustering.swift in Sources */,
 				BB6069A91B69993000F40793 /* KNearestNeighbors.swift in Sources */,
 				BBB299961B6167D80016985E /* Unit.swift in Sources */,
 				BB28AC621B67C9840014B6FC /* ApartmentData.swift in Sources */,
@@ -446,6 +453,7 @@
 				BB28AC5E1B6700A30014B6FC /* IntExtensions.swift in Sources */,
 				BBB299841B6167CC0016985E /* Perceptron.swift in Sources */,
 				BB0974341B658FF1005B70F8 /* Probability.swift in Sources */,
+				BBBA72141B6FF3BA00750276 /* DataScienceFromScratch19.swift in Sources */,
 				BBB299A61B616B7B0016985E /* KarpathyTutorial.swift in Sources */,
 				BBB299AB1B618A6E0016985E /* DataScienceFromScratch1-7.swift in Sources */,
 				BBB299821B6167CC0016985E /* DoubleExtensions.swift in Sources */,

@@ -8,6 +8,35 @@
 
 import Foundation
 
+extension Array {
+    // sample without replacement
+    func sample(k: Int) -> [Element] {
+        var population = self
+        var samples = [Element]()
+        for _ in 0..<k {
+            if population.count > 0 {
+                let rand = Int.randomIntBetween(0, population.count)
+                let element = population.removeAtIndex(rand)
+                samples.append(element)
+            }
+        }
+        return samples
+    }
+    
+    // sample with replacement
+    func sampleWithReplacement(k: Int) -> [Element] {
+        var samples = [Element]()
+        for _ in 0..<k {
+            let rand = Int.randomIntBetween(0, self.count)
+            let element = self[rand]
+            samples.append(element)
+        }
+        return samples
+    }
+}
+
+
+// the following is from
 // https://gist.github.com/ijoshsmith/5e3c7d8c2099a3fe8dc3
 extension Array
 {

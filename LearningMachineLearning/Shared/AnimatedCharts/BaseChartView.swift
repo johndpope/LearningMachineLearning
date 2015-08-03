@@ -45,7 +45,11 @@ class BaseChartView: UIView {
         let layerSpecifications: [DataType : UIColor] = [
             .Type0 : UIColor.redColor(),
             .Type1 : UIColor.blueColor(),
-            .Type2 : UIColor.greenColor()
+            .Type2 : UIColor.greenColor(),
+            .Type3 : UIColor.yellowColor(),
+            .Type4 : UIColor.purpleColor(),
+            .Type5 : UIColor.orangeColor(),
+            .Type6 : UIColor.blackColor()
         ]
         
         let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
