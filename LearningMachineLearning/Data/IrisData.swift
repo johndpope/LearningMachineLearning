@@ -32,7 +32,7 @@ class IrisData {
     var attributes = [String]()
     
     init() {
-        if let text = textFromBundle()?.componentsSeparatedByString("\n") {
+        if let text = textFromBundle("iris")?.componentsSeparatedByString("\n") {
             parseIrisData(text)
             parseAttributes(text)
         }
@@ -70,17 +70,5 @@ class IrisData {
                 break
             }
         }
-    }
-    
-    func textFromBundle() -> String? {
-        let path = NSBundle.mainBundle().pathForResource("iris", ofType: "txt")
-        
-        do {
-            let text = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-            return text
-        } catch {
-            print("error getting data from bundle")
-        }
-        return nil
     }
 }

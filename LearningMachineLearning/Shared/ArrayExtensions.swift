@@ -33,6 +33,11 @@ extension Array {
         }
         return samples
     }
+    
+    func random() -> Element {
+        let rand = Int.randomIntBetween(0, self.count)
+        return self[rand]
+    }
 }
 
 

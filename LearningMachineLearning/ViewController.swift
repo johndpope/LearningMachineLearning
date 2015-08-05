@@ -23,7 +23,8 @@ class ViewController: UIViewController {
         //let dataScienceVC = DataScienceFromScratch8()
         //let dataScienceVC = DataScienceFromScratch14()
         //let dataScienceVC = DataScienceFromScratch15()
-        let dataScienceVC = DataScienceFromScratch19()
+        //let dataScienceVC = DataScienceFromScratch19()
+        let dataScienceVC = DataScienceFromScratch20()
         
         view.addSubview(dataScienceVC.view)
     }

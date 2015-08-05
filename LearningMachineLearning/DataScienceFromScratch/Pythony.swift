@@ -8,15 +8,19 @@
 
 import Foundation
 
-// swift2.0 added zip!  
-//func zip<T, U>(arr1: [T], arr2: [U]) -> [(T, U)] {
-//    var zipped = [(T, U)]()
-//    for i in 0..<arr1.count {
-//        let tuple = (arr1[i], arr2[i])
-//        zipped.append(tuple)
-//    }
-//    return zipped
-//}
+// swift2.0 added zip! (but not for three things)
+func zip<T, U, V>(arr1: [T], _ arr2: [U], _ arr3: [V]) -> [(T, U, V)] {
+    var zipped = [(T, U, V)]()
+    let ordered = [arr1.count, arr2.count, arr3.count].sort()
+    let smallestCount = ordered[0]
+    
+    
+    for i in 0..<smallestCount {
+        let tuple = (arr1[i], arr2[i], arr3[i])
+        zipped.append(tuple)
+    }
+    return zipped
+}
 
 func unzip<T, U>(zipped: [(T, U)]) -> ([T], [U]) {
     var xs = [T]()
@@ -56,15 +60,25 @@ class Counter<T: Hashable>: CustomStringConvertible {
     }
     
     func max() -> (T, Int) {
-        var maxValue = 0
-        var maxKey = Array(counts.keys)[0]
+        let tuples = mostFrequent(1)
+        return tuples[0]
+    }
+    
+    func mostFrequent(n: Int = 5) -> [(T, Int)] {
+        var maxValues = Array(count: n, repeatedValue: 0)
+        var maxKeys = Array(count: n, repeatedValue: Array(counts.keys)[0])
         for (key, value) in counts {
-            if value > maxValue {
-                maxValue = value
-                maxKey = key
+            for i in 0..<n {
+                if value > maxValues[i] {
+                    maxValues[i] = value
+                    maxKeys[i] = key
+                    break
+                }
             }
         }
-        return (maxKey, maxValue)
+        
+        let tuples = Array(zip(maxKeys, maxValues))
+        return tuples.sort { $0.1 > $1.1 }
     }
     
     var description: String {
