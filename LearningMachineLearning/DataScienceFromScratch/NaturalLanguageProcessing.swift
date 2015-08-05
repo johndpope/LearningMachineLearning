@@ -15,9 +15,9 @@ class NaturalLanguageProcessing {
             //let counts = Counter(words)
             //print(counts.mostFrequent(30))
             
-            words = separatePeriodsFromWords(clean(words))
+            words = clean(separatePeriodsFromWords(words))
             
-            print(generateUsingTrigrams(words, numberOfSentences: 5))
+            print(generateUsingTrigrams(words, numberOfSentences: 15))
         }
     }
     
@@ -104,6 +104,10 @@ class NaturalLanguageProcessing {
                 let last = result.removeLast()
                 let newLast = last + "."
                 result.append(newLast)
+                
+                if Int.randomIntBetween(0, 4) == 0 {
+                    result.append("\n\n")
+                }
             }
             else {
                 result.append(current)
@@ -133,6 +137,7 @@ class NaturalLanguageProcessing {
     }
     
     func clean(var words: [String]) -> [String] {
+        var dashedWords = [(Int, String)]()
         for i in 0..<words.count {
             let word = words[i]
             if word.hasSuffix(")") || word.hasSuffix("]") || word.hasSuffix("\"") || word.hasSuffix("\'") || word.hasSuffix("!") {
@@ -143,6 +148,34 @@ class NaturalLanguageProcessing {
                 let justWord = word.substringFromIndex(word.startIndex.successor())
                 words[i] = justWord
             }
+            if word == "-" {
+                words[i] = "--"
+            }
+            else if word.rangeOfString("-") != nil || word.rangeOfString("—") != nil {
+                dashedWords.append((i, word))
+            }
+        }
+        
+        for i in 0..<dashedWords.count {
+            let (index, word) = dashedWords[i]
+            var part1 = ""
+            var part2 = ""
+            var part3 = ""
+            
+            if let range = word.rangeOfString("-") {
+                part1 = word.substringToIndex(range.endIndex.predecessor())
+                part2 = "-"
+                part3 = word.substringFromIndex(range.startIndex.successor())
+            }
+            else if let range = word.rangeOfString("—") {
+                part1 = word.substringToIndex(range.endIndex.predecessor())
+                part2 = "—"
+                part3 = word.substringFromIndex(range.startIndex.successor())
+            }
+            
+            words[i + index] = part1
+            words.insert(part2, atIndex: i + index + 1)
+            words.insert(part3, atIndex: i + index + 2)
         }
         return words
     }
