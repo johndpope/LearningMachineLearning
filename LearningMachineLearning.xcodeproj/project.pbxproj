@@ -28,6 +28,7 @@
 		BB72DAB21B72920600F8F8D3 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72DAB11B72920600F8F8D3 /* HelperFunctions.swift */; };
 		BB72DAB41B72926600F8F8D3 /* DataScienceFromScratch20.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72DAB31B72926600F8F8D3 /* DataScienceFromScratch20.swift */; };
 		BB72DAB61B7292BF00F8F8D3 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB72DAB51B7292BF00F8F8D3 /* words.txt */; };
+		BB72DAB81B72B55F00F8F8D3 /* kant.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB72DAB71B72B55F00F8F8D3 /* kant.txt */; };
 		BB74BD2F1B66F763009021CB /* GradientDescent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BD2E1B66F763009021CB /* GradientDescent.swift */; };
 		BB9E8BE51B68530500E363FC /* TurtleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E8BE41B68530500E363FC /* TurtleData.swift */; };
 		BB9E8BE71B687C4D00E363FC /* DataScaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E8BE61B687C4D00E363FC /* DataScaping.swift */; };
@@ -101,6 +102,7 @@
 		BB72DAB11B72920600F8F8D3 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		BB72DAB31B72926600F8F8D3 /* DataScienceFromScratch20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScienceFromScratch20.swift; sourceTree = "<group>"; };
 		BB72DAB51B7292BF00F8F8D3 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
+		BB72DAB71B72B55F00F8F8D3 /* kant.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kant.txt; sourceTree = "<group>"; };
 		BB74BD2E1B66F763009021CB /* GradientDescent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientDescent.swift; sourceTree = "<group>"; };
 		BB9E8BE41B68530500E363FC /* TurtleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurtleData.swift; sourceTree = "<group>"; };
 		BB9E8BE61B687C4D00E363FC /* DataScaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScaping.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			children = (
 				BB72DAB51B7292BF00F8F8D3 /* words.txt */,
 				BBB2999D1B616AF00016985E /* iris.txt */,
+				BB72DAB71B72B55F00F8F8D3 /* kant.txt */,
 				BBB2999E1B616AF00016985E /* IrisData.swift */,
 				BB28AC611B67C9840014B6FC /* ApartmentData.swift */,
 				BB9E8BE41B68530500E363FC /* TurtleData.swift */,
@@ -422,6 +425,7 @@
 				BBB2999F1B616AF00016985E /* iris.txt in Resources */,
 				BBB299871B6167D30016985E /* Images.xcassets in Resources */,
 				BB72DAB61B7292BF00F8F8D3 /* words.txt in Resources */,
+				BB72DAB81B72B55F00F8F8D3 /* kant.txt in Resources */,
 				BBB299761B6167BF0016985E /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

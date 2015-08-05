@@ -9,7 +9,7 @@ import Foundation
 
 class NaturalLanguageProcessing {
     func doTheThing() {
-        if let wordString = textFromBundle("words") {
+        if let wordString = textFromBundle("kant") {
             var words = wordString.componentsSeparatedByString(" ")
             
             //let counts = Counter(words)
