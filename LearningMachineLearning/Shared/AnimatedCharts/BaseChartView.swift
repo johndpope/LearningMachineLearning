@@ -36,29 +36,29 @@ class BaseChartView: UIView {
     var labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
     var paddingOptions = ChartPadding.PadNone
     
+    let layerSpecifications: [DataType : UIColor] = [
+        .Type0 : UIColor.redColor(),
+        .Type1 : UIColor.blueColor(),
+        .Type2 : UIColor.greenColor(),
+        .Type3 : UIColor.yellowColor(),
+        .Type4 : UIColor.purpleColor(),
+        .Type5 : UIColor.orangeColor(),
+        .Type6 : UIColor.blackColor()
+    ]
+    
+    
     func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
         setDataMinMaxInterval(data)
         
         self.xAxisLabel = xAxisLabel
         self.yAxisLabel = yAxisLabel
-        
-        let layerSpecifications: [DataType : UIColor] = [
-            .Type0 : UIColor.redColor(),
-            .Type1 : UIColor.blueColor(),
-            .Type2 : UIColor.greenColor(),
-            .Type3 : UIColor.yellowColor(),
-            .Type4 : UIColor.purpleColor(),
-            .Type5 : UIColor.orangeColor(),
-            .Type6 : UIColor.blackColor()
-        ]
-        
+
         let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         
         let scatterLayers = self.toLayers(data, layerSpecifications: layerSpecifications, xAxis: xAxis, yAxis: yAxis, chartInnerFrame: innerFrame)
         
         let guidelinesLayerSettings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ExamplesDefaults.guidelinesWidth)
         let guidelinesLayer = ChartGuideLinesDottedLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: guidelinesLayerSettings)
-        
         
         let chart = Chart(
             frame: chartFrame,

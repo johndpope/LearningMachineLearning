@@ -33,7 +33,7 @@
 		BBA31E7F1B63498F001DAC2A /* CanUseOperatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA31E7E1B63498F001DAC2A /* CanUseOperatorProtocol.swift */; };
 		BBA78C5D1B65BCEF00573FAD /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA78C5C1B65BCEF00573FAD /* BarChartView.swift */; };
 		BBB299761B6167BF0016985E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB299721B6167BF0016985E /* LaunchScreen.xib */; };
-		BBB2997F1B6167CC0016985E /* AnimatedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299781B6167CC0016985E /* AnimatedChartView.swift */; };
+		BBB2997F1B6167CC0016985E /* AnimatedChartView-Perceptron.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299781B6167CC0016985E /* AnimatedChartView-Perceptron.swift */; };
 		BBB299801B6167CC0016985E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299791B6167CC0016985E /* AppDelegate.swift */; };
 		BBB299811B6167CC0016985E /* ChartDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2997A1B6167CC0016985E /* ChartDefaults.swift */; };
 		BBB299821B6167CC0016985E /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB2997B1B6167CC0016985E /* DoubleExtensions.swift */; };
@@ -57,6 +57,7 @@
 		BBB299AB1B618A6E0016985E /* DataScienceFromScratch1-7.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB299AA1B618A6E0016985E /* DataScienceFromScratch1-7.swift */; };
 		BBBA72121B6FF39500750276 /* Clustering.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA72111B6FF39500750276 /* Clustering.swift */; };
 		BBBA72141B6FF3BA00750276 /* DataScienceFromScratch19.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA72131B6FF3BA00750276 /* DataScienceFromScratch19.swift */; };
+		BBBA72161B700CAC00750276 /* AnimatedScatterplotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA72151B700CAC00750276 /* AnimatedScatterplotView.swift */; };
 		BBBAFB721B63E7A60062B538 /* Pythony.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAFB711B63E7A60062B538 /* Pythony.swift */; };
 		BBEF5FF51B66A5E200515DA2 /* HypothesisAndInference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */; };
 /* End PBXBuildFile section */
@@ -103,7 +104,7 @@
 		BBB299701B6167B60016985E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBB299731B6167BF0016985E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BBB299751B6167BF0016985E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BBB299781B6167CC0016985E /* AnimatedChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedChartView.swift; sourceTree = "<group>"; };
+		BBB299781B6167CC0016985E /* AnimatedChartView-Perceptron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimatedChartView-Perceptron.swift"; sourceTree = "<group>"; };
 		BBB299791B6167CC0016985E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBB2997A1B6167CC0016985E /* ChartDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDefaults.swift; sourceTree = "<group>"; };
 		BBB2997B1B6167CC0016985E /* DoubleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
@@ -127,6 +128,7 @@
 		BBB299AA1B618A6E0016985E /* DataScienceFromScratch1-7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataScienceFromScratch1-7.swift"; sourceTree = "<group>"; };
 		BBBA72111B6FF39500750276 /* Clustering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clustering.swift; sourceTree = "<group>"; };
 		BBBA72131B6FF3BA00750276 /* DataScienceFromScratch19.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScienceFromScratch19.swift; sourceTree = "<group>"; };
+		BBBA72151B700CAC00750276 /* AnimatedScatterplotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedScatterplotView.swift; sourceTree = "<group>"; };
 		BBBAFB711B63E7A60062B538 /* Pythony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pythony.swift; sourceTree = "<group>"; };
 		BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypothesisAndInference.swift; sourceTree = "<group>"; };
 		E10255E69C0235F4B81E3EB2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,11 +276,12 @@
 		BBB299A81B6171160016985E /* Charts */ = {
 			isa = PBXGroup;
 			children = (
-				BBB299781B6167CC0016985E /* AnimatedChartView.swift */,
 				BB0974381B659975005B70F8 /* BaseChartView.swift */,
-				BBA78C5C1B65BCEF00573FAD /* BarChartView.swift */,
 				BB0974361B65981F005B70F8 /* FunctionChartView.swift */,
+				BBA78C5C1B65BCEF00573FAD /* BarChartView.swift */,
+				BBB299781B6167CC0016985E /* AnimatedChartView-Perceptron.swift */,
 				BB5606701B66F223007A9E25 /* AnimatedFunctionChartView.swift */,
+				BBBA72151B700CAC00750276 /* AnimatedScatterplotView.swift */,
 				BBB2997A1B6167CC0016985E /* ChartDefaults.swift */,
 			);
 			name = Charts;
@@ -450,6 +453,7 @@
 				BB0974371B65981F005B70F8 /* FunctionChartView.swift in Sources */,
 				BB28AC5C1B66F9FB0014B6FC /* DataScienceFromScratch8.swift in Sources */,
 				BB74BD2F1B66F763009021CB /* GradientDescent.swift in Sources */,
+				BBBA72161B700CAC00750276 /* AnimatedScatterplotView.swift in Sources */,
 				BB28AC5E1B6700A30014B6FC /* IntExtensions.swift in Sources */,
 				BBB299841B6167CC0016985E /* Perceptron.swift in Sources */,
 				BB0974341B658FF1005B70F8 /* Probability.swift in Sources */,
@@ -465,7 +469,7 @@
 				BBEF5FF51B66A5E200515DA2 /* HypothesisAndInference.swift in Sources */,
 				BBB299A01B616AF00016985E /* IrisData.swift in Sources */,
 				BBB299851B6167CC0016985E /* ViewController.swift in Sources */,
-				BBB2997F1B6167CC0016985E /* AnimatedChartView.swift in Sources */,
+				BBB2997F1B6167CC0016985E /* AnimatedChartView-Perceptron.swift in Sources */,
 				BBB299831B6167CC0016985E /* Models.swift in Sources */,
 				BBB299911B6167D80016985E /* ExampleMultipleGates.swift in Sources */,
 				BB0974391B659975005B70F8 /* BaseChartView.swift in Sources */,
