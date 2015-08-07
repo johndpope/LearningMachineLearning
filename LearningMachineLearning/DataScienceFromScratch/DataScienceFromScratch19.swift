@@ -8,7 +8,7 @@
 import UIKit
 
 class DataScienceFromScratch19: UIViewController {
-    var chart: AnimatedScatterplotView!
+    var chart, chart2: AnimatedScatterplotView!
     let feature1Index = 0
     let feature2Index = 2
     let speciesExcludeIndex = 2
@@ -24,23 +24,34 @@ class DataScienceFromScratch19: UIViewController {
         let data = labeledData.map { $0.0 }
         
         let clusterer = KMeans(k: 5)
-        
-        clusterer.train(data)
-        
-        showAnimatedChartWithDifferentClustering(data, clusterer: clusterer, xAxisLabel: iris.attributes[feature1Index], yAxisLabel: iris.attributes[feature2Index])
-        
-        let relabelledData = relabelData(data, assignments: clusterer.assignments)
-        
-        chartIrisData(relabelledData, xAxisLabel: iris.attributes[feature1Index], yAxisLabel: iris.attributes[feature2Index])
-        
-        
-        let errors = clusterer.trainWithDifferentKValues(data)
+//
+//        clusterer.train(data)
+//        
+//        showAnimatedChartWithDifferentClustering(data, clusterer: clusterer, xAxisLabel: iris.attributes[feature1Index], yAxisLabel: iris.attributes[feature2Index])
+//        
+//        let relabelledData = relabelData(data, assignments: clusterer.assignments)
+//        
+//        chartIrisData(relabelledData, xAxisLabel: iris.attributes[feature1Index], yAxisLabel: iris.attributes[feature2Index])
         
         
-
         
-      
+        showSquaredErrorsAsFunctionOfK(data)
         
+    }
+    
+    func showSquaredErrorsAsFunctionOfK(data: [[Double]]) {
+        let maxK = 40
+        let clusterer = KMeans(k: 5)
+        let errors = clusterer.trainWithDifferentKValues(data, maxK: maxK)
+        
+        let chart2 = FunctionChartView(frame: view.frame)
+        chart2.overrides.xInterval = 1.0
+        chart2.overrides.minY = 0.0
+        chart2.setUpChartWithFunction(view.frame, xAxisLabel: "k", yAxisLabel: "total squared error", minX: 0.0, maxX: Double(maxK) - 1.0) { (x: Double) -> Double in
+            let i = Int(x)
+            return errors[i].1
+        }
+        view.addSubview(chart2)
     }
     
     func showAnimatedChartWithDifferentClustering(data: [[Double]], clusterer: KMeans, xAxisLabel: String, yAxisLabel: String) {

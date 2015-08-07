@@ -9,11 +9,11 @@ import Foundation
 
 class NaturalLanguageProcessing {
     func doTheThing() {
-        if let wordString = textFromBundle("kant") {
+        if let wordString = textFromBundle("words") {
             var words = wordString.componentsSeparatedByString(" ")
-            
-            //let counts = Counter(words)
-            //print(counts.mostFrequent(30))
+            let lower = words.map { $0.lowercaseString }
+            let counts = Counter(lower)
+            print(counts.mostFrequent(50))
             
             words = clean(separatePeriodsFromWords(words))
             

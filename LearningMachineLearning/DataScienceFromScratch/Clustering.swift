@@ -92,9 +92,9 @@ class KMeans {
         return clusterer.totalError(inputs)
     }
     
-    func trainWithDifferentKValues(inputs: [[Double]]) -> [(Int, Double)] {
-        // try out 1 to inputs.count clusters
-        let kValues = Array(1...inputs.count)
+    func trainWithDifferentKValues(inputs: [[Double]], maxK: Int) -> [(Int, Double)] {
+        let max = maxK > inputs.count ? inputs.count : maxK
+        let kValues = Array(1...max)
         
         let errors = kValues.map { ($0, squaredClusteringErrors(inputs, k: $0)) }
         return errors

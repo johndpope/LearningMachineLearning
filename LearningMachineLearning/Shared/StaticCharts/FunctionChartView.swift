@@ -23,6 +23,8 @@ class FunctionChartView: BaseChartView {
     func setUpChartWithFunction(frame: CGRect, xAxisLabel: String, yAxisLabel: String, minX: Double, maxX: Double, f: (Double) -> Double) {
         dataXMin = minX
         dataXMax = maxX
+        self.xAxisLabel = xAxisLabel
+        self.yAxisLabel = yAxisLabel
         let xPoints = Array(stride(from: minX, through: maxX, by: pointInterval))
         let data = xPoints.map { (x: Double) -> LabeledInput in
             let y = f(x)
