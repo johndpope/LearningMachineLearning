@@ -5,7 +5,7 @@
 //  Created by Grace on 8/3/15.
 //
 
-import Foundation
+import UIKit
 
 class KMeans {
     let k: Int
@@ -100,6 +100,98 @@ class KMeans {
         return errors
     }
 
+    
+}
+
+
+class ImageClustering {
+
+    
+    func posterize(image: UIImage, k: Int) -> UIImage {
+        
+        var pixels = getPixelsFromImage(image).map {
+            $0.map {
+                Double($0)
+            }
+        }
+        
+        let clusterer = KMeans(k: k)
+        clusterer.train(pixels, initialMeans: nil)
+        
+        for i in 0..<pixels.count {
+            let assignment = clusterer.assignments[i]
+            let values = clusterer.means[assignment]
+            pixels[i] = values
+        }
+        
+        let newImage = imageFromArray(pixels, width: Int(image.size.width), height: Int(image.size.height))
+        return newImage
+    }
+    
+    func getPixelsFromImage(image: UIImage) -> [[UInt8]] {
+        let imageRef = image.CGImage
+        let width = CGImageGetWidth(imageRef)
+        let height = CGImageGetHeight(imageRef)
+        let colorspace = CGColorSpaceCreateDeviceRGB()
+        
+        let bytesPerRow = (4 * width)
+        let bitsPerComponent = 8
+        let pixels = UnsafeMutablePointer<UInt8>(malloc(width * height * 4))
+        
+        let bitmapInfo = CGBitmapInfo.ByteOrder32Big.rawValue | CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue).rawValue
+        
+        let context = CGBitmapContextCreate(pixels, width, height,
+            bitsPerComponent, bytesPerRow, colorspace,
+            bitmapInfo)
+        
+        CGContextDrawImage(context, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), imageRef)
+        
+        var arr = [[UInt8]]()
+        for var i=0; i < width*height*4; i+=4 {
+            let red = pixels[i+0]
+            let green = pixels[i+1]
+            let blue = pixels[i+2]
+            
+            arr.append([red, green, blue])
+        }
+        return arr
+    }
+    
+
+    
+    func imageFromArray(pixelArray: [[Double]], width: Int, height: Int) -> UIImage {
+        
+        let colorspace = CGColorSpaceCreateDeviceRGB()
+        var rawData = UnsafeMutablePointer<UInt8>(malloc(width * height * 4))
+        
+        let bytesPerRow = (4 * width)
+        let bitsPerComponent = 8
+        let bitmapInfo = CGBitmapInfo.ByteOrder32Big.rawValue | CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue).rawValue
+        
+        let context = CGBitmapContextCreate(rawData, width, height,
+            bitsPerComponent, bytesPerRow, colorspace,
+            bitmapInfo)
+        
+        var byteIndex = 0
+        for pixel in pixelArray {
+            let red = UInt8(pixel[0])
+            let green = UInt8(pixel[1])
+            let blue = UInt8(pixel[2])
+            
+            rawData[byteIndex] = red
+            rawData[byteIndex+1] = green
+            rawData[byteIndex+2] = blue
+            rawData[byteIndex+3] = UInt8(255)
+            
+            byteIndex += 4
+        }
+        
+        let newImage = CGBitmapContextCreateImage(context)
+        let newUIImage = UIImage(CGImage: newImage!)
+        
+        return newUIImage
+        
+    }
     
 }
 

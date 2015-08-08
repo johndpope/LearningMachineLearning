@@ -64,6 +64,14 @@
 		BBBA72141B6FF3BA00750276 /* DataScienceFromScratch19.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA72131B6FF3BA00750276 /* DataScienceFromScratch19.swift */; };
 		BBBA72161B700CAC00750276 /* AnimatedScatterplotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA72151B700CAC00750276 /* AnimatedScatterplotView.swift */; };
 		BBBAFB721B63E7A60062B538 /* Pythony.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAFB711B63E7A60062B538 /* Pythony.swift */; };
+		BBE1007B1B76846C00AC9435 /* calvalry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE1007A1B76846C00AC9435 /* calvalry.jpg */; };
+		BBE1007D1B7690D900AC9435 /* calvalryTiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE1007C1B7690D900AC9435 /* calvalryTiny.jpg */; };
+		BBE1007F1B7691F800AC9435 /* redyellowTiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE1007E1B7691F800AC9435 /* redyellowTiny.jpg */; };
+		BBE100811B76970C00AC9435 /* turtleOnFrogTiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE100801B76970C00AC9435 /* turtleOnFrogTiny.jpg */; };
+		BBE100831B76976600AC9435 /* turtleOnFrogSmall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE100821B76976600AC9435 /* turtleOnFrogSmall.jpg */; };
+		BBE100851B769C5500AC9435 /* turtleOnFrogTiny2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE100841B769C5500AC9435 /* turtleOnFrogTiny2.jpg */; };
+		BBE100881B769D0100AC9435 /* flowerSmall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE100861B769D0100AC9435 /* flowerSmall.jpg */; };
+		BBE100891B769D0100AC9435 /* flowerTiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE100871B769D0100AC9435 /* flowerTiny.jpg */; };
 		BBEF5FF51B66A5E200515DA2 /* HypothesisAndInference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +148,14 @@
 		BBBA72131B6FF3BA00750276 /* DataScienceFromScratch19.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScienceFromScratch19.swift; sourceTree = "<group>"; };
 		BBBA72151B700CAC00750276 /* AnimatedScatterplotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedScatterplotView.swift; sourceTree = "<group>"; };
 		BBBAFB711B63E7A60062B538 /* Pythony.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pythony.swift; sourceTree = "<group>"; };
+		BBE1007A1B76846C00AC9435 /* calvalry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = calvalry.jpg; sourceTree = "<group>"; };
+		BBE1007C1B7690D900AC9435 /* calvalryTiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = calvalryTiny.jpg; sourceTree = "<group>"; };
+		BBE1007E1B7691F800AC9435 /* redyellowTiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = redyellowTiny.jpg; sourceTree = "<group>"; };
+		BBE100801B76970C00AC9435 /* turtleOnFrogTiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = turtleOnFrogTiny.jpg; sourceTree = "<group>"; };
+		BBE100821B76976600AC9435 /* turtleOnFrogSmall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = turtleOnFrogSmall.jpg; sourceTree = "<group>"; };
+		BBE100841B769C5500AC9435 /* turtleOnFrogTiny2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = turtleOnFrogTiny2.jpg; sourceTree = "<group>"; };
+		BBE100861B769D0100AC9435 /* flowerSmall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flowerSmall.jpg; sourceTree = "<group>"; };
+		BBE100871B769D0100AC9435 /* flowerTiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flowerTiny.jpg; sourceTree = "<group>"; };
 		BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypothesisAndInference.swift; sourceTree = "<group>"; };
 		E10255E69C0235F4B81E3EB2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -206,6 +222,7 @@
 				BBB299721B6167BF0016985E /* LaunchScreen.xib */,
 				BBB299741B6167BF0016985E /* Main.storyboard */,
 				BBB299861B6167D30016985E /* Images.xcassets */,
+				BBE100791B76846C00AC9435 /* Assets */,
 				BB12D3661B606018003E56E3 /* Supporting Files */,
 			);
 			path = LearningMachineLearning;
@@ -330,6 +347,21 @@
 			path = DataScienceFromScratch;
 			sourceTree = "<group>";
 		};
+		BBE100791B76846C00AC9435 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BBE1007A1B76846C00AC9435 /* calvalry.jpg */,
+				BBE1007C1B7690D900AC9435 /* calvalryTiny.jpg */,
+				BBE1007E1B7691F800AC9435 /* redyellowTiny.jpg */,
+				BBE100801B76970C00AC9435 /* turtleOnFrogTiny.jpg */,
+				BBE100841B769C5500AC9435 /* turtleOnFrogTiny2.jpg */,
+				BBE100821B76976600AC9435 /* turtleOnFrogSmall.jpg */,
+				BBE100861B769D0100AC9435 /* flowerSmall.jpg */,
+				BBE100871B769D0100AC9435 /* flowerTiny.jpg */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		CC86FB187F4C825D6659411D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,10 +453,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE100891B769D0100AC9435 /* flowerTiny.jpg in Resources */,
+				BBE1007F1B7691F800AC9435 /* redyellowTiny.jpg in Resources */,
+				BBE100831B76976600AC9435 /* turtleOnFrogSmall.jpg in Resources */,
 				BBB299A71B616C530016985E /* Main.storyboard in Resources */,
+				BBE100811B76970C00AC9435 /* turtleOnFrogTiny.jpg in Resources */,
+				BBE100881B769D0100AC9435 /* flowerSmall.jpg in Resources */,
+				BBE1007D1B7690D900AC9435 /* calvalryTiny.jpg in Resources */,
+				BBE1007B1B76846C00AC9435 /* calvalry.jpg in Resources */,
 				BBB2999F1B616AF00016985E /* iris.txt in Resources */,
 				BBB299871B6167D30016985E /* Images.xcassets in Resources */,
 				BB72DAB61B7292BF00F8F8D3 /* words.txt in Resources */,
+				BBE100851B769C5500AC9435 /* turtleOnFrogTiny2.jpg in Resources */,
 				BB72DAB81B72B55F00F8F8D3 /* kant.txt in Resources */,
 				BBB299761B6167BF0016985E /* LaunchScreen.xib in Resources */,
 			);

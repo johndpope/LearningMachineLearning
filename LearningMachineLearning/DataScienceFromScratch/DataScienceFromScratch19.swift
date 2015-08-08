@@ -9,6 +9,7 @@ import UIKit
 
 class DataScienceFromScratch19: UIViewController {
     var chart, chart2: AnimatedScatterplotView!
+    var imageView: UIImageView!
     let feature1Index = 0
     let feature2Index = 2
     let speciesExcludeIndex = 2
@@ -16,27 +17,41 @@ class DataScienceFromScratch19: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        chart = AnimatedScatterplotView(frame: view.frame)
-        let labeledData = labeledInputForIrisData(speciesExcludeIndex: speciesExcludeIndex, feature1Index: feature1Index, feature2Index: feature2Index)
+//        chart = AnimatedScatterplotView(frame: view.frame)
+//        let labeledData = labeledInputForIrisData(speciesExcludeIndex: speciesExcludeIndex, feature1Index: feature1Index, feature2Index: feature2Index)
         
-        let iris = IrisData()
+//        let iris = IrisData()
+//        let data = labeledData.map { $0.0 }
         
-        let data = labeledData.map { $0.0 }
-        
-        let clusterer = KMeans(k: 5)
-//
+//        let clusterer = KMeans(k: 5)
 //        clusterer.train(data)
-//        
 //        showAnimatedChartWithDifferentClustering(data, clusterer: clusterer, xAxisLabel: iris.attributes[feature1Index], yAxisLabel: iris.attributes[feature2Index])
-//        
 //        let relabelledData = relabelData(data, assignments: clusterer.assignments)
-//        
 //        chartIrisData(relabelledData, xAxisLabel: iris.attributes[feature1Index], yAxisLabel: iris.attributes[feature2Index])
         
         
         
-        showSquaredErrorsAsFunctionOfK(data)
+        //showSquaredErrorsAsFunctionOfK(data)
         
+        
+        clusteringWithImages()
+    }
+    
+    func clusteringWithImages() {
+        let image = UIImage(named: "turtleOnFrogTiny2.jpg")!
+        imageView = UIImageView(frame: view.frame)
+        //imageView.contentMode = UIViewContentMode.Center
+        imageView.image = image
+        view.addSubview(imageView)
+        
+        
+        
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            let clusterer = ImageClustering()
+            let newImage = clusterer.posterize(image, k: 10)
+            self.imageView.image = newImage
+        }
     }
     
     func showSquaredErrorsAsFunctionOfK(data: [[Double]]) {
