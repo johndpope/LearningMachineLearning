@@ -43,7 +43,7 @@ class DataScienceFromScratch8: UIViewController {
         
         let tolerance = 0.0000001
         
-        func f(v: [Double]) -> Double {
+        func f(_ v: [Double]) -> Double {
             return v[0] ** 2 + v[1] ** 2 + v[2] ** 2
         }
         
@@ -73,10 +73,10 @@ class DataScienceFromScratch8: UIViewController {
     
     func gradientDescent3() {
         let theta = [4.0, 3.0]
-        func targetFn(v: [Double]) -> Double {
+        func targetFn(_ v: [Double]) -> Double {
             return v[0] ** v[1]
         }
-        func gradientFn(v: [Double]) -> [Double] {
+        func gradientFn(_ v: [Double]) -> [Double] {
             var gradient = [Double]()
             for i in 0..<v.count {
                 let a = partialDifferenceQuotient(v, i: i, h: 0.0001, f: targetFn)
@@ -92,10 +92,10 @@ class DataScienceFromScratch8: UIViewController {
         let theta = [4.0, 3.0]
         
         
-        func targetFn(v: [Double]) -> Double {
+        func targetFn(_ v: [Double]) -> Double {
             return v[0] - v[1]
         }
-        func gradientFn(v: [Double]) -> [Double] {
+        func gradientFn(_ v: [Double]) -> [Double] {
             var gradient = [Double]()
             for i in 0..<v.count {
                 let a = partialDifferenceQuotient(v, i: i, h: 0.0001, f: targetFn)
@@ -107,13 +107,13 @@ class DataScienceFromScratch8: UIViewController {
     }
     
     func gradientDescent5() {
-        func f(x: Double) -> Double {
+        func f(_ x: Double) -> Double {
             return x ** 2 + 4 * x
         }
-        func targetFn(v: [Double]) -> Double {
+        func targetFn(_ v: [Double]) -> Double {
             return v[0] ** 2 + v[0] * 4
         }
-        func gradientFn(v: [Double]) -> [Double] {
+        func gradientFn(_ v: [Double]) -> [Double] {
             var gradient = [Double]()
             for i in 0..<v.count {
                 let a = partialDifferenceQuotient(v, i: i, h: 0.0001, f: targetFn)
@@ -129,7 +129,7 @@ class DataScienceFromScratch8: UIViewController {
         let a = differenceQuotient(-4.0, h: 0.001, f: f)
         print(a)
         
-        chart.addNewLayerWithFunction(UIColor.blueColor()) {
+        chart.addNewLayerWithFunction(UIColor.blue) {
             differenceQuotient($0, h: 0.0001, f: f)
         }
         

@@ -10,13 +10,13 @@ import Foundation
 
 extension Array {
     // sample without replacement
-    func sample(k: Int) -> [Element] {
+    func sample(_ k: Int) -> [Element] {
         var population = self
         var samples = [Element]()
         for _ in 0..<k {
             if population.count > 0 {
                 let rand = Int.randomIntBetween(0, population.count)
-                let element = population.removeAtIndex(rand)
+                let element = population.remove(at: rand)
                 samples.append(element)
             }
         }
@@ -24,7 +24,7 @@ extension Array {
     }
     
     // sample with replacement
-    func sampleWithReplacement(k: Int) -> [Element] {
+    func sampleWithReplacement(_ k: Int) -> [Element] {
         var samples = [Element]()
         for _ in 0..<k {
             let rand = Int.randomIntBetween(0, self.count)
@@ -50,7 +50,7 @@ extension Array
     {
         for _ in 0..<10
         {
-            sortInPlace { (_,_) in arc4random() < arc4random() }
+            sort { (_,_) in arc4random() < arc4random() }
         }
     }
 }

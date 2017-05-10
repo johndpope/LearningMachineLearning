@@ -9,7 +9,7 @@ import UIKit
 import SwiftCharts
 
 protocol ChartUpdate {
-    func updateDisplay(threshold threshold: Double?, xWeight: Double?, yWeight: Double?, accuracy: Double?, iteration: Int?)
+    func updateDisplay(threshold: Double?, xWeight: Double?, yWeight: Double?, accuracy: Double?, iteration: Int?)
 }
 
 struct DisplayParam {
@@ -21,20 +21,20 @@ struct DisplayParam {
 }
 
 class AnimatedChartView: BaseChartView, ChartUpdate {
-    private var lineChart: Chart?
+    fileprivate var lineChart: Chart?
     
     var label: UILabel!
 
-    override func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
+    override func setUpChartWithData(_ data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
         super.setUpChartWithData(data, frame: frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         
-        self.label = UILabel(frame: CGRectMake(frame.width * 5/6, frame.height * 1/6, 180, 100))
+        self.label = UILabel(frame: CGRect(x: frame.width * 5/6, y: frame.height * 1/6, width: 180, height: 100))
         self.label.numberOfLines = 0
         addSubview(self.label)
     }
 
     
-    func updateLine(x1 x1: Double, y1: Double, x2: Double, y2: Double) {
+    func updateLine(x1: Double, y1: Double, x2: Double, y2: Double) {
         lineChart?.view.removeFromSuperview()
         let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings)
 
@@ -47,8 +47,8 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
         let chartPoints1 = lineChartPoints.map{ (tup: (Double, Double)) -> ChartPoint in
             return ChartPoint(x: ChartAxisValueFloat(CGFloat(tup.0), labelSettings: self.labelSettings), y: ChartAxisValueFloat(CGFloat(tup.1)))
         }
-        let lineModel = ChartLineModel(chartPoints: chartPoints1, lineColor: UIColor.blackColor(), lineWidth: 2, animDuration: 0, animDelay: 0)
-        let lineLayer = ChartPointsLineLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, lineModels: [lineModel])
+        let lineModel = ChartLineModel(chartPoints: chartPoints1, lineColor: UIColor.black, lineWidth: 2, animDuration: 0, animDelay: 0)
+        let lineLayer = ChartPointsLineLayer(xAxis: xAxis as! ChartAxis, yAxis: yAxis as! ChartAxis, lineModels: [lineModel], pathGenerator: innerFrame)
         
         lineChart = Chart(
             frame: chartFrame,
@@ -60,11 +60,11 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
         addSubview(lineChart!.view)
     }
     
-    private func baseChartLayers(labelSettings: ChartLabelSettings) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
+    fileprivate func baseChartLayers(_ labelSettings: ChartLabelSettings) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
         return baseChartLayers(labelSettings, minX: minX!, maxX: maxX!, minY: minY!, maxY: maxY!, xInterval: xInterval!, yInterval: yInterval!, xAxisLabel: xAxisLabel!, yAxisLabel: yAxisLabel!)
     }
     
-    func updateLine(xWeight xWeight: Double, yWeight: Double, threshold: Double) {
+    func updateLine(xWeight: Double, yWeight: Double, threshold: Double) {
         let x1 = 0.0
         let y1 = threshold / yWeight
         
@@ -76,14 +76,14 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
     
     // MARK:- Chart Update Methods
     
-    func updateDisplay(threshold threshold: Double?, xWeight: Double?, yWeight: Double?, accuracy: Double?, iteration: Int?) {
+    func updateDisplay(threshold: Double?, xWeight: Double?, yWeight: Double?, accuracy: Double?, iteration: Int?) {
         let param = DisplayParam(threshold: threshold, xWeight: xWeight, yWeight: yWeight, accuracy: accuracy, iteration: iteration)
         displayParams.append(param)
     }
     
     // MARK:- Animation Properties and Methods
     var displayParams = [DisplayParam]()
-    var timer: NSTimer?
+    var timer: Timer?
     var animationIndex = 0
     var currentThreshold = 0.0
     var currentXWeight = 0.0
@@ -91,8 +91,8 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
     var currentAccuracy = 0.0
     var currentIteration = 0
     
-    func beginAnimatedDisplay(duration duration: Double) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("animateFrame"), userInfo: nil, repeats: true)
+    func beginAnimatedDisplay(duration: Double) {
+        timer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(AnimatedChartView.animateFrame), userInfo: nil, repeats: true)
     }
     
     func animateFrame() {
@@ -102,7 +102,7 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
         }
         else {
             let next = displayParams[animationIndex]
-            animationIndex++
+            animationIndex += 1
             currentThreshold = next.threshold ?? currentThreshold
             currentXWeight = next.xWeight ?? currentXWeight
             currentYWeight = next.yWeight ?? currentYWeight
@@ -121,7 +121,7 @@ class AnimatedChartView: BaseChartView, ChartUpdate {
         }
     }
     
-    private func updateLabel() {
+    fileprivate func updateLabel() {
         let formattedAccuracy = (currentAccuracy * 100).format("2.1")
         self.label.text = "Iteration \(currentIteration)\nAccuracy: \(formattedAccuracy)%"
     }

@@ -51,20 +51,20 @@ class DataScienceFromScratch1_7: UIViewController {
     // This can't handle big numbers
     // try Accelerate framework if you need big numbers
     // http://cocoaconf.com/slides/chicago-2012/Accelerate.pdf
-    func gamma(x: Int) -> Int {
+    func gamma(_ x: Int) -> Int {
         return factorial(x - 1)
     }
     
-    func factorial(x: Int) -> Int {
+    func factorial(_ x: Int) -> Int {
         return x == 0 ? 1 : x * factorial(x - 1)
     }
     
-    func B(alpha: Int, _ beta: Int) -> Double {
+    func B(_ alpha: Int, _ beta: Int) -> Double {
         // a normalizing constant so that the total probability is 1
         return Double(gamma(alpha) * gamma(beta)) /  Double(gamma(alpha + beta))
     }
     
-    func betaPdf(x: Double, alpha: Int, beta: Int) -> Double {
+    func betaPdf(_ x: Double, alpha: Int, beta: Int) -> Double {
         if x < 0.0 || x > 1.0 {
             return 0.0
         }
@@ -137,11 +137,11 @@ class DataScienceFromScratch1_7: UIViewController {
         }
         view.addSubview(chart)
         
-        chart.addNewLayerWithFunction(UIColor.blueColor()) { self.betaPdf($0, alpha: alpha2, beta: beta2) }
+        chart.addNewLayerWithFunction(UIColor.blue) { self.betaPdf($0, alpha: alpha2, beta: beta2) }
         
-        chart.addNewLayerWithFunction(UIColor.blueColor()) { self.betaPdf($0, alpha: alpha2, beta: beta2) }
+        chart.addNewLayerWithFunction(UIColor.blue) { self.betaPdf($0, alpha: alpha2, beta: beta2) }
         
-        chart.addNewLayerWithFunction(UIColor.orangeColor()) { self.betaPdf($0, alpha: alpha3, beta: beta3) }
+        chart.addNewLayerWithFunction(UIColor.orange) { self.betaPdf($0, alpha: alpha3, beta: beta3) }
         
         
         // now we flip a coin 5 times and only see 1 heads
@@ -154,11 +154,11 @@ class DataScienceFromScratch1_7: UIViewController {
         alpha3 += 1
         beta3 += 4
         
-        chart.addNewLayerWithFunction(UIColor.grayColor()) { self.betaPdf($0, alpha: alpha1, beta: beta1) }
+        chart.addNewLayerWithFunction(UIColor.gray) { self.betaPdf($0, alpha: alpha1, beta: beta1) }
         
-        chart.addNewLayerWithFunction(UIColor.greenColor()) { self.betaPdf($0, alpha: alpha2, beta: beta2) }
+        chart.addNewLayerWithFunction(UIColor.green) { self.betaPdf($0, alpha: alpha2, beta: beta2) }
         
-        chart.addNewLayerWithFunction(UIColor.redColor()) { self.betaPdf($0, alpha: alpha3, beta: beta3) }
+        chart.addNewLayerWithFunction(UIColor.red) { self.betaPdf($0, alpha: alpha3, beta: beta3) }
         
         
         
@@ -167,13 +167,13 @@ class DataScienceFromScratch1_7: UIViewController {
     
     func abTesting() {
         
-        func estimatedParameters(N: Int, n: Int) -> (p: Double, sigma: Double) {
+        func estimatedParameters(_ N: Int, n: Int) -> (p: Double, sigma: Double) {
             let p = Double(n) / Double(N)
             let sigma = sqrt(p * (1.0 - p) / Double(N))
             return (p, sigma)
         }
         
-        func abTestStatistic(N_A: Int, n_A: Int, N_B: Int, n_B: Int) -> Double {
+        func abTestStatistic(_ N_A: Int, n_A: Int, N_B: Int, n_B: Int) -> Double {
             let (p_A, sigma_A) = estimatedParameters(N_A, n: n_A)
             let (p_B, sigma_B) = estimatedParameters(N_B, n: n_B)
             return (p_B - p_A) / sqrt(sigma_A ** 2 + sigma_B ** 2)
@@ -190,14 +190,14 @@ class DataScienceFromScratch1_7: UIViewController {
     func pHacking() {
         // flip a coin 1000 times, true = heads, false = tails
         func runExperiment() -> [Bool] {
-            let arr = Array(count: 1000, repeatedValue: false)
+            let arr = Array(repeating: false, count: 1000)
             return arr.map { _ in
                 Double.randomZeroToOne() < 0.5
             }
         }
         
-        func rejectFairness(experiment: [Bool]) -> Bool {
-            let numHeads = experiment.reduce(0) { (var count, flipIsHeads) in
+        func rejectFairness(_ experiment: [Bool]) -> Bool {
+            let numHeads = experiment.reduce(0) { (count, flipIsHeads) in
                 if flipIsHeads {
                     count++
                 }
@@ -322,7 +322,7 @@ class DataScienceFromScratch1_7: UIViewController {
         for _ in 0..<10000 {
             let numHeads = binomial(n: 1000, p: 0.5)
             if numHeads >= 530 || numHeads <= 470 {
-                extremeValueCount++
+                extremeValueCount += 1
             }
         }
         
@@ -336,7 +336,7 @@ class DataScienceFromScratch1_7: UIViewController {
     
     
     
-    func makeHist(p: Double, n: Int, numPoints: Int) {
+    func makeHist(_ p: Double, n: Int, numPoints: Int) {
         var data = [Int]()
         for _ in 0..<numPoints {
             let binom = binomial(n: n, p: p)
@@ -354,14 +354,14 @@ class DataScienceFromScratch1_7: UIViewController {
 
         let chart = BarChartView()
         chart.paddingOptions = .PadTop
-        chart.setUpChartWithData(dataAsTuples, frame: view.frame, xAxisLabel: "x", yAxisLabel: "y", color: UIColor.blueColor())
+        chart.setUpChartWithData(dataAsTuples, frame: view.frame, xAxisLabel: "x", yAxisLabel: "y", color: UIColor.blue)
         view.addSubview(chart)
         
         
         let mu = p * Double(n)
         let sigma = sqrt(Double(n) * p * (1.0 - p))
 
-        chart.addLineLayerWithFunction(UIColor.redColor()) { (x: Double) -> Double in
+        chart.addLineLayerWithFunction(UIColor.red) { (x: Double) -> Double in
             normalCdf(x + 0.5, mu: mu, sigma: sigma) - normalCdf(x - 0.5, mu: mu, sigma: sigma)
         }
     }

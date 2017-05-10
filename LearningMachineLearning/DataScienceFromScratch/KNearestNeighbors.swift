@@ -10,7 +10,7 @@ import Foundation
 class KNearestNeighbors {
     
     // assumes that labels are ordered from nearest to farthest
-    class func majorityVote(labels: [String]) {
+    class func majorityVote(_ labels: [String]) {
         
     }
 }

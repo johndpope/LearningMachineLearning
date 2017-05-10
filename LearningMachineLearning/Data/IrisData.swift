@@ -17,11 +17,11 @@ extension IrisType {
     func type() -> DataType {
         switch self {
         case .Setosa:
-            return .Type0
+            return .type0
         case .Versicolor:
-            return .Type1
+            return .type1
         case .Virginica:
-            return .Type2
+            return .type2
         }
     }
 }
@@ -32,17 +32,17 @@ class IrisData {
     var attributes = [String]()
     
     init() {
-        if let text = textFromBundle("iris")?.componentsSeparatedByString("\n") {
+        if let text = textFromBundle("iris")?.components(separatedBy: "\n") {
             parseIrisData(text)
             parseAttributes(text)
         }
     }
     
-    func parseIrisData(text: [String]) {
+    func parseIrisData(_ text: [String]) {
         var active = false
         for string in text {
             if active {
-                let vals = string.componentsSeparatedByString(",")
+                let vals = string.components(separatedBy: ",")
                 if vals.count < 5 {
                     break
                 }
@@ -59,11 +59,11 @@ class IrisData {
         }
     }
     
-    func parseAttributes(text: [String]) {
+    func parseAttributes(_ text: [String]) {
         for string in text {
             if string.hasPrefix("@ATTRIBUTE") {
-                let attr = string.componentsSeparatedByString("\t")
-                let attr2 = attr[0].componentsSeparatedByString(" ")
+                let attr = string.components(separatedBy: "\t")
+                let attr2 = attr[0].components(separatedBy: " ")
                 attributes.append(attr2[1])
             }
             else if string.hasPrefix("@DATA") {

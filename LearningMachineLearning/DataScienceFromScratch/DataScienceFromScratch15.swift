@@ -27,7 +27,7 @@ class DataScienceFromScratch15: UIViewController {
         chartIrisData(data, xAxisLabel: iris.attributes[feature1Index], yAxisLabel: iris.attributes[feature2Index])
     }
 
-    func chartIrisData(data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
+    func chartIrisData(_ data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
         //chart.paddingOptions = (ChartPadding.PadTop).union(ChartPadding.PadRight)
         chart.paddingOptions = ChartPadding.PadAll
         //chart.overrides.minX = 0.0
@@ -36,7 +36,7 @@ class DataScienceFromScratch15: UIViewController {
         view.addSubview(chart)
     }
 
-    func labeledInputForIrisData(speciesExcludeIndex speciesExcludeIndex: Int, feature1Index: Int, feature2Index: Int) -> [LabeledInput] {
+    func labeledInputForIrisData(speciesExcludeIndex: Int, feature1Index: Int, feature2Index: Int) -> [LabeledInput] {
         let iris = IrisData()
         let dataAndLabels = zip(iris.data, iris.labels)
         let filtered = dataAndLabels.filter { return $1.type().rawValue != speciesExcludeIndex }
@@ -48,7 +48,7 @@ class DataScienceFromScratch15: UIViewController {
         return twoFeatures
     }
     
-    func estimateBeta(data: [LabeledInput]) {
+    func estimateBeta(_ data: [LabeledInput]) {
         let onlyData = data.map { $0.0 }
         
         

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		335CBF9265E7241E9068A9E8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10255E69C0235F4B81E3EB2 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BB0942661B63118B00CE3C16 /* VectorFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0942651B63118B00CE3C16 /* VectorFunctions.swift */; };
 		BB0942681B6330D300CE3C16 /* MatrixFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */; };
 		BB0974341B658FF1005B70F8 /* Probability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0974331B658FF1005B70F8 /* Probability.swift */; };
@@ -73,28 +72,20 @@
 		BBE100881B769D0100AC9435 /* flowerSmall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE100861B769D0100AC9435 /* flowerSmall.jpg */; };
 		BBE100891B769D0100AC9435 /* flowerTiny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE100871B769D0100AC9435 /* flowerTiny.jpg */; };
 		BBEF5FF51B66A5E200515DA2 /* HypothesisAndInference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */; };
+		CA1058AF236C49D416848E7D /* Pods_LearningMachineLearning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD119D3E3BE18C35B0F81A4 /* Pods_LearningMachineLearning.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		BB12D3791B606018003E56E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB12D35B1B606018003E56E3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BB12D3621B606018003E56E3;
-			remoteInfo = LearningMachineLearning2;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		92268A0B5D3EE9AEE8B19A18 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		986BCFA838E8238CE3600A25 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		134A8F120AADE85EE96BA82E /* Pods-LearningMachineLearningTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningMachineLearningTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LearningMachineLearningTests/Pods-LearningMachineLearningTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2C9986B349C899506F864114 /* Pods-LearningMachineLearning.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningMachineLearning.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningMachineLearning/Pods-LearningMachineLearning.release.xcconfig"; sourceTree = "<group>"; };
+		874ADBF5DEBCCCE1F1218FF9 /* Pods_LearningMachineLearningTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearningMachineLearningTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBCCADA0B7C75119C1572E5 /* Pods-LearningMachineLearningTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningMachineLearningTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearningMachineLearningTests/Pods-LearningMachineLearningTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB0942651B63118B00CE3C16 /* VectorFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorFunctions.swift; sourceTree = "<group>"; };
 		BB0942671B6330D300CE3C16 /* MatrixFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixFunctions.swift; sourceTree = "<group>"; };
 		BB0974331B658FF1005B70F8 /* Probability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Probability.swift; sourceTree = "<group>"; };
 		BB0974361B65981F005B70F8 /* FunctionChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FunctionChartView.swift; path = ../StaticCharts/FunctionChartView.swift; sourceTree = "<group>"; };
 		BB0974381B659975005B70F8 /* BaseChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseChartView.swift; sourceTree = "<group>"; };
 		BB12D3631B606018003E56E3 /* LearningMachineLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningMachineLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB12D3781B606018003E56E3 /* LearningMachineLearningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningMachineLearningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB28AC5B1B66F9FB0014B6FC /* DataScienceFromScratch8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataScienceFromScratch8.swift; sourceTree = "<group>"; };
 		BB28AC5D1B6700A30014B6FC /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
 		BB28AC5F1B673B380014B6FC /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
@@ -157,7 +148,9 @@
 		BBE100861B769D0100AC9435 /* flowerSmall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flowerSmall.jpg; sourceTree = "<group>"; };
 		BBE100871B769D0100AC9435 /* flowerTiny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flowerTiny.jpg; sourceTree = "<group>"; };
 		BBEF5FF41B66A5E200515DA2 /* HypothesisAndInference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypothesisAndInference.swift; sourceTree = "<group>"; };
+		D14700D469AA5DE8B391F4AF /* Pods-LearningMachineLearning.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningMachineLearning.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LearningMachineLearning/Pods-LearningMachineLearning.debug.xcconfig"; sourceTree = "<group>"; };
 		E10255E69C0235F4B81E3EB2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFD119D3E3BE18C35B0F81A4 /* Pods_LearningMachineLearning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearningMachineLearning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,25 +159,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB4980701B66E8B4005D261C /* Accelerate.framework in Frameworks */,
-				335CBF9265E7241E9068A9E8 /* Pods.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BB12D3751B606018003E56E3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				CA1058AF236C49D416848E7D /* Pods_LearningMachineLearning.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9386C4E64BD9DC6D0B89D8B0 /* Pods */ = {
+		578E17BDAA242C5D20E3BA5F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				986BCFA838E8238CE3600A25 /* Pods.debug.xcconfig */,
-				92268A0B5D3EE9AEE8B19A18 /* Pods.release.xcconfig */,
+				D14700D469AA5DE8B391F4AF /* Pods-LearningMachineLearning.debug.xcconfig */,
+				2C9986B349C899506F864114 /* Pods-LearningMachineLearning.release.xcconfig */,
+				134A8F120AADE85EE96BA82E /* Pods-LearningMachineLearningTests.debug.xcconfig */,
+				ADBCCADA0B7C75119C1572E5 /* Pods-LearningMachineLearningTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -196,7 +184,7 @@
 				BB12D37B1B606018003E56E3 /* LearningMachineLearningTests */,
 				BB12D3641B606018003E56E3 /* Products */,
 				CC86FB187F4C825D6659411D /* Frameworks */,
-				9386C4E64BD9DC6D0B89D8B0 /* Pods */,
+				578E17BDAA242C5D20E3BA5F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				BB12D3631B606018003E56E3 /* LearningMachineLearning.app */,
-				BB12D3781B606018003E56E3 /* LearningMachineLearningTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -367,6 +354,8 @@
 			children = (
 				BB49806F1B66E8B4005D261C /* Accelerate.framework */,
 				E10255E69C0235F4B81E3EB2 /* Pods.framework */,
+				EFD119D3E3BE18C35B0F81A4 /* Pods_LearningMachineLearning.framework */,
+				874ADBF5DEBCCCE1F1218FF9 /* Pods_LearningMachineLearningTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -378,9 +367,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB12D3821B606018003E56E3 /* Build configuration list for PBXNativeTarget "LearningMachineLearning" */;
 			buildPhases = (
+				DEED238F5891B8C17413B104 /* [CP] Check Pods Manifest.lock */,
 				BB12D35F1B606018003E56E3 /* Sources */,
 				BB12D3601B606018003E56E3 /* Frameworks */,
 				BB12D3611B606018003E56E3 /* Resources */,
+				DB61C18E59696BFEFE56F95E /* [CP] Embed Pods Frameworks */,
+				60B2EA83CA80EA6EFABC6376 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -390,24 +382,6 @@
 			productName = LearningMachineLearning2;
 			productReference = BB12D3631B606018003E56E3 /* LearningMachineLearning.app */;
 			productType = "com.apple.product-type.application";
-		};
-		BB12D3771B606018003E56E3 /* LearningMachineLearningTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BB12D3851B606018003E56E3 /* Build configuration list for PBXNativeTarget "LearningMachineLearningTests" */;
-			buildPhases = (
-				BB12D3741B606018003E56E3 /* Sources */,
-				BB12D3751B606018003E56E3 /* Frameworks */,
-				BB12D3761B606018003E56E3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BB12D37A1B606018003E56E3 /* PBXTargetDependency */,
-			);
-			name = LearningMachineLearningTests;
-			productName = LearningMachineLearning2Tests;
-			productReference = BB12D3781B606018003E56E3 /* LearningMachineLearningTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -422,10 +396,8 @@
 				TargetAttributes = {
 					BB12D3621B606018003E56E3 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					BB12D3771B606018003E56E3 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = BB12D3621B606018003E56E3;
+						DevelopmentTeam = WMDZ2CQA8K;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -443,7 +415,6 @@
 			projectRoot = "";
 			targets = (
 				BB12D3621B606018003E56E3 /* LearningMachineLearning */,
-				BB12D3771B606018003E56E3 /* LearningMachineLearningTests */,
 			);
 		};
 /* End PBXProject section */
@@ -470,14 +441,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BB12D3761B606018003E56E3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		60B2EA83CA80EA6EFABC6376 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LearningMachineLearning/Pods-LearningMachineLearning-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		DB61C18E59696BFEFE56F95E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LearningMachineLearning/Pods-LearningMachineLearning-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEED238F5891B8C17413B104 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BB12D35F1B606018003E56E3 /* Sources */ = {
@@ -537,22 +549,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BB12D3741B606018003E56E3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BB12D37A1B606018003E56E3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BB12D3621B606018003E56E3 /* LearningMachineLearning */;
-			targetProxy = BB12D3791B606018003E56E3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BBB299721B6167BF0016985E /* LaunchScreen.xib */ = {
@@ -661,62 +658,32 @@
 		};
 		BB12D3831B606018003E56E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 986BCFA838E8238CE3600A25 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = D14700D469AA5DE8B391F4AF /* Pods-LearningMachineLearning.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = WMDZ2CQA8K;
 				INFOPLIST_FILE = LearningMachineLearning/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = LearningMachineLearning;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		BB12D3841B606018003E56E3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92268A0B5D3EE9AEE8B19A18 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 2C9986B349C899506F864114 /* Pods-LearningMachineLearning.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = WMDZ2CQA8K;
 				INFOPLIST_FILE = LearningMachineLearning/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = LearningMachineLearning;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
-			};
-			name = Release;
-		};
-		BB12D3861B606018003E56E3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = LearningMachineLearningTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = LearningMachineLearningTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LearningMachineLearning2.app/LearningMachineLearning2";
-			};
-			name = Debug;
-		};
-		BB12D3871B606018003E56E3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = LearningMachineLearningTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = LearningMachineLearningTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LearningMachineLearning2.app/LearningMachineLearning2";
 			};
 			name = Release;
 		};
@@ -737,15 +704,6 @@
 			buildConfigurations = (
 				BB12D3831B606018003E56E3 /* Debug */,
 				BB12D3841B606018003E56E3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BB12D3851B606018003E56E3 /* Build configuration list for PBXNativeTarget "LearningMachineLearningTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BB12D3861B606018003E56E3 /* Debug */,
-				BB12D3871B606018003E56E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

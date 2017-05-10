@@ -7,11 +7,11 @@
 
 import Foundation
 
-func textFromBundle(name: String) -> String? {
-    let path = NSBundle.mainBundle().pathForResource(name, ofType: "txt")
+func textFromBundle(_ name: String) -> String? {
+    let path = Bundle.main.path(forResource: name, ofType: "txt")
     
     do {
-        let text = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+        let text = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
         return text
     } catch {
         print("error getting data from bundle")

@@ -61,7 +61,7 @@ class ExampleMultipleGates {
         
         
         // check with numerical gradient
-        func forwardCircuitFast(a: Double, _ b: Double, _ c: Double, _ x: Double, _ y: Double) -> Double {
+        func forwardCircuitFast(_ a: Double, _ b: Double, _ c: Double, _ x: Double, _ y: Double) -> Double {
             return 1 / (1 + exp(-(a*x + b*y + c)))
         }
         

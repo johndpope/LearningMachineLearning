@@ -7,7 +7,7 @@
 
 import Foundation
 
-func scale(dataMatrix: [[Double]]) -> (means: [Double], standardDeviations: [Double]) {
+func scale(_ dataMatrix: [[Double]]) -> (means: [Double], standardDeviations: [Double]) {
     let (_, numCols) = shape(dataMatrix)
     var means = [Double]()
     var standardDeviations = [Double]()
@@ -21,11 +21,11 @@ func scale(dataMatrix: [[Double]]) -> (means: [Double], standardDeviations: [Dou
 
 // Rescales the input data so that each column has mean 0 and standard deviation 1
 // Leaves alone columns with no deviation
-func rescale(dataMatrix: [[Double]]) -> [[Double]] {
+func rescale(_ dataMatrix: [[Double]]) -> [[Double]] {
     
     let (means, standardDeviations) = scale(dataMatrix)
     
-    func rescaled(i: Int, j: Int) -> Double {
+    func rescaled(_ i: Int, j: Int) -> Double {
         let orig = dataMatrix[i][j]
         if standardDeviations[j] > 0 {
             return (orig - means[j]) / standardDeviations[j]

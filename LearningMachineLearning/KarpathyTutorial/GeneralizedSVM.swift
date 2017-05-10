@@ -9,7 +9,7 @@ import UIKit
 
 class GeneralizedSVM {
 
-    private class func rand() -> Double {
+    fileprivate class func rand() -> Double {
         let r = Double.randomZeroToOne()
         return r - 0.5
     }
@@ -61,7 +61,7 @@ class GeneralizedSVM {
                     
                     let predictedLabel = score > 0 ? 1 : -1
                     if predictedLabel == data.label {
-                        numCorrect++
+                        numCorrect += 1
                     }
                 }
                 let accuracy = Double(numCorrect) / Double(dataAndLabels.count)

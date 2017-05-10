@@ -9,7 +9,7 @@
 import UIKit
 import SwiftCharts
 
-struct ChartPadding : OptionSetType {
+struct ChartPadding : OptionSet {
     let rawValue: Int
     init(rawValue: Int) { self.rawValue = rawValue }
     
@@ -37,17 +37,17 @@ class BaseChartView: UIView {
     var paddingOptions = ChartPadding.PadNone
     
     let layerSpecifications: [DataType : UIColor] = [
-        .Type0 : UIColor.redColor(),
-        .Type1 : UIColor.blueColor(),
-        .Type2 : UIColor.greenColor(),
-        .Type3 : UIColor.yellowColor(),
-        .Type4 : UIColor.purpleColor(),
-        .Type5 : UIColor.orangeColor(),
-        .Type6 : UIColor.blackColor()
+        .type0 : UIColor.red,
+        .type1 : UIColor.blue,
+        .type2 : UIColor.green,
+        .type3 : UIColor.yellow,
+        .type4 : UIColor.purple,
+        .type5 : UIColor.orange,
+        .type6 : UIColor.black
     ]
     
     
-    func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
+    func setUpChartWithData(_ data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
         setDataMinMaxInterval(data)
         
         self.xAxisLabel = xAxisLabel
@@ -57,7 +57,7 @@ class BaseChartView: UIView {
         
         let scatterLayers = self.toLayers(data, layerSpecifications: layerSpecifications, xAxis: xAxis, yAxis: yAxis, chartInnerFrame: innerFrame)
         
-        let guidelinesLayerSettings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ExamplesDefaults.guidelinesWidth)
+        let guidelinesLayerSettings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
         let guidelinesLayer = ChartGuideLinesDottedLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: guidelinesLayerSettings)
         
         let chart = Chart(
@@ -73,7 +73,7 @@ class BaseChartView: UIView {
         self.chart = chart
     }
 
-    func baseChartLayers(labelSettings: ChartLabelSettings, minX: Double, maxX: Double, minY: Double, maxY: Double, xInterval: Double, yInterval: Double, xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
+    func baseChartLayers(_ labelSettings: ChartLabelSettings, minX: Double, maxX: Double, minY: Double, maxY: Double, xInterval: Double, yInterval: Double, xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
         let xValues = Array(stride(from: minX, through: maxX, by: xInterval)).map { ChartAxisValueFloat(CGFloat($0), labelSettings: labelSettings)}
         let yValues = Array(stride(from: minY, through: maxY, by: yInterval)).map {ChartAxisValueFloat(CGFloat($0), labelSettings: labelSettings)}
         
@@ -85,14 +85,14 @@ class BaseChartView: UIView {
         return (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
     }
     
-    func baseChartLayers(xAxisLabel xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
+    func baseChartLayers(xAxisLabel: String, yAxisLabel: String) -> (ChartAxisLayer, ChartAxisLayer, CGRect) {
         return baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
     }
     
-    func toLayers(models: [LabeledInput], layerSpecifications: [DataType : UIColor], xAxis: ChartAxisLayer, yAxis: ChartAxisLayer, chartInnerFrame: CGRect) -> [ChartLayer] {
+    func toLayers(_ models: [LabeledInput], layerSpecifications: [DataType : UIColor], xAxis: ChartAxisLayer, yAxis: ChartAxisLayer, chartInnerFrame: CGRect) -> [ChartLayer] {
         
         // group chartpoints by type
-        let groupedChartPoints: Dictionary<DataType, [ChartPoint]> = models.reduce(Dictionary<DataType, [ChartPoint]>()) {(var dict, model) in
+        let groupedChartPoints: Dictionary<DataType, [ChartPoint]> = models.reduce(Dictionary<DataType, [ChartPoint]>()) {(dict, model) in
             let points = model.0
             let type = model.1
             let x = CGFloat(points[0])
@@ -111,16 +111,16 @@ class BaseChartView: UIView {
         if let d = pointSize {
             dim = CGFloat(d)
         }
-        let size = CGSizeMake(dim, dim)
+        let size = CGSize(width: dim, height: dim)
         let layers: [ChartLayer] = groupedChartPoints.map {(type, chartPoints) in
             let color = layerSpecifications[type]!
-            return ChartPointsScatterCirclesLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: chartInnerFrame, chartPoints: chartPoints, itemSize: size, itemFillColor: color)
+            return ChartPointsScatterCirclesLayer(xAxis: xAxis as! ChartAxis, yAxis: yAxis as! ChartAxis, chartPoints: chartPoints, displayDelay: chartInnerFrame, itemSize: size, itemFillColor: color)
         }
         
         return layers
     }
     
-    func setDataMinMaxInterval(data: [LabeledInput]) {
+    func setDataMinMaxInterval(_ data: [LabeledInput]) {
         chartFrame = frame
         var minX = Double(UINT32_MAX)
         var minY = Double(UINT32_MAX)

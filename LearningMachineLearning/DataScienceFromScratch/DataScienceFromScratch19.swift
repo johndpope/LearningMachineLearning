@@ -46,15 +46,15 @@ class DataScienceFromScratch19: UIViewController {
         
         
         
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
-        dispatch_after(time, dispatch_get_main_queue()) {
+        let time = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: time) {
             let clusterer = ImageClustering()
             let newImage = clusterer.posterize(image, k: 10)
             self.imageView.image = newImage
         }
     }
     
-    func showSquaredErrorsAsFunctionOfK(data: [[Double]]) {
+    func showSquaredErrorsAsFunctionOfK(_ data: [[Double]]) {
         let maxK = 40
         let clusterer = KMeans(k: 5)
         let errors = clusterer.trainWithDifferentKValues(data, maxK: maxK)
@@ -69,7 +69,7 @@ class DataScienceFromScratch19: UIViewController {
         view.addSubview(chart2)
     }
     
-    func showAnimatedChartWithDifferentClustering(data: [[Double]], clusterer: KMeans, xAxisLabel: String, yAxisLabel: String) {
+    func showAnimatedChartWithDifferentClustering(_ data: [[Double]], clusterer: KMeans, xAxisLabel: String, yAxisLabel: String) {
         let relabelledData = relabelData(data, assignments: clusterer.assignments)
         
         let allAssignments = clusterer.train(data, iterations: 50)
@@ -86,20 +86,20 @@ class DataScienceFromScratch19: UIViewController {
         chartIrisDataAnimated(allAssignmentsLabeled, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
     }
     
-    func relabelData(data: [[Double]], assignments: [Int]) -> [LabeledInput] {
+    func relabelData(_ data: [[Double]], assignments: [Int]) -> [LabeledInput] {
         return zip(data, assignments).map { (point, assignment) -> LabeledInput in
             let dataType = DataType(rawValue: assignment)!
             return (point, dataType)
         }
     }
     
-    func chartIrisData(data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
+    func chartIrisData(_ data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
         chart.paddingOptions = ChartPadding.PadAll
         chart.setUpChartWithData(data, frame: view.frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         view.addSubview(chart)
     }
     
-    func chartIrisDataAnimated(data: [[LabeledInput]], xAxisLabel: String, yAxisLabel: String) {
+    func chartIrisDataAnimated(_ data: [[LabeledInput]], xAxisLabel: String, yAxisLabel: String) {
         chart.paddingOptions = ChartPadding.PadAll
         chart.setUpChartWithData(data[0], frame: view.frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         chart.dataFrames = data
@@ -108,7 +108,7 @@ class DataScienceFromScratch19: UIViewController {
         chart.beginAnimatedDisplay(duration: 0.8)
     }
     
-    func labeledInputForIrisData(speciesExcludeIndex speciesExcludeIndex: Int, feature1Index: Int, feature2Index: Int) -> [LabeledInput] {
+    func labeledInputForIrisData(speciesExcludeIndex: Int, feature1Index: Int, feature2Index: Int) -> [LabeledInput] {
         let iris = IrisData()
         let dataAndLabels = zip(iris.data, iris.labels)
         let filtered = dataAndLabels.filter { return $1.type().rawValue != speciesExcludeIndex }

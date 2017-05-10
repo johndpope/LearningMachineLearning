@@ -13,11 +13,11 @@ typealias XToYFunc = (Double) -> Double
 
 class AnimatedFunctionChartView: FunctionChartView {
     var functions = [XToYFunc]()
-    private var timer: NSTimer?
-    private var animationIndex = 0
+    fileprivate var timer: Timer?
+    fileprivate var animationIndex = 0
     
-    func beginAnimatedDisplay(duration duration: Double) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("animateFrame"), userInfo: nil, repeats: true)
+    func beginAnimatedDisplay(duration: Double) {
+        timer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(AnimatedFunctionChartView.animateFrame), userInfo: nil, repeats: true)
     }
     
     func animateFrame() {
@@ -27,19 +27,19 @@ class AnimatedFunctionChartView: FunctionChartView {
         }
         else {
             let f = functions[animationIndex]
-            animationIndex++
+            animationIndex += 1
 
             updateLine(f)
         }
     }
     
-    func updateLine(f: (Double) -> Double) {
+    func updateLine(_ f: (Double) -> Double) {
         for layer in extraLayers {
             layer.view.removeFromSuperview()
         }
         extraLayers.removeAll()
 
-        addNewLayerWithFunction(UIColor.blackColor(), f: f)
+        addNewLayerWithFunction(UIColor.black, f: f)
     }
     
 }

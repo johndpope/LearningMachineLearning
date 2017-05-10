@@ -9,13 +9,13 @@ import Foundation
 
 class LinearRegression {
 
-    class func predict(alpha: Double, beta: Double, xi: Double) -> Double {
+    class func predict(_ alpha: Double, beta: Double, xi: Double) -> Double {
         return beta * xi + alpha
     }
     
     // given training values for x and y,
     // find the least-squares values of alpha and beta
-    class func leastSquaresFit(x: [Double], _ y: [Double]) -> (alpha: Double, beta: Double) {
+    class func leastSquaresFit(_ x: [Double], _ y: [Double]) -> (alpha: Double, beta: Double) {
         let corr = correlation(x, y)
         let stdvX = standardDeviation(x)
         let stdvY = standardDeviation(y)
@@ -38,11 +38,11 @@ class LinearRegression {
     }
     
     // the error from predicting beta * xi + alpha when the actual value is yi
-    class func error(alpha: Double, beta: Double, xi: Double, yi: Double) -> Double {
+    class func error(_ alpha: Double, beta: Double, xi: Double, yi: Double) -> Double {
         return yi - predict(alpha, beta: beta, xi: xi)
     }
     
-    class func sumOfSquaredErrors(alpha: Double, beta: Double, x: [Double], y: [Double]) -> Double {
+    class func sumOfSquaredErrors(_ alpha: Double, beta: Double, x: [Double], y: [Double]) -> Double {
         let squaredErrors = zip(x, y).map { (xi, yi) -> Double in
             let error = self.error(alpha, beta: beta, xi: xi, yi: yi)
             return error ** 2
@@ -51,7 +51,7 @@ class LinearRegression {
     }
     
     // the total squared variation of y-i's from their mean
-    class func totalSumOfSquares(y: [Double]) -> Double {
+    class func totalSumOfSquares(_ y: [Double]) -> Double {
         let squared = deMean(y).map { $0 ** 2 }
         return sum(squared)
     }
@@ -59,7 +59,7 @@ class LinearRegression {
     // Coefficient of Determination (R-squared)
     // the fraction of the variation in y captured by the model
     // which equals 1 - the fraction of variation in y not captured by the model
-    class func rSquared(alpha: Double, beta: Double, x: [Double], y: [Double]) -> Double {
+    class func rSquared(_ alpha: Double, beta: Double, x: [Double], y: [Double]) -> Double {
         let sumOfSquaredErrors = self.sumOfSquaredErrors(alpha, beta: beta, x: x, y: y)
         let totalSumOfSquares = self.totalSumOfSquares(y)
         
@@ -77,14 +77,14 @@ class LinearRegression {
     
     // Mark:- Solve with Gradient Descent
     
-    class func squaredError(xi: Double, yi: Double, theta: [Double]) -> Double {
+    class func squaredError(_ xi: Double, yi: Double, theta: [Double]) -> Double {
         let alpha = theta[0]
         let beta = theta[1]
         
         return error(alpha, beta: beta, xi: xi, yi: yi) ** 2
     }
     
-    class func squaredErrorGradient(xi: Double, yi: Double, theta: [Double]) -> [Double] {
+    class func squaredErrorGradient(_ xi: Double, yi: Double, theta: [Double]) -> [Double] {
         let alpha = theta[0]
         let beta = theta[1]
         let alphaPartialDerivative = -2 * error(alpha, beta: beta, xi: xi, yi: yi)
@@ -92,7 +92,7 @@ class LinearRegression {
         return [alphaPartialDerivative, betaPartialDerivative]
     }
     
-    class func linearRegressionMinimizeStochastic(x: [Double], y: [Double], h: Double = 0.01) -> (alpha: Double, beta: Double) {
+    class func linearRegressionMinimizeStochastic(_ x: [Double], y: [Double], h: Double = 0.01) -> (alpha: Double, beta: Double) {
         let theta = [Double.randNeg1To1() * 3, Double.randNeg1To1() * 3]
         
         let result = minimizeStochastic(squaredError, gradientFn: squaredErrorGradient, x: x, y: y, theta0: theta, alpha0: h, maxIterationsWithNoImprovement: 40)

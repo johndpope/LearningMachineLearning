@@ -8,7 +8,7 @@
 import Foundation
 import Darwin
 
-func uniformCdf(x: Double) -> Double {
+func uniformCdf(_ x: Double) -> Double {
     // Cumulative Distribution Function
     // returns the probability that a uniform random variable is <= x
     
@@ -21,7 +21,7 @@ func uniformCdf(x: Double) -> Double {
     return 1.0
 }
 
-func normalPdf(x: Double, mu: Double = 0.0, sigma: Double = 0.0) -> Double {
+func normalPdf(_ x: Double, mu: Double = 0.0, sigma: Double = 0.0) -> Double {
     // Probability Density Function
     // mu is the mean, sigma is the standard deviation
     let sqrtTwoPi = sqrt(2 * M_PI)
@@ -31,11 +31,11 @@ func normalPdf(x: Double, mu: Double = 0.0, sigma: Double = 0.0) -> Double {
     return numerator / (sqrtTwoPi * sigma)
 }
 
-func normalCdf(x: Double, mu: Double = 0.0, sigma: Double = 1.0) -> Double {
+func normalCdf(_ x: Double, mu: Double = 0.0, sigma: Double = 1.0) -> Double {
     return (1 + Darwin.erf((x - mu) / sqrt(2.0) / sigma)) / 2
 }
 
-func inverseNormalCdf(p p: Double, mu: Double = 0.0, sigma: Double = 1.0, tolerance: Double = 0.00001) -> Double {
+func inverseNormalCdf(p: Double, mu: Double = 0.0, sigma: Double = 1.0, tolerance: Double = 0.00001) -> Double {
     // find approximate inverse using binary search
     
     // if not standard, compute standard and rescale
@@ -66,14 +66,14 @@ func inverseNormalCdf(p p: Double, mu: Double = 0.0, sigma: Double = 1.0, tolera
     return midZ
 }
 
-func bernoulliTrial(p: Double) -> Int {
+func bernoulliTrial(_ p: Double) -> Int {
     if Double.randomZeroToOne() < p {
         return 1
     }
     return 0
 }
 
-func binomial(n n: Int, p: Double) -> Int {
+func binomial(n: Int, p: Double) -> Int {
     var sum = 0
     for _ in 0..<n {
         sum += bernoulliTrial(p)

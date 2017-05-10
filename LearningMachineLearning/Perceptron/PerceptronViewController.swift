@@ -24,13 +24,13 @@ class PerceptronViewController: UIViewController {
         
         
         let delay = 0.5 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue()) {
+        let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: time) {
             self.startAnimating()
         }
     }
     
-    func setUpChartWithData(data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
+    func setUpChartWithData(_ data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
         chart = AnimatedChartView(frame: view.frame)
         chart.paddingOptions = .PadAll
         chart.setUpChartWithData(data, frame: view.frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
@@ -42,15 +42,15 @@ class PerceptronViewController: UIViewController {
         chart.beginAnimatedDisplay(duration: 0.1)
     }
     
-    func trainPerceptronWithData(data: [LabeledInput]) {
+    func trainPerceptronWithData(_ data: [LabeledInput]) {
         let p = Perceptron(displayUpdater: chart)
         p.learn(data)
         
     }
     
     func chairsAndTablesData() -> [LabeledInput] {
-        let chair = Furniture.Chair.type()
-        let table = Furniture.Table.type()
+        let chair = Furniture.chair.type()
+        let table = Furniture.table.type()
         return [([1.0, 5.0], chair),
             ([2.0, 6.0], chair),
             ([1.5, 7.0], chair),
@@ -59,7 +59,7 @@ class PerceptronViewController: UIViewController {
             ([1.5, 2.0], table)]
     }
     
-    func irisData(feature0 feature0: Int, feature1: Int) -> ([LabeledInput], String, String) {
+    func irisData(feature0: Int, feature1: Int) -> ([LabeledInput], String, String) {
         let iris = IrisData()
         var labeledInput = [LabeledInput]()
         

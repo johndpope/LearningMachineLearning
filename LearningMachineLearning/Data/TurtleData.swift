@@ -32,7 +32,7 @@ func getTurtleData() ->  [(Subscriptable, Bool)] {
     return turtles
 }
 
-func makeTurtle(size: ShellSize, yellowStripesOnSkin: Bool, redSpotOnSidesOfHead: Bool, darkShell: Bool) -> Subscriptable {
+func makeTurtle(_ size: ShellSize, yellowStripesOnSkin: Bool, redSpotOnSidesOfHead: Bool, darkShell: Bool) -> Subscriptable {
     // Red Eared Sliders:
     // males are 10cm max, females 15cm max
     // old males have darker shells, and their ear color can fade

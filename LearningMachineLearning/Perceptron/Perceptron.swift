@@ -27,7 +27,7 @@ class Perceptron {
     Sum up the input * the weights.
     Return 1 if that's gt than the threshold, otherwise 0.
     */
-    func feedForward(inputs: [Double]) -> Int{
+    func feedForward(_ inputs: [Double]) -> Int{
         
         // compute the sum of the weights times the inputs
         var sum = 0.0
@@ -51,7 +51,7 @@ class Perceptron {
     Arbitrarily, we'll say that if the network outputs "1" -- then it thinks
     the input is a chair. Otherwise, it thinks it is a table.
     */
-    func isCorrect(input: LabeledInput) -> Bool {
+    func isCorrect(_ input: LabeledInput) -> Bool {
         let data = input.0
         let label = input.1
         let output = feedForward(data)
@@ -59,17 +59,17 @@ class Perceptron {
     }
     
     
-    func accuracy(inputs: [LabeledInput]) -> Double {
+    func accuracy(_ inputs: [LabeledInput]) -> Double {
         var numCorrect = 0
         for input in inputs {
             if isCorrect(input) {
-                numCorrect++
+                numCorrect += 1
             }
         }
         return Double(numCorrect) / Double(inputs.count)
     }
     
-    func updateWeightsAndThreshold(input: LabeledInput){
+    func updateWeightsAndThreshold(_ input: LabeledInput){
         let data = input.0
         let label = input.1
         
@@ -96,7 +96,7 @@ class Perceptron {
     
     
     
-    func learn(inputs: [LabeledInput]) {
+    func learn(_ inputs: [LabeledInput]) {
         print("Learning!")
         
         var iter = 0
@@ -112,7 +112,7 @@ class Perceptron {
             print("Accuracy at iteration \(iter): \(accur)")
             display.updateDisplay(threshold: nil, xWeight: nil, yWeight: nil, accuracy: accur, iteration: iter)
             
-            iter++
+            iter += 1
             for input in inputs {
                 if !isCorrect(input){
                     updateWeightsAndThreshold(input)

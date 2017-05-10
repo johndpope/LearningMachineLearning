@@ -13,11 +13,11 @@ import Foundation
 typealias ArrayToScalarFunction = ([Double]) -> Double
 typealias ArrayToArrayFunction = ([Double]) -> [Double]
 
-func differenceQuotient(x: Double, h: Double, f: (Double) -> Double) -> Double {
+func differenceQuotient(_ x: Double, h: Double, f: (Double) -> Double) -> Double {
     return (f(x + h) - f(x)) / h
 }
 
-func partialDifferenceQuotient(vector: [Double], i: Int, h: Double, f: ArrayToScalarFunction) -> Double {
+func partialDifferenceQuotient(_ vector: [Double], i: Int, h: Double, f: ArrayToScalarFunction) -> Double {
     // compute the partial difference quotient of f at v
     
     var vectorPlusHAtI = vector
@@ -25,18 +25,19 @@ func partialDifferenceQuotient(vector: [Double], i: Int, h: Double, f: ArrayToSc
     return (f(vectorPlusHAtI) - f(vector)) / h
 }
 
-func step(vector: [Double], direction: [Double], stepSize: Double) -> [Double] {
+func step(_ vector: [Double], direction: [Double], stepSize: Double) -> [Double] {
     // move stepSize in the direction from v
     return zip(vector, direction).map { (v_i: Double, direction_i: Double) -> Double in
         v_i + stepSize * direction_i
     }
 }
 
-func sumOfSquaresGradient(v: [Double]) -> [Double] {
+func sumOfSquaresGradient(_ v: [Double]) -> [Double] {
     return v.map { $0 * 2 }
 }
 
-func minimizeBatch(var targetFn: ArrayToScalarFunction, gradientFn: ArrayToArrayFunction, theta_0: [Double], tolerance: Double = 0.000001) -> [Double] {
+func minimizeBatch(_ targetFn: @escaping ArrayToScalarFunction, gradientFn: ArrayToArrayFunction, theta_0: [Double], tolerance: Double = 0.000001) -> [Double] {
+    var targetFn = targetFn
     
     let stepSizes = [100.0, 10.0, 1.0, 0.1, 0.001, 0.0001, 0.00001]
     
@@ -80,7 +81,7 @@ h(xi) = t0 + t1 * xi
 
 */
 
-func gradientDescent2(alpha: Double, x: [Double], y: [Double], ep: Double = 0.0001, max_iter: Int = 10000) -> (Double, Double) {
+func gradientDescent2(_ alpha: Double, x: [Double], y: [Double], ep: Double = 0.0001, max_iter: Int = 10000) -> (Double, Double) {
     var converged = false
     var iter = 0
 
@@ -127,7 +128,7 @@ func gradientDescent2(alpha: Double, x: [Double], y: [Double], ep: Double = 0.00
         }
         
         J = e   // update error
-        iter++
+        iter += 1
         
         if iter == max_iter {
             print("Max interactions exceeded")
@@ -142,14 +143,14 @@ func gradientDescent2(alpha: Double, x: [Double], y: [Double], ep: Double = 0.00
 
 
 // verbose version.  easier to step through.
-func minimizeBatchSumOfSquaredErrors(x: [Double], y: [Double], theta_0: [Double], tolerance: Double = 0.000001) -> [Double] {
+func minimizeBatchSumOfSquaredErrors(_ x: [Double], y: [Double], theta_0: [Double], tolerance: Double = 0.000001) -> [Double] {
     let stepSizes = [100.0, 10.0, 1.0, 0.1, 0.001, 0.0001, 0.00001]
 
     let m = x.count // number of samples
     
     var theta = theta_0
     
-    func targetFn(xi: Double, _ yi: Double, _ theta: [Double]) -> Double {
+    func targetFn(_ xi: Double, _ yi: Double, _ theta: [Double]) -> Double {
         // (right answer minus predicted answer) squared
         let errorSquared = (yi - (theta[1] * xi + theta[0])) ** 2
         return errorSquared
@@ -157,7 +158,7 @@ func minimizeBatchSumOfSquaredErrors(x: [Double], y: [Double], theta_0: [Double]
     
     // if we assume we didn't know the gradient function for the target function
     // we could use this
-    func gradientFn(xi: Double, _ yi: Double, _ theta: [Double]) -> [Double] {
+    func gradientFn(_ xi: Double, _ yi: Double, _ theta: [Double]) -> [Double] {
         let h = 0.0001
         var gradient = [Double]()
         for i in 0..<theta.count {
@@ -226,42 +227,42 @@ func minimizeBatchSumOfSquaredErrors(x: [Double], y: [Double], theta_0: [Double]
 
 
 
-func negate(f: ArrayToScalarFunction) -> ArrayToScalarFunction {
+func negate(_ f: @escaping ArrayToScalarFunction) -> ArrayToScalarFunction {
     // return a function that for any input x, returns -f(x)
-    func newF(v: [Double]) -> Double {
+    func newF(_ v: [Double]) -> Double {
         return -f(v)
     }
     return newF
 }
 
-func negate(f: (Double, Double, [Double]) -> Double) -> (Double, Double, [Double]) -> Double {
-    func newF(a: Double, b: Double, c: [Double]) -> Double {
+func negate(_ f: @escaping (Double, Double, [Double]) -> Double) -> (Double, Double, [Double]) -> Double {
+    func newF(_ a: Double, b: Double, c: [Double]) -> Double {
         return -f(a, b, c)
     }
     return newF
 }
 
-func negateAll(f: ArrayToArrayFunction) -> ArrayToArrayFunction {
+func negateAll(_ f: @escaping ArrayToArrayFunction) -> ArrayToArrayFunction {
     // the same when f returns a list of numbers
-    func newF(v: [Double]) -> [Double] {
+    func newF(_ v: [Double]) -> [Double] {
         return f(v).map { -$0 }
     }
     return newF
 }
 
-func negateAll(f: (Double, Double, [Double]) -> [Double]) -> (Double, Double, [Double]) -> [Double] {
-    func newF(a: Double, b: Double, c: [Double]) -> [Double] {
+func negateAll(_ f: @escaping (Double, Double, [Double]) -> [Double]) -> (Double, Double, [Double]) -> [Double] {
+    func newF(_ a: Double, b: Double, c: [Double]) -> [Double] {
         return f(a, b, c).map { -$0 }
     }
     return newF
 }
 
-func maximizeBatch(targetFn: ArrayToScalarFunction, gradientFn: ArrayToArrayFunction, theta_0: [Double], tolerance: Double = 0.000001) -> [Double] {
+func maximizeBatch(_ targetFn: @escaping ArrayToScalarFunction, gradientFn: @escaping ArrayToArrayFunction, theta_0: [Double], tolerance: Double = 0.000001) -> [Double] {
     return minimizeBatch(negate(targetFn), gradientFn: negateAll(gradientFn), theta_0: theta_0, tolerance: tolerance)
 }
 
-func safe(f: ([Double]) -> Double) -> ([Double]) -> Double {
-    func newF(v: [Double]) -> Double {
+func safe(_ f: @escaping ([Double]) -> Double) -> ([Double]) -> Double {
+    func newF(_ v: [Double]) -> Double {
         do {
             let result = try f(v)
             return result
@@ -275,7 +276,7 @@ func safe(f: ([Double]) -> Double) -> ([Double]) -> Double {
 
 // MARK:- Stochastic Gradient Descent
 
-func minimizeStochastic(targetFn: (Double, Double, [Double]) -> Double, gradientFn: (Double, Double, [Double]) -> [Double], x: [Double], y: [Double], theta0: [Double], alpha0: Double = 0.01, maxIterationsWithNoImprovement: Int = 100) -> [Double] {
+func minimizeStochastic(_ targetFn: (Double, Double, [Double]) -> Double, gradientFn: (Double, Double, [Double]) -> [Double], x: [Double], y: [Double], theta0: [Double], alpha0: Double = 0.01, maxIterationsWithNoImprovement: Int = 100) -> [Double] {
 
     let data = zip(x, y)
     var theta = theta0
@@ -306,7 +307,7 @@ func minimizeStochastic(targetFn: (Double, Double, [Double]) -> Double, gradient
         }
         else {
             // otherwise we're not improving, so try shrinking the step size
-            iterationsWithNoImprovement++
+            iterationsWithNoImprovement += 1
             theta = minTheta
             alpha *= 0.9
         }
@@ -323,7 +324,7 @@ func minimizeStochastic(targetFn: (Double, Double, [Double]) -> Double, gradient
     return minTheta
 }
 
-func maximizeStochastic(targetFn: (Double, Double, [Double]) -> Double, gradientFn: (Double, Double, [Double]) -> [Double], x: [Double], y: [Double], theta0: [Double], alpha0: Double = 0.01) -> [Double] {
+func maximizeStochastic(_ targetFn: @escaping (Double, Double, [Double]) -> Double, gradientFn: @escaping (Double, Double, [Double]) -> [Double], x: [Double], y: [Double], theta0: [Double], alpha0: Double = 0.01) -> [Double] {
 
     return minimizeStochastic(negate(targetFn),
         gradientFn: negateAll(gradientFn),

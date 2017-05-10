@@ -8,25 +8,25 @@
 import Foundation
 
 enum DataType: Int {
-    case Type0 = 0
-    case Type1
-    case Type2
-    case Type3
-    case Type4
-    case Type5
-    case Type6
+    case type0 = 0
+    case type1
+    case type2
+    case type3
+    case type4
+    case type5
+    case type6
 }
 
 enum Furniture {
-    case Table
-    case Chair
+    case table
+    case chair
     
     func type() -> DataType {
         switch self {
-        case .Table:
-            return .Type0
-        case .Chair:
-            return .Type1
+        case .table:
+            return .type0
+        case .chair:
+            return .type1
         }
     }
 }

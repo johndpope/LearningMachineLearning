@@ -14,7 +14,7 @@ class BaseGate {
 }
 
 class MultiplyGate: BaseGate {
-    func forward(u0: Unit, _ u1: Unit) -> Unit {
+    func forward(_ u0: Unit, _ u1: Unit) -> Unit {
         unit0 = u0
         unit1 = u1
         unitTop = Unit(value: u0.value * u1.value, grad: 0.0)
@@ -28,7 +28,7 @@ class MultiplyGate: BaseGate {
 }
 
 class AddGate: BaseGate {
-    func forward(u0: Unit, _ u1: Unit) -> Unit {
+    func forward(_ u0: Unit, _ u1: Unit) -> Unit {
         unit0 = u0
         unit1 = u1
         unitTop = Unit(value: u0.value + u1.value, grad: 0.0)
@@ -42,11 +42,11 @@ class AddGate: BaseGate {
 }
 
 class SigmoidGate: BaseGate {
-    func sig(x: Double) -> Double {
+    func sig(_ x: Double) -> Double {
         return 1 / (1 + exp(-x))
     }
     
-    func forward(u: Unit) -> Unit {
+    func forward(_ u: Unit) -> Unit {
         unit0 = u
         unitTop = Unit(value: sig(u.value), grad: 0.0)
         return unitTop

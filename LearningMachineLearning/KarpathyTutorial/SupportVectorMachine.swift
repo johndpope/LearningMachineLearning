@@ -29,7 +29,7 @@ class Circuit {
     let addGate1 = AddGate()
     var topUnit: Unit!
     
-    func forward(x: Unit, _ y: Unit, _ a: Unit, _ b: Unit, _ c: Unit) -> Unit {
+    func forward(_ x: Unit, _ y: Unit, _ a: Unit, _ b: Unit, _ c: Unit) -> Unit {
         let ax = multiplyGate0.forward(a, x)
         let by = multiplyGate1.forward(b, y)
         let axPlusBy = addGate0.forward(ax, by)
@@ -37,7 +37,7 @@ class Circuit {
         return topUnit
     }
     
-    func backward(gradientTop: Double) {
+    func backward(_ gradientTop: Double) {
         topUnit.grad = gradientTop
         addGate1.backward()
         addGate0.backward()
@@ -56,12 +56,12 @@ class SupportVectorMachine {
     let circuit = Circuit()
     var unitOut: Unit!
     
-    func forward(x: Unit, _ y: Unit) -> Unit{
+    func forward(_ x: Unit, _ y: Unit) -> Unit{
         unitOut = circuit.forward(x, y, unitA, unitB, unitC)
         return unitOut
     }
     
-    func backward(label: Int) {  // label is +1 or -1
+    func backward(_ label: Int) {  // label is +1 or -1
         // reset pulls on a,b,c
         unitA.grad = 0.0
         unitB.grad = 0.0
@@ -90,7 +90,7 @@ class SupportVectorMachine {
         unitC.value += stepSize * unitC.grad
     }
     
-    func learnFrom(x x: Unit, y: Unit, label: Int) {
+    func learnFrom(x: Unit, y: Unit, label: Int) {
         forward(x, y) // forward pass (set .value in all Units)
         backward(label) // backward pass (set .grad in all Units)
         parameterUpdate() // parameters respond to tug
@@ -124,7 +124,7 @@ extension SupportVectorMachine {
     }
     
     // a function that computes the classification accuracy
-    func evalTrainingAccuracy(dataAndLabels: [ExampleData]) -> Double {
+    func evalTrainingAccuracy(_ dataAndLabels: [ExampleData]) -> Double {
         var numCorrect = 0
         for data in dataAndLabels {
             let x = Unit(value: data.data[0], grad: 0.0)
@@ -133,7 +133,7 @@ extension SupportVectorMachine {
             // see if the prediction matches the provided label
             let predictedLabel = forward(x, y).value > 0 ? 1 : -1
             if predictedLabel == data.label {
-                numCorrect++
+                numCorrect += 1
             }
         }
         return Double(numCorrect) / Double(dataAndLabels.count)

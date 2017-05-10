@@ -11,17 +11,17 @@ import SwiftCharts
 
 class AnimatedScatterplotView: BaseChartView {
     var dataFrames = [[LabeledInput]]()
-    private var timer: NSTimer?
-    private var animationIndex = 0
+    fileprivate var timer: Timer?
+    fileprivate var animationIndex = 0
     var currentPlot: Chart!
     
-    override func setUpChartWithData(data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
+    override func setUpChartWithData(_ data: [LabeledInput], frame: CGRect, xAxisLabel: String, yAxisLabel: String) {
         super.setUpChartWithData(data, frame: frame, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         addNewLayerWithData(data)
     }
     
-    func beginAnimatedDisplay(duration duration: Double) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: Selector("animateFrame"), userInfo: nil, repeats: true)
+    func beginAnimatedDisplay(duration: Double) {
+        timer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(AnimatedScatterplotView.animateFrame), userInfo: nil, repeats: true)
     }
     
     func animateFrame() {
@@ -31,19 +31,19 @@ class AnimatedScatterplotView: BaseChartView {
         }
         else {
             let frame = dataFrames[animationIndex]
-            animationIndex++
+            animationIndex += 1
             
             updateScatterPlot(frame)
         }
     }
     
-    func updateScatterPlot(data: [LabeledInput]) {
+    func updateScatterPlot(_ data: [LabeledInput]) {
         currentPlot.view.removeFromSuperview()
         
         addNewLayerWithData(data)
     }
     
-    func addNewLayerWithData(data: [LabeledInput]) {
+    func addNewLayerWithData(_ data: [LabeledInput]) {
         let (xAxis, yAxis, innerFrame) = baseChartLayers(labelSettings, minX: minX, maxX: maxX, minY: minY, maxY: maxY, xInterval: xInterval, yInterval: yInterval, xAxisLabel: xAxisLabel, yAxisLabel: yAxisLabel)
         
         let scatterLayers = self.toLayers(data, layerSpecifications: layerSpecifications, xAxis: xAxis, yAxis: yAxis, chartInnerFrame: innerFrame)

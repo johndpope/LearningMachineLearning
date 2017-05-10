@@ -11,18 +11,18 @@ import UIKit
 class DecisionTrees {
     
     indirect enum Tree: CustomStringConvertible {
-        case Leaf(Bool)
-        case Node(String, [String: Tree])
+        case leaf(Bool)
+        case node(String, [String: Tree])
         
         var description: String {
             return recursiveDescription("")
         }
         
-        func recursiveDescription(indentString: String) -> String {
+        func recursiveDescription(_ indentString: String) -> String {
             switch self {
-            case .Leaf(let bool):
+            case .leaf(let bool):
                 return "\(bool)\n"
-            case .Node(let attribute, let dict):
+            case .node(let attribute, let dict):
                 var s = ""
                 s += "Switch on \(attribute)\n"
                 var nextDescrips = [String]()
@@ -30,7 +30,7 @@ class DecisionTrees {
                     let indent = "\(indentString)->\(attribute) \(key): "
                     nextDescrips.append(indent + tree.recursiveDescription(indentString + "     "))
                 }
-                let shortest = nextDescrips.sort() { $0.characters.count < $1.characters.count }
+                let shortest = nextDescrips.sorted() { $0.characters.count < $1.characters.count }
                 s += shortest.reduce("") { $0 + $1 }
                 return s
             }
@@ -103,7 +103,7 @@ class DecisionTrees {
         print("turtle4: \(classify(tree, input: turtle4))")
     }
     
-    func entropy(classProbabilities: [Double]) -> Double {
+    func entropy(_ classProbabilities: [Double]) -> Double {
         return classProbabilities.map { p in
             if p == 0 {
                 return 0
@@ -114,13 +114,13 @@ class DecisionTrees {
         }
     }
     
-    func dataEntropy(labeledData: [(Subscriptable, Bool)]) -> Double {
+    func dataEntropy(_ labeledData: [(Subscriptable, Bool)]) -> Double {
         let labels = labeledData.map { $0.1 }
         let probabilities = classProbabilities(labels)
         return entropy(probabilities)
     }
     
-    func classProbabilities(labels: [Bool]) -> [Double] {
+    func classProbabilities(_ labels: [Bool]) -> [Double] {
         let totalCount = labels.count
         let counter = Counter(labels)
         let labelCounts = Array(counter.counts.values)
@@ -128,13 +128,13 @@ class DecisionTrees {
     }
     
     // finds the entropy from this partition of data into subsets
-    func partitionEntropy(subsets: [[(Subscriptable, Bool)]]) -> Double {
+    func partitionEntropy(_ subsets: [[(Subscriptable, Bool)]]) -> Double {
         let totalCount = subsets.map { $0.count }.reduce(0) { $0 + $1 }
         let subsetEntropies = subsets.map { dataEntropy($0) * Double($0.count) / Double(totalCount) }
         return subsetEntropies.reduce(0.0) { $0 + $1 }
     }
     
-    func partitionBy(inputs: [(Subscriptable, Bool)], attribute: String) -> [String: [(Subscriptable, Bool)]]{
+    func partitionBy(_ inputs: [(Subscriptable, Bool)], attribute: String) -> [String: [(Subscriptable, Bool)]]{
         var groups = [String: [(Subscriptable, Bool)]]()
         for input in inputs {
             let key = input.0[attribute]
@@ -147,25 +147,25 @@ class DecisionTrees {
     }
     
     // computes the entropy corresponding to a given partition
-    func partitionEntropyBy(inputs: [(Subscriptable, Bool)], attribute: String) -> Double {
+    func partitionEntropyBy(_ inputs: [(Subscriptable, Bool)], attribute: String) -> Double {
         let partitions = partitionBy(inputs, attribute: attribute)
         return partitionEntropy(Array(partitions.values))
     }
     
-    func partitionEntropyBy(inputs: [(Subscriptable, Bool)])(attribute: String) -> Double {
+    func partitionEntropyBy(_ inputs: [(Subscriptable, Bool)], _ attribute: String) -> Double {
         return partitionEntropyBy(inputs, attribute: attribute)
     }
     
-    func classify(tree: Tree, input: Subscriptable) -> Bool {
+    func classify(_ tree: Tree, input: Subscriptable) -> Bool {
         switch tree {
         // if this is a leaf node, return its value
-        case .Leaf(let value):
+        case .leaf(let value):
             return value
             
         // otherwise the tree consists of an attribute to split on
         // and a dictionary whose keys are values of that attribute
         // and whose values are subtrees to consider next
-        case .Node(let attribute, let subtreeDict):
+        case .node(let attribute, let subtreeDict):
             var subtreeKey = input[attribute]
             
             if subtreeDict[subtreeKey] == nil {
@@ -177,7 +177,8 @@ class DecisionTrees {
     }
 
     
-    func buildTreeID3(inputs: [(Subscriptable, Bool)], var splitCandidates: [String]) -> Tree {
+    func buildTreeID3(_ inputs: [(Subscriptable, Bool)], splitCandidates: [String]) -> Tree {
+        var splitCandidates = splitCandidates
         // if this is our first pass,
         // all the keys of the first input are split candidates
         
@@ -187,15 +188,15 @@ class DecisionTrees {
         let numFalses = numInputs - numTrues
         
         if numTrues == 0 {
-            return Tree.Leaf(false)
+            return Tree.leaf(false)
         }
         if numFalses == 0 {
-            return Tree.Leaf(true)
+            return Tree.leaf(true)
         }
         
         // if no split candidates left, return the majority leaf
         if splitCandidates.isEmpty {
-            return Tree.Leaf(numTrues >= numFalses)
+            return Tree.leaf(numTrues >= numFalses)
         }
         
         // otherwise, split on the best attribute
@@ -214,9 +215,9 @@ class DecisionTrees {
         }
         
         // default case
-        subtreeDict["None"] = Tree.Leaf(numTrues > numFalses)
+        subtreeDict["None"] = Tree.leaf(numTrues > numFalses)
         
-        return Tree.Node(bestAttribute, subtreeDict)
+        return Tree.node(bestAttribute, subtreeDict)
     }
     
     

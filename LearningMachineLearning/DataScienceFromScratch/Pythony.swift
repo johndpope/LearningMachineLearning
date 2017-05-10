@@ -9,9 +9,9 @@
 import Foundation
 
 // swift2.0 added zip! (but not for three things)
-func zip<T, U, V>(arr1: [T], _ arr2: [U], _ arr3: [V]) -> [(T, U, V)] {
+func zip<T, U, V>(_ arr1: [T], _ arr2: [U], _ arr3: [V]) -> [(T, U, V)] {
     var zipped = [(T, U, V)]()
-    let ordered = [arr1.count, arr2.count, arr3.count].sort()
+    let ordered = [arr1.count, arr2.count, arr3.count].sorted()
     let smallestCount = ordered[0]
     
     
@@ -22,7 +22,7 @@ func zip<T, U, V>(arr1: [T], _ arr2: [U], _ arr3: [V]) -> [(T, U, V)] {
     return zipped
 }
 
-func unzip<T, U>(zipped: [(T, U)]) -> ([T], [U]) {
+func unzip<T, U>(_ zipped: [(T, U)]) -> ([T], [U]) {
     var xs = [T]()
     var ys = [U]()
     for (x, y) in zipped {
@@ -64,9 +64,9 @@ class Counter<T: Hashable>: CustomStringConvertible {
         return tuples[0]
     }
     
-    func mostFrequent(n: Int = 5) -> [(T, Int)] {
-        var maxValues = Array(count: n, repeatedValue: 0)
-        var maxKeys = Array(count: n, repeatedValue: Array(counts.keys)[0])
+    func mostFrequent(_ n: Int = 5) -> [(T, Int)] {
+        var maxValues = Array(repeating: 0, count: n)
+        var maxKeys = Array(repeating: Array(counts.keys)[0], count: n)
         for (key, value) in counts {
             for i in 0..<n {
                 if value > maxValues[i] {
@@ -78,7 +78,7 @@ class Counter<T: Hashable>: CustomStringConvertible {
         }
         
         let tuples = Array(zip(maxKeys, maxValues))
-        return tuples.sort { $0.1 > $1.1 }
+        return tuples.sorted { $0.1 > $1.1 }
     }
     
     var description: String {
@@ -92,7 +92,7 @@ func ** (left: Double, right: Double) -> Double {
     return pow(left, right)
 }
 
-func min(v: [[Double]], key: ([Double]) -> Double) -> [Double] {
+func min(_ v: [[Double]], key: ([Double]) -> Double) -> [Double] {
     var min = v[0]
     var minValue = Double(UINT32_MAX)
     for num in v {
@@ -105,7 +105,7 @@ func min(v: [[Double]], key: ([Double]) -> Double) -> [Double] {
     return min
 }
 
-func min<T, U: Comparable>(v: [T], key: (T) -> U) -> T {
+func min<T, U: Comparable>(_ v: [T], key: (T) -> U) -> T {
     var minEntry = v[0]
     var minValue = key(minEntry)
     for entry in v {
@@ -118,7 +118,7 @@ func min<T, U: Comparable>(v: [T], key: (T) -> U) -> T {
     return minEntry
 }
 
-func minIndex<T, U: Comparable>(v: [T], key: (T) -> U) -> Int {
+func minIndex<T, U: Comparable>(_ v: [T], key: (T) -> U) -> Int {
     var minIndex = 0
     var minValue = key(v[0])
     for i in 1..<v.count {
@@ -131,7 +131,7 @@ func minIndex<T, U: Comparable>(v: [T], key: (T) -> U) -> Int {
     return minIndex
 }
 
-func sum(v: [Double]) -> Double {
+func sum(_ v: [Double]) -> Double {
     return v.reduce(0.0) { $0 + $1 }
 }
 

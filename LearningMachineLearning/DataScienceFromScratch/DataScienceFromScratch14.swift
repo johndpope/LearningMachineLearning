@@ -27,7 +27,7 @@ class DataScienceFromScratch14: UIViewController {
         linearRegression(data)
     }
 
-    func chartIrisData(data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
+    func chartIrisData(_ data: [LabeledInput], xAxisLabel: String, yAxisLabel: String) {
         //chart.paddingOptions = (ChartPadding.PadTop).union(ChartPadding.PadRight)
         chart.paddingOptions = ChartPadding.PadAll
         //chart.overrides.minX = 0.0
@@ -36,7 +36,7 @@ class DataScienceFromScratch14: UIViewController {
         view.addSubview(chart)
     }
     
-    func labeledInputForIrisData(speciesIndex speciesIndex: Int, feature1Index: Int, feature2Index: Int) -> [LabeledInput] {
+    func labeledInputForIrisData(speciesIndex: Int, feature1Index: Int, feature2Index: Int) -> [LabeledInput] {
         let iris = IrisData()
         let dataAndLabels = zip(iris.data, iris.labels)
         let filtered = dataAndLabels.filter { return $1.type().rawValue == speciesIndex }
@@ -48,7 +48,7 @@ class DataScienceFromScratch14: UIViewController {
         return twoFeatures
     }
     
-    func linearRegression(data: [LabeledInput]) {
+    func linearRegression(_ data: [LabeledInput]) {
         let onlyData = data.map { $0.0 }
         let featureVectors = transpose(onlyData)
         
@@ -67,7 +67,7 @@ class DataScienceFromScratch14: UIViewController {
         
         chartIrisData(data, xAxisLabel: "x", yAxisLabel: "y")
 
-        chart.addNewLayerWithFunction(UIColor.blackColor()) { (x: Double) -> Double in
+        chart.addNewLayerWithFunction(UIColor.black) { (x: Double) -> Double in
             x * beta + alpha 
         }
         
@@ -77,7 +77,7 @@ class DataScienceFromScratch14: UIViewController {
         let (alpha2, beta2) = LinearRegression.linearRegressionMinimizeStochastic(x, y: y)
         
         
-        chart.addNewLayerWithFunction(UIColor.redColor()) { (x: Double) -> Double in
+        chart.addNewLayerWithFunction(UIColor.red) { (x: Double) -> Double in
             x * beta2 + alpha2
         }
         
@@ -85,7 +85,7 @@ class DataScienceFromScratch14: UIViewController {
         let (alpha3, beta3) = gradientDescent2(0.01, x: x, y: y)
         
         
-        chart.addNewLayerWithFunction(UIColor.greenColor()) { (x: Double) -> Double in
+        chart.addNewLayerWithFunction(UIColor.green) { (x: Double) -> Double in
             x * beta3 + alpha3
         }
         
@@ -95,7 +95,7 @@ class DataScienceFromScratch14: UIViewController {
         let beta4 = theta[1]
         
         
-        chart.addNewLayerWithFunction(UIColor.blueColor()) { (x: Double) -> Double in
+        chart.addNewLayerWithFunction(UIColor.blue) { (x: Double) -> Double in
             x * beta4 + alpha4
         }
         

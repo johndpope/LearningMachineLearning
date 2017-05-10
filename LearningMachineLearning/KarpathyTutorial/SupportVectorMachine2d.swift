@@ -8,7 +8,7 @@
 import Foundation
 
 extension Double {
-    func formatD(f: String) -> String {
+    func formatD(_ f: String) -> String {
         return String(format: "%\(f)f", self)
     }
 }
@@ -17,12 +17,12 @@ class SupportVectorMachine2d {
 
     // looking at it in terms of loss functions (rather than force specifications)
     class func doTheThing() {
-        func cost(data: [ExampleData], w: [Double], alpha: Double) -> Double {
+        func cost(_ data: [ExampleData], w: [Double], alpha: Double) -> Double {
             
             var totalCost = 0.0 // L, in SVM loss function above
             let n = data.count
             
-            for var i=0; i < n; i++ {
+            for i in 0 ..< n {
                 // loop over all data points and compute their score
                 
                 var xi = data[i].data

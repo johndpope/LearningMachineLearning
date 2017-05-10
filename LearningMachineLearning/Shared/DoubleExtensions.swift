@@ -9,7 +9,7 @@
 import UIKit
 
 extension Double {
-    func format(f: String) -> String {
+    func format(_ f: String) -> String {
         return String(format: "%\(f)f", self)
     }
     
@@ -21,7 +21,7 @@ extension Double {
         return Double.randomZeroToOne() * shouldBeNegative()
     }
     
-    private static func shouldBeNegative() -> Double{
+    fileprivate static func shouldBeNegative() -> Double{
         if Double(arc4random()) / Double(UINT32_MAX) > 0.5 {
             return -1
         }
